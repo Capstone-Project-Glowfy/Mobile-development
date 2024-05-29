@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">GlowfyApp</string>
+    <string name="username">username</string>
+    <string name="password">password\n</string>
+    <string name="login">Login</string>
+    <string name="title">Unlock Your Skin’s Potential and Discover Your Glow</string>
+    <string name="dont_have_account">Don\'t have an account?\n</string>
+    <string name="to_register">Register</string>
+    <string name="to_login">Login</string>
+    <string name="register">Register</string>
+    <string name="have_account">Already have an account?\n</string>
+    <string name="email">email</string>
 </resources>
