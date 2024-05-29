@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.home.HomeActivity">
+    
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/fragmentViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"/>
+    
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/navBottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:fabCradleMargin="12dp"
+        app:fabCradleRoundedCornerRadius="20dp"
+        android:layout_gravity="bottom">
+        
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            app:menu="@menu/bottom_nav_menu"/>
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/cameraFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/cameraDesc"
+        android:src="@drawable/ic_camera"
+        app:layout_anchor="@id/navBottomAppBar"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
