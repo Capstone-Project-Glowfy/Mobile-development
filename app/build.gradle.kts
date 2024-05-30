@@ -51,4 +51,11 @@ dependencies {
 
     //viewpager2
     implementation ("androidx.viewpager2:viewpager2:1.1.0")
+
+    //circle ImageView
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+    //circle indicator
+
+    implementation ("me.relex:circleindicator:2.1.6")
 }
