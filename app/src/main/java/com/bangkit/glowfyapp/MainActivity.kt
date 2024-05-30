@@ -1,4 +1,4 @@
-package com.bangkit.glowfyapp.ui
+package com.bangkit.glowfyapp
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -12,6 +12,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-
     }
 }

@@ -1,4 +1,4 @@
-package com.bangkit.glowfyapp.ui
+package com.bangkit.glowfyapp.view.auth
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
