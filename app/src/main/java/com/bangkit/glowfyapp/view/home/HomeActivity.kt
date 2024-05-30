@@ -1,18 +1,23 @@
 package com.bangkit.glowfyapp.view.home
 
 import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.viewpager2.widget.ViewPager2
 import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.databinding.ActivityHomeBinding
-import com.bangkit.glowfyapp.view.home.adapters.ViewPagerAdapter
+import com.bangkit.glowfyapp.view.home.fragments.FavoriteFragment
+import com.bangkit.glowfyapp.view.home.fragments.ProductFragment
+import com.bangkit.glowfyapp.view.home.fragments.ProfileFragment
+import com.bangkit.glowfyapp.view.home.fragments.dashboard.DashboardFragment
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
+    private var backPressedTime = 0L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -25,46 +30,53 @@ class HomeActivity : AppCompatActivity() {
         }
 
         setupView()
-
     }
 
     private fun setupView() {
         navbarViewSetup()
         navbarActionSetup()
+        backSetup()
+    }
+
+    private fun backSetup() {
+        val callback = object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (backPressedTime + 2000 > System.currentTimeMillis()) {
+                    finish()
+                } else {
+                    Toast.makeText(baseContext, R.string.backAlert, Toast.LENGTH_SHORT).show()
+                }
+                backPressedTime = System.currentTimeMillis()
+            }
+
+        }
+        onBackPressedDispatcher.addCallback(this, callback)
     }
 
     private fun navbarViewSetup() {
         with(binding) {
             bottomNavView.background = null
             bottomNavView.menu.getItem(2).isEnabled = false
-
-            fragmentViewPager.adapter = ViewPagerAdapter(this@HomeActivity)
         }
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, DashboardFragment())
+            .commit()
     }
 
     private fun navbarActionSetup() {
         binding.bottomNavView.setOnItemSelectedListener { item ->
-            when(item.itemId) {
-                R.id.homeNav -> binding.fragmentViewPager.currentItem = 0
-                R.id.productNav -> binding.fragmentViewPager.currentItem = 1
-                R.id.favoriteNav -> binding.fragmentViewPager.currentItem = 2
-                R.id.profileNav -> binding.fragmentViewPager.currentItem = 3
+            val fragment = when(item.itemId) {
+                R.id.homeNav -> DashboardFragment()
+                R.id.productNav -> ProductFragment()
+                R.id.favoriteNav -> FavoriteFragment()
+                R.id.profileNav -> ProfileFragment()
+                else -> DashboardFragment()
             }
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .commit()
             true
         }
-
-        binding.fragmentViewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                val menuItemId = when(position) {
-                    0 -> R.id.homeNav
-                    1 -> R.id.productNav
-                    2 -> R.id.favoriteNav
-                    3 -> R.id.profileNav
-                    else -> R.id.homeNav
-                }
-                binding.bottomNavView.selectedItemId = menuItemId
-            }
-        })
     }
 }

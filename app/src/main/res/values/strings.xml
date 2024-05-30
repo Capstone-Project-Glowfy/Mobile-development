@@ -17,4 +17,11 @@
     <string name="favorite">Favorite</string>
     <string name="profile">Profile</string>
     <string name="cameraDesc">Kamera Deteksi Kulit</string>
+
+    <string name="userGreeting">Let\'s take care of your skin</string>
+    <string name="userNameGreeting">Hello User</string>
+    <string name="skinDescPart">Kenali Kulit Anda</string>
+    <string name="articleTitle">Improve Your Daily Skincare for Radiant, Glowing Skin!</string>
+    <string name="articleImageDesc">Article Image</string>
+    <string name="backAlert">Tekan sekali lagi untuk keluar</string>
 </resources>
