@@ -1,6 +1,6 @@
 <resources>
-<<<<<<< HEAD
-    <string name="app_name">GlowfyApp</string>
+    <string name="app_name">Glowfy</string>
+
     <string name="username">username</string>
     <string name="password">password\n</string>
     <string name="login">Login</string>
@@ -11,8 +11,6 @@
     <string name="register">Register</string>
     <string name="have_account">Already have an account?\n</string>
     <string name="email">email</string>
-=======
-    <string name="app_name">Glowfy</string>
 
     <string name="home">Home</string>
     <string name="product">Product</string>
@@ -20,5 +18,10 @@
     <string name="profile">Profile</string>
     <string name="cameraDesc">Kamera Deteksi Kulit</string>
 
->>>>>>> 3ec8ba0208b7a6c393d0bafe20c899d4344f9a31
+    <string name="userGreeting">Let\'s take care of your skin</string>
+    <string name="userNameGreeting">Hello User</string>
+    <string name="skinDescPart">Kenali Kulit Anda</string>
+    <string name="articleTitle">Improve Your Daily Skincare for Radiant, Glowing Skin!</string>
+    <string name="articleImageDesc">Article Image</string>
+    <string name="backAlert">Tekan sekali lagi untuk keluar</string>
 </resources>
