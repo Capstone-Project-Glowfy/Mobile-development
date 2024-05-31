@@ -23,6 +23,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email_layout"
+        style="@style/RoundedCorner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -41,6 +42,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/username_layout"
+        style="@style/RoundedCorner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -59,6 +61,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/password_layout"
+        style="@style/RoundedCorner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -77,6 +80,7 @@
 
     <Button
         android:id="@+id/login_button"
+        style="@style/RoundedCorner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -112,6 +116,7 @@
 
         <Button
             android:id="@+id/tvToLogin"
+            style="@style/RoundedCorner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
