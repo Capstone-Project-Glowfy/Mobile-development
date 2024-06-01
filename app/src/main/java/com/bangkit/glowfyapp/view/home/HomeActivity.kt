@@ -48,7 +48,6 @@ class HomeActivity : AppCompatActivity() {
                 }
                 backPressedTime = System.currentTimeMillis()
             }
-
         }
         onBackPressedDispatcher.addCallback(this, callback)
     }
