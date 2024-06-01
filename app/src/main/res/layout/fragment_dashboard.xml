@@ -83,27 +83,32 @@
                     android:id="@+id/articleViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    app:layout_constraintBottom_toTopOf="@+id/viewpagerGuideLine"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/viewpagerGuideLine"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_end="445dp" />
 
                 <me.relex.circleindicator.CircleIndicator3
                     android:id="@+id/circleIndicator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toTopOf="@+id/viewpagerGuideLine"
+                    app:layout_constraintBottom_toBottomOf="@id/articleViewPager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.88" />
+                    app:layout_constraintVertical_bias="0.76" />
+
+                <ProgressBar
+                    android:id="@+id/articleProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    app:indicatorColor="@color/md_theme_primary"
+                    app:layout_constraintBottom_toBottomOf="@+id/articleViewPager"
+                    app:layout_constraintEnd_toEndOf="@+id/articleViewPager"
+                    app:layout_constraintStart_toStartOf="@+id/articleViewPager"
+                    app:layout_constraintTop_toTopOf="@+id/articleViewPager" />
 
                 <HorizontalScrollView
                     android:id="@+id/horizontalView"
@@ -111,7 +116,7 @@
                     android:layout_height="0dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/viewpagerGuideLine">
+                    app:layout_constraintTop_toBottomOf="@+id/articleViewPager">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="wrap_content"
@@ -122,172 +127,7 @@
                             android:layout_height="200dp"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="20dp"
-                            android:layout_marginEnd="20dp"
-                            app:cardCornerRadius="10dp"
-                            app:cardElevation="10dp"
-                            app:layout_constraintEnd_toEndOf="@+id/materialCardView"
-                            app:layout_constraintStart_toEndOf="@+id/cardView3"
-                            app:layout_constraintTop_toBottomOf="@+id/materialCardView">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="20dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="20dp"
-                                    android:text="@string/placeholder"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/md_theme_primary"
-                                    android:textSize="11sp"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintHorizontal_bias="0.0"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
-                                <TextView
-                                    android:id="@+id/textView17"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="20dp"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginEnd="20dp"
-                                    android:text="@string/placeholder"
-                                    android:textAlignment="center"
-                                    android:textColor="?android:textColorPrimary"
-                                    android:textStyle="bold"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintHorizontal_bias="0.0"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/imageView9" />
-
-                                <com.google.android.material.button.MaterialButton
-                                    android:id="@+id/buttonCamera"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_marginEnd="10dp"
-                                    android:layout_marginBottom="5dp"
-                                    android:backgroundTint="@color/md_theme_primary"
-                                    android:fontFamily="@font/dm_sans"
-                                    android:text="@string/placeholder"
-                                    android:textColor="@color/white"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    app:cornerRadius="30dp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent" />
-
-                                <ImageView
-                                    android:id="@+id/imageView9"
-                                    android:layout_width="0dp"
-                                    android:layout_height="0dp"
-                                    android:layout_marginStart="50dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="50dp"
-                                    android:layout_marginBottom="150dp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent"
-                                    app:srcCompat="@drawable/img_placeholder" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/cardView3"
-                            android:layout_width="165dp"
-                            android:layout_height="200dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="15dp"
-                            app:cardCornerRadius="10dp"
-                            app:cardElevation="10dp"
-                            app:layout_constraintStart_toStartOf="@+id/materialCardView"
-                            app:layout_constraintTop_toBottomOf="@+id/materialCardView">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <com.google.android.material.button.MaterialButton
-                                    android:id="@+id/buttonDailyTreatment"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_marginEnd="10dp"
-                                    android:layout_marginBottom="5dp"
-                                    android:backgroundTint="@color/md_theme_primary"
-                                    android:fontFamily="@font/dm_sans"
-                                    android:text="@string/placeholder"
-                                    android:textColor="@color/white"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    app:cornerRadius="30dp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent" />
-
-                                <ImageView
-                                    android:id="@+id/imageView6"
-                                    android:layout_width="0dp"
-                                    android:layout_height="0dp"
-                                    android:layout_marginStart="50dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="50dp"
-                                    android:layout_marginBottom="150dp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintHorizontal_bias="0.0"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent"
-                                    app:layout_constraintVertical_bias="0.0"
-                                    app:srcCompat="@drawable/img_placeholder" />
-
-                                <TextView
-                                    android:id="@+id/textView"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="20dp"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginEnd="20dp"
-                                    android:layout_marginBottom="20dp"
-                                    android:text="@string/placeholder"
-                                    android:textAlignment="center"
-                                    android:textColor="?android:textColorPrimary"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toTopOf="@+id/buttonDailyTreatment"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintHorizontal_bias="0.0"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/imageView6"
-                                    app:layout_constraintVertical_bias="0.0" />
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:text="@string/placeholder"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/md_theme_primary"
-                                    android:textSize="11sp"
-                                    app:layout_constraintEnd_toEndOf="@+id/textView"
-                                    app:layout_constraintHorizontal_bias="1.0"
-                                    app:layout_constraintStart_toStartOf="@+id/textView"
-                                    app:layout_constraintTop_toBottomOf="@+id/textView" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="165dp"
-                            android:layout_height="200dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
                             app:cardCornerRadius="10dp"
                             app:cardElevation="10dp"
                             app:layout_constraintEnd_toEndOf="@+id/materialCardView"
@@ -467,13 +307,25 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/skinRv"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="230dp"
                     android:orientation="horizontal"
-                    android:padding="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/skinDesc"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_skin" />
+
+                <ProgressBar
+                    android:id="@+id/skinProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    app:indicatorColor="@color/md_theme_primary"
+                    app:layout_constraintBottom_toBottomOf="@+id/skinRv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/skinDesc" />
 
                 <TextView
                     android:id="@+id/productDesc"
@@ -492,18 +344,31 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/productRv"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="230dp"
                     android:orientation="horizontal"
-                    android:padding="8dp"
+                    android:layout_marginBottom="?attr/actionBarSize"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/productDesc"
-                    tools:listitem="@layout/item_skin" />
+                    tools:listitem="@layout/item_product" />
+
+                <ProgressBar
+                    android:id="@+id/productProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:indicatorColor="@color/md_theme_primary"
+                    app:layout_constraintBottom_toBottomOf="@+id/productRv"
+                    app:layout_constraintEnd_toEndOf="@+id/productRv"
+                    app:layout_constraintStart_toStartOf="@+id/productRv"
+                    app:layout_constraintTop_toBottomOf="@+id/productDesc"
+                    tools:visibility="visible" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
