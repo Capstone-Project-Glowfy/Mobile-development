@@ -1,25 +1,28 @@
 package com.bangkit.glowfyapp.view.home.fragments.dashboard
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.bangkit.glowfyapp.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.glowfyapp.databinding.FragmentDashboardBinding
-import com.bangkit.glowfyapp.view.home.adapters.ArticlesItem
-import com.bangkit.glowfyapp.view.home.adapters.ViewPagerArticleAdapter
+import com.bangkit.glowfyapp.view.home.fragments.dashboard.adapters.ProductAdapter
+import com.bangkit.glowfyapp.view.home.fragments.dashboard.adapters.SkinAdapter
+import com.bangkit.glowfyapp.view.home.fragments.dashboard.adapters.ArticleAdapter
 
 class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var handler: Handler
-    private lateinit var runnable: Runnable
-    private var currentPage = 0
+    private lateinit var viewModel: DashboardViewModel
+
+    private lateinit var productAdapter: ProductAdapter
+    private lateinit var skinAdapter: SkinAdapter
+    private lateinit var articleAdapter: ArticleAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,41 +31,81 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        viewModel = ViewModelProvider(this)[DashboardViewModel::class.java]
         setupView()
 
         return root
     }
 
     private fun setupView() {
-        val items = listOf(
-            ArticlesItem(R.drawable.ic_launcher_background, "text 1"),
-            ArticlesItem(R.drawable.ic_launcher_background, "text 2"),
-            ArticlesItem(R.drawable.ic_launcher_background, "text 3")
-        )
+        productItemHandler()
+        skinItemHandler()
+        articleHandler()
+    }
 
-        val adapter = ViewPagerArticleAdapter(items)
-        binding.articleViewPager.adapter = adapter
-        binding.circleIndicator.setViewPager(binding.articleViewPager)
-
-        handler = Handler(Looper.getMainLooper())
-        runnable = object : Runnable {
-            override fun run() {
-                if (adapter.itemCount > 0) {
-                    currentPage = (currentPage + 1) % adapter.itemCount
-                    binding.articleViewPager.setCurrentItem(currentPage, true)
-                    handler.postDelayed(this, 3000)
-                }
+    private fun articleHandler() {
+        viewModel.products.observe(viewLifecycleOwner) { articles ->
+            articleAdapter = ArticleAdapter(articles)
+            binding.apply {
+                articleViewPager.adapter = articleAdapter
+                circleIndicator.setViewPager(articleViewPager)
             }
+        }
+        viewModel.error.observe(viewLifecycleOwner) { error->
+            if(error.isNotEmpty()){
+                Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+            }
+        }
+        viewModel.isLoading.observe(viewLifecycleOwner) { loading ->
+            progressBar(loading)
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-        handler.removeCallbacks(runnable)
+    private fun skinItemHandler() {
+        viewModel.products.observe(viewLifecycleOwner) { skins ->
+            skinAdapter = SkinAdapter(skins)
+            binding.apply {
+                skinRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                skinRv.adapter = skinAdapter
+            }
+        }
+        viewModel.error.observe(viewLifecycleOwner) { error->
+            if(error.isNotEmpty()){
+                Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+            }
+        }
+        viewModel.isLoading.observe(viewLifecycleOwner) { loading ->
+            progressBar(loading)
+        }
     }
 
-    override fun onResume() {
-        super.onResume()
-        handler.postDelayed(runnable, 3000)
+    private fun productItemHandler() {
+        viewModel.products.observe(viewLifecycleOwner) { products ->
+            productAdapter = ProductAdapter(products)
+            binding.apply {
+                productRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                productRv.adapter = productAdapter
+            }
+        }
+        viewModel.error.observe(viewLifecycleOwner) { error->
+            if(error.isNotEmpty()){
+                Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+            }
+        }
+        viewModel.isLoading.observe(viewLifecycleOwner) { loading ->
+            progressBar(loading)
+        }
+    }
+
+    private fun progressBar(onloading: Boolean){
+        if(onloading){
+            binding.skinProgressBar.visibility = View.VISIBLE
+            binding.productProgressBar.visibility = View.VISIBLE
+            binding.articleProgressBar.visibility = View.VISIBLE
+        }else{
+            binding.skinProgressBar.visibility = View.GONE
+            binding.productProgressBar.visibility = View.GONE
+            binding.articleProgressBar.visibility = View.GONE
+        }
     }
 }
