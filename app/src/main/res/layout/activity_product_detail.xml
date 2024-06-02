@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    tools:context=".view.productDetail.ProductDetailActivity">
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back_button"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <Button
+        android:id="@+id/favorite_button"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/favorite"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/product_image"
+        android:layout_width="325dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/image_border"
+        android:src="@drawable/azarine_cera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/back_button"
+
+        />
+
+    <TextView
+        android:id="@+id/product_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/example_skinCare_name"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_image" />
+
+    <LinearLayout
+
+        android:id="@+id/layoutTextRates"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/product_name">
+
+        <TextView
+            android:id="@+id/productRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="150dp"
+            android:text="@string/product_rating" />
+
+        <TextView
+            android:id="@+id/productReview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="@string/product_review" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/productRatingActual"
+        android:layout_width="96dp"
+        android:layout_height="20dp"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:text="@string/rates"
+        app:layout_constraintTop_toBottomOf="@id/layoutTextRates"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/productReviewActual"
+        android:layout_width="102dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/reviews"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutTextRates" />
+
+    <TextView
+        android:id="@+id/product_description"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/image_border"
+        android:padding="16dp"
+        android:text="@string/example_skinCare_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/productRatingActual" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

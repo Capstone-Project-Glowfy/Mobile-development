@@ -29,4 +29,10 @@
     <string name="example_email">xxx@gmail.com</string>
     <string name="example_info">Info:</string>
     <string name="logout">Logout</string>
+    <string name="example_skinCare_name">Azarine</string>
+    <string name="product_rating">Product Rating</string>
+    <string name="product_review">Product Review\n</string>
+    <string name="rates">xxx</string>
+    <string name="reviews">xxx\n</string>
+    <string name="example_skinCare_description">this product is really useful!</string>
 </resources>
