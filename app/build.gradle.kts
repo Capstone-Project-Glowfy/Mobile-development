@@ -51,14 +51,16 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+    //CardView
+    implementation("androidx.cardview:cardview:1.0.0")
 
     //viewpager2
-    implementation ("androidx.viewpager2:viewpager2:1.1.0")
+    implementation("androidx.viewpager2:viewpager2:1.1.0")
 
     //circle ImageView
-    implementation ("de.hdodenhof:circleimageview:3.1.0")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 
     //circle indicator
-    implementation ("me.relex:circleindicator:2.1.6")
+    implementation("me.relex:circleindicator:2.1.6")
 }

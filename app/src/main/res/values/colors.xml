@@ -143,4 +143,8 @@
     <color name="md_theme_surfaceContainer_highContrast">#EFEEEB</color>
     <color name="md_theme_surfaceContainerHigh_highContrast">#E9E8E5</color>
     <color name="md_theme_surfaceContainerHighest_highContrast">#E3E2DF</color>
+
+    <color name="magnolia">#ede3e4</color>
+    <color name="tea_green">#daedbd</color>
+    <color name="timberwolf">#D1D1D1</color>
 </resources>

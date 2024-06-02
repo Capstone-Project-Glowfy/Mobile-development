@@ -24,4 +24,9 @@
     <string name="articleTitle">Improve Your Daily Skincare for Radiant, Glowing Skin!</string>
     <string name="articleImageDesc">Article Image</string>
     <string name="backAlert">Tekan sekali lagi untuk keluar</string>
+    <string name="example_user_name">"Alex Turner "</string>
+    <string name="user_email">"Email: "</string>
+    <string name="example_email">xxx@gmail.com</string>
+    <string name="example_info">Info:</string>
+    <string name="logout">Logout</string>
 </resources>
