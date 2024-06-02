@@ -30,11 +30,14 @@ class DashboardFragment : Fragment() {
     ): View {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this)[DashboardViewModel::class.java]
         setupView()
-
-        return root
     }
 
     private fun setupView() {
@@ -107,5 +110,10 @@ class DashboardFragment : Fragment() {
             binding.productProgressBar.visibility = View.GONE
             binding.articleProgressBar.visibility = View.GONE
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

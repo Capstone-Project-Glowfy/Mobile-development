@@ -28,4 +28,10 @@
     <string name="placeholder">placeholder</string>
     <string name="productDescPart">Jelajahi Rekomendasi Produk</string>
     <string name="productImageDesc">Gambar Dari Produk</string>
+
+    <string name="categoryNormal">Normal</string>
+    <string name="categoryOily">Berminyak</string>
+    <string name="categoryDry">Kering</string>
+    <string name="categoryAcne">Berjerawat</string>
+    <string name="categoryDescPart">Kategori</string>
 </resources>

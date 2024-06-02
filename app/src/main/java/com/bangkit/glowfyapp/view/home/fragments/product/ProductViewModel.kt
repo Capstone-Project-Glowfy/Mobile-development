@@ -1,4 +1,4 @@
-package com.bangkit.glowfyapp.view.home.fragments.dashboard
+package com.bangkit.glowfyapp.view.home.fragments.product
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,7 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DashboardViewModel : ViewModel() {
+class ProductViewModel : ViewModel() {
 
     private val _products = MutableLiveData<List<ProductsItem>>()
     val products: LiveData<List<ProductsItem>> = _products
@@ -21,15 +21,9 @@ class DashboardViewModel : ViewModel() {
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error
 
-    init {
-        if (products.value.isNullOrEmpty()) {
-            fetchProducts()
-        }
-    }
-
-    private fun fetchProducts() {
+    fun fetchProductByCategory(category: String) {
         _isLoading.value = true
-        val client = ApiConfig().getApiService().getProducts()
+        val client = ApiConfig().getApiService().getProductsByCategory(category)
         client.enqueue(object : Callback<ExampleResponse> {
             override fun onResponse(p0: Call<ExampleResponse>, p1: Response<ExampleResponse>) {
                 _isLoading.value = false

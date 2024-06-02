@@ -10,7 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.databinding.ActivityHomeBinding
 import com.bangkit.glowfyapp.view.home.fragments.FavoriteFragment
-import com.bangkit.glowfyapp.view.home.fragments.ProductFragment
+import com.bangkit.glowfyapp.view.home.fragments.product.ProductFragment
 import com.bangkit.glowfyapp.view.home.fragments.ProfileFragment
 import com.bangkit.glowfyapp.view.home.fragments.dashboard.DashboardFragment
 
