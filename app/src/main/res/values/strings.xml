@@ -34,4 +34,14 @@
     <string name="categoryDry">Kering</string>
     <string name="categoryAcne">Berjerawat</string>
     <string name="categoryDescPart">Kategori</string>
+    <string name="capture_button">Take A picture Button</string>
+    <string name="switch_camera">ganti kamera</string>
+    <string name="back_home">kembali ke halaman utama</string>
+    <string name="permission_not_granted">Gagal Mengakses Kamera</string>
+    <string name="takeApicTutorial">Bagaimana cara mengambil gambar dengan baik</string>
+    <string name="takeApicTutorialDescription">Silahkan ambil gambar pada keseluruhan bagian wajah</string>
+    <string name="done">Ok</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="preview_image">Gambar Pratinjau</string>
+    <string name="resultTitle">Hasil Deteksi</string>
 </resources>

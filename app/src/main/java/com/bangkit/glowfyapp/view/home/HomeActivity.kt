@@ -1,5 +1,6 @@
 package com.bangkit.glowfyapp.view.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -9,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.databinding.ActivityHomeBinding
+import com.bangkit.glowfyapp.view.camera.CameraActivity
 import com.bangkit.glowfyapp.view.home.fragments.FavoriteFragment
 import com.bangkit.glowfyapp.view.home.fragments.product.ProductFragment
 import com.bangkit.glowfyapp.view.home.fragments.ProfileFragment
@@ -76,6 +78,9 @@ class HomeActivity : AppCompatActivity() {
                 .replace(R.id.fragmentContainer, fragment)
                 .commit()
             true
+        }
+        binding.cameraFab.setOnClickListener {
+            startActivity(Intent(this, CameraActivity::class.java))
         }
     }
 }
