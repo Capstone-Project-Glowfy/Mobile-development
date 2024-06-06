@@ -19,7 +19,7 @@
     <string name="cameraDesc">Kamera Deteksi Kulit</string>
 
     <string name="userGreeting">Let\'s take care of your skin</string>
-    <string name="userNameGreeting">Hello User</string>
+    <string name="userNameGreeting">Hello %1$s</string>
     <string name="skinDescPart">Kenali Kulit Anda</string>
     <string name="articleTitle">Improve Your Daily Skincare for Radiant, Glowing Skin!</string>
     <string name="articleImageDesc">Article Image</string>
@@ -44,4 +44,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="preview_image">Gambar Pratinjau</string>
     <string name="resultTitle">Hasil Deteksi</string>
+    <string name="message_validation">Harap Isi Kolom Yang Kosong!</string>
+    <string name="login_success_message">Login Berhasil</string>
+    <string name="empty_article">Artikel Tidak Tersedia</string>
+    <string name="empty_skins">Data Kulit Tidak Tersedia</string>
+    <string name="empty_product">Data Produk Tidak Tersedia</string>
+    <string name="logout">Keluar</string>
+    <string name="register_success_message">Berhasil Daftar</string>
+    <string name="logout_success">Berhasil Keluar</string>
 </resources>

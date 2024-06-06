@@ -4,12 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.glowfyapp.R
-import com.bangkit.glowfyapp.data.models.ProductsItem
-import com.bangkit.glowfyapp.databinding.ItemProductBinding
+import com.bangkit.glowfyapp.data.models.items.ProductItem
 import com.bangkit.glowfyapp.databinding.ItemProductCategoryBinding
 import com.bumptech.glide.Glide
 
-class ProductCategoryAdapter(private var listProduct: List<ProductsItem>) : RecyclerView.Adapter<ProductCategoryAdapter.ViewHolder>() {
+class ProductCategoryAdapter(private var listProduct: List<ProductItem>) : RecyclerView.Adapter<ProductCategoryAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemProductCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,7 +22,7 @@ class ProductCategoryAdapter(private var listProduct: List<ProductsItem>) : Recy
     }
 
     class ViewHolder(private val binding: ItemProductCategoryBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(product: ProductsItem) {
+        fun bind(product: ProductItem) {
             with(binding) {
                 Glide.with(itemView.context)
                     .load(product.thumbnail)
@@ -31,13 +30,13 @@ class ProductCategoryAdapter(private var listProduct: List<ProductsItem>) : Recy
                     .centerCrop()
                     .into(productImageCategory)
 
-                productNameCategory.text = product.title
-                productPriceCategory.text = "Rp ${product.price}"
+                productNameCategory.text = product.nama
+                productPriceCategory.text = "Rp ${product.harga}"
             }
         }
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: ProductsItem)
+        fun onItemClicked(data: ProductItem)
     }
 }

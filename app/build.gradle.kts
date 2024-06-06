@@ -16,6 +16,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", "\"https://test-glowfy2-n3xvm6iu5q-et.a.run.app/\"")
     }
 
     buildTypes {
@@ -88,4 +90,7 @@ dependencies {
     implementation ("androidx.camera:camera-video:1.3.3")
     implementation ("androidx.camera:camera-view:1.3.3")
     implementation ("androidx.camera:camera-extensions:1.3.3")
+
+    // datastore
+    implementation ("androidx.datastore:datastore-preferences:1.1.1")
 }

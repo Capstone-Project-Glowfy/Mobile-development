@@ -7,13 +7,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.home.HomeActivity">
-    
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"/>
-    
+
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/navBottomAppBar"
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
         app:fabCradleMargin="12dp"
         app:fabCradleRoundedCornerRadius="20dp"
         android:layout_gravity="bottom">
-        
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavView"
             android:layout_width="match_parent"

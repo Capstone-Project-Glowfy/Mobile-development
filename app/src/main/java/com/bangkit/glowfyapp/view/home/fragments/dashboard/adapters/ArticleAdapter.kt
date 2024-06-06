@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.glowfyapp.R
-import com.bangkit.glowfyapp.data.models.ProductsItem
+import com.bangkit.glowfyapp.data.models.items.ArticlesItem
 import com.bangkit.glowfyapp.databinding.ItemArticleBinding
 import com.bumptech.glide.Glide
 
-class ArticleAdapter(private val items: List<ProductsItem>) : RecyclerView.Adapter<ArticleAdapter.ViewPagerViewHolder>() {
+class ArticleAdapter(private val items: List<ArticlesItem>) : RecyclerView.Adapter<ArticleAdapter.ViewPagerViewHolder>() {
 
     class ViewPagerViewHolder(val binding: ItemArticleBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -20,11 +20,10 @@ class ArticleAdapter(private val items: List<ProductsItem>) : RecyclerView.Adapt
     override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {
         val item = items[position]
         with(holder) {
-            binding.articleTitle.text = item.title
+            binding.articleTitle.text = item.judul
             Glide.with(itemView.context)
-                .load(item.thumbnail)
+                .load(item.foto)
                 .placeholder(R.drawable.img_placeholder)
-                .centerCrop()
                 .into(binding.articleImage)
         }
     }

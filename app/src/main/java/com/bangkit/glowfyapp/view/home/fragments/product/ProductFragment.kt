@@ -1,23 +1,33 @@
 package com.bangkit.glowfyapp.view.home.fragments.product
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bangkit.glowfyapp.R
+import com.bangkit.glowfyapp.data.models.ResultApi
+import com.bangkit.glowfyapp.data.models.items.ProductItem
 import com.bangkit.glowfyapp.databinding.FragmentProductBinding
+import com.bangkit.glowfyapp.utils.ViewModelFactory
+import com.bangkit.glowfyapp.view.auth.LoginActivity
+import com.bangkit.glowfyapp.view.home.HomeViewModel
 
 class ProductFragment : Fragment() {
 
     private var _binding: FragmentProductBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: ProductViewModel
+    private val viewModel by viewModels<HomeViewModel> {
+        ViewModelFactory.getInstance(requireContext())
+    }
+
     private lateinit var adapter: ProductCategoryAdapter
+    private var category = "normal"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,55 +40,68 @@ class ProductFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel = ViewModelProvider(this)[ProductViewModel::class.java]
-        setupView()
-        setupAction()
+        getSession()
     }
 
-    private fun setupView() {
-        showListProductCategory()
+    private fun getSession() {
+        viewModel.getSession().observe(viewLifecycleOwner) { user ->
+            if (!user.isLogin) {
+                startActivity(Intent(context, LoginActivity::class.java))
+                requireActivity().finish()
+            } else {
+                setCategory(user.token)
+            }
+        }
     }
 
-    private fun setupAction() {
-        radioButtonHandler()
+    private fun setCategory(token: String) {
+        getProductData(token, category)
+        binding.categoryRadioGroup.setOnCheckedChangeListener { _, checkedId ->
+            category = when (checkedId) {
+                R.id.normalBtn -> "normal"
+                R.id.oilyBtn -> "oily"
+                R.id.dryBtn -> "dry"
+                R.id.acneBtn -> "acne"
+                else -> "normal"
+            }
+            getProductData(token, category)
+        }
     }
 
-    private fun showListProductCategory() {
-        viewModel.products.observe(viewLifecycleOwner) { skins ->
-            adapter = ProductCategoryAdapter(skins)
+    private fun getProductData(token: String, category: String) {
+        viewModel.getProductsByCategory(token, category).observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is ResultApi.Loading -> showLoading(true)
+                is ResultApi.Success -> {
+                    showLoading(false)
+                    setProducts(result.data.product)
+                }
+
+                is ResultApi.Error -> {
+                    showLoading(false)
+                    showToast(result.error)
+                }
+            }
+        }
+    }
+
+    private fun setProducts(products: List<ProductItem>) {
+        if (products.isEmpty()) {
+            showToast(getString(R.string.empty_product))
+        } else {
+            adapter = ProductCategoryAdapter(products)
             binding.apply {
                 productCategoryRv.layoutManager = GridLayoutManager(context, 2)
                 productCategoryRv.adapter = adapter
             }
         }
-        // default - data
-        viewModel.fetchProductByCategory("beauty")
-        viewModel.error.observe(viewLifecycleOwner) { error->
-            if(error.isNotEmpty()){
-                Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
-            }
-        }
-        viewModel.isLoading.observe(viewLifecycleOwner) { loading ->
-            progressBar(loading)
-        }
     }
 
-    private fun radioButtonHandler() {
-        binding.categoryRadioGroup.setOnCheckedChangeListener { _, checkedId ->
-            val category = when (checkedId) {
-                // change by the category on real API
-                R.id.normalBtn -> "beauty"
-                R.id.oilyBtn -> "fragrances"
-                R.id.dryBtn -> "furniture"
-                R.id.acneBtn -> "groceries"
-                else -> "beauty "
-            }
-            viewModel.fetchProductByCategory(category)
-        }
+    private fun showToast(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
-    private fun progressBar(onLoading: Boolean){
+    private fun showLoading(onLoading: Boolean){
         if(onLoading){
             binding.categoryProgressbar.visibility = View.VISIBLE
             binding.productCategoryRv.visibility = View.GONE
