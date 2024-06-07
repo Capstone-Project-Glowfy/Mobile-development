@@ -17,6 +17,7 @@ import com.bangkit.glowfyapp.data.models.items.SkinsItem
 import com.bangkit.glowfyapp.databinding.FragmentDashboardBinding
 import com.bangkit.glowfyapp.utils.ViewModelFactory
 import com.bangkit.glowfyapp.view.auth.LoginActivity
+import com.bangkit.glowfyapp.view.detailProduct.ProductDetailActivity
 import com.bangkit.glowfyapp.view.home.HomeViewModel
 import com.bangkit.glowfyapp.view.home.fragments.dashboard.adapters.ArticleAdapter
 import com.bangkit.glowfyapp.view.home.fragments.dashboard.adapters.ProductAdapter
@@ -146,8 +147,19 @@ class DashboardFragment : Fragment() {
             binding.apply {
                 productRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 productRv.adapter = productAdapter
+                productAdapter.setOnItemClickCallback(object : ProductAdapter.OnItemClickCallback {
+                    override fun onItemClicked(data: ProductItem) {
+                        navigateToDetailProduct(data)
+                    }
+                })
             }
         }
+    }
+
+    private fun navigateToDetailProduct(data: ProductItem) {
+        val intent = Intent(requireContext(), ProductDetailActivity::class.java)
+        intent.putExtra("EXTRA_PRODUCT", data)
+        startActivity(intent)
     }
 
     private fun showToast(message: String) {

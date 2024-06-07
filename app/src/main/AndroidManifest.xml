@@ -18,7 +18,7 @@
         android:theme="@style/Theme.GlowfyApp"
         tools:targetApi="31">
         <activity
-            android:name=".view.productDetail.ProductDetailActivity"
+            android:name=".view.detailProduct.ProductDetailActivity"
             android:exported="false" />
         <activity
             android:name=".view.profile.ProfilePageActivity"

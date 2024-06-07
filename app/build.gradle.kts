@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -17,7 +18,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "BASE_URL", "\"https://test-glowfy2-n3xvm6iu5q-et.a.run.app/\"")
+        buildConfigField("String", "BASE_URL", "\"https://test-glowfy-n3xvm6iu5q-et.a.run.app/\"")
     }
 
     buildTypes {

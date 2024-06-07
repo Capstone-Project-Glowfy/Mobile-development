@@ -51,7 +51,7 @@
     <string name="permission_not_granted">Gagal Mengakses Kamera</string>
     <string name="takeApicTutorial">Bagaimana cara mengambil gambar dengan baik</string>
     <string name="takeApicTutorialDescription">Silahkan ambil gambar pada keseluruhan bagian wajah</string>
-    <string name="done">Ok</string>
+    <string name="done">Okay</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="preview_image">Gambar Pratinjau</string>
     <string name="resultTitle">Hasil Deteksi</string>
@@ -63,5 +63,13 @@
     <string name="logout">Keluar</string>
     <string name="register_success_message">Berhasil Daftar</string>
     <string name="logout_success">Berhasil Keluar</string>
->>>>>>> main
+    <string name="descPlaceholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend, odio id fermentum venenatis, ligula elit dictum libero, ac placerat neque mi sit amet augue. Fusce eget nunc vitae lectus fermentum posuere. Integer non orci eu tortor vehicula tincidunt. Nullam tincidunt velit et dui faucibus, id posuere eros iaculis. Mauris sed eros ut justo tincidunt tincidunt. Cras ac lacinia purus. Vestibulum tincidunt, augue vel vehicula interdum, purus dolor eleifend enim, eget fermentum urna sapien non leo. Aenean posuere semper odio, id malesuada sapien scelerisque non. Donec at arcu at felis tristique bibendum.\n\nPhasellus facilisis est at sapien consequat, nec elementum libero pretium. Nam sit amet nulla at dui aliquam aliquet. Donec ac velit at velit gravida interdum. Sed posuere purus vitae lectus gravida, ut dapibus magna auctor. Proin at velit sit amet sapien consequat suscipit. Fusce auctor dapibus ligula, sit amet accumsan nulla tincidunt at. Nullam at sapien in elit malesuada consectetur. Maecenas eget nulla quis orci hendrerit tincidunt. Aenean venenatis lacus non eros pharetra, ut dapibus felis fermentum. In nec magna nec nunc venenatis accumsan. Ut fermentum metus in ligula tempor, et convallis velit tincidunt. Nam consectetur sem in odio fringilla, vitae scelerisque nisl dictum. Donec vehicula nisi nec suscipit tempus.</string>
+    <string name="starDesc">star Rating</string>
+
+    <string name="productDetailPrice">Rp %1$s</string>
+    <string name="dry">Kering</string>
+    <string name="oily">Berminyak</string>
+    <string name="acne">Berjerawat</string>
+    <string name="normal">Normal</string>
+
 </resources>

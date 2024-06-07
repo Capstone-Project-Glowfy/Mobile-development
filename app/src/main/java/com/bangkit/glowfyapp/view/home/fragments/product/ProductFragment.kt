@@ -15,6 +15,7 @@ import com.bangkit.glowfyapp.data.models.items.ProductItem
 import com.bangkit.glowfyapp.databinding.FragmentProductBinding
 import com.bangkit.glowfyapp.utils.ViewModelFactory
 import com.bangkit.glowfyapp.view.auth.LoginActivity
+import com.bangkit.glowfyapp.view.detailProduct.ProductDetailActivity
 import com.bangkit.glowfyapp.view.home.HomeViewModel
 
 class ProductFragment : Fragment() {
@@ -93,8 +94,19 @@ class ProductFragment : Fragment() {
             binding.apply {
                 productCategoryRv.layoutManager = GridLayoutManager(context, 2)
                 productCategoryRv.adapter = adapter
+                adapter.setOnItemClickCallback(object : ProductCategoryAdapter.OnItemClickCallback {
+                    override fun onItemClicked(data: ProductItem) {
+                        navigateToDetailProduct(data)
+                    }
+                })
             }
         }
+    }
+
+    private fun navigateToDetailProduct(data: ProductItem) {
+        val intent = Intent(requireContext(), ProductDetailActivity::class.java)
+        intent.putExtra("EXTRA_PRODUCT", data)
+        startActivity(intent)
     }
 
     private fun showToast(message: String) {

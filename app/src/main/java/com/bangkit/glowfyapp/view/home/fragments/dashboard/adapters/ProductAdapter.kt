@@ -10,6 +10,11 @@ import com.bumptech.glide.Glide
 
 class ProductAdapter(private var listProduct: List<ProductItem>) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
@@ -19,6 +24,9 @@ class ProductAdapter(private var listProduct: List<ProductItem>) : RecyclerView.
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(listProduct[position])
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(listProduct[holder.adapterPosition])
+        }
     }
 
     class ViewHolder(private val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {

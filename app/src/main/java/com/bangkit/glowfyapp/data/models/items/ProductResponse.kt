@@ -1,6 +1,9 @@
 package com.bangkit.glowfyapp.data.models.items
 
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+import android.os.Parcelable
+
 
 data class ProductResponse(
 
@@ -8,6 +11,7 @@ data class ProductResponse(
 	val product: List<ProductItem>
 )
 
+@Parcelize
 data class ProductItem(
 
 	@field:SerializedName("thumbnail")
@@ -33,4 +37,4 @@ data class ProductItem(
 
 	@field:SerializedName("tipe")
 	val tipe: String
-)
+) : Parcelable
