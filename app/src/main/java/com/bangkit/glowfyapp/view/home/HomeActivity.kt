@@ -1,5 +1,6 @@
 package com.bangkit.glowfyapp.view.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -9,15 +10,17 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.databinding.ActivityHomeBinding
+import com.bangkit.glowfyapp.view.camera.CameraActivity
 import com.bangkit.glowfyapp.view.home.fragments.FavoriteFragment
-import com.bangkit.glowfyapp.view.home.fragments.ProductFragment
 import com.bangkit.glowfyapp.view.home.fragments.ProfileFragment
 import com.bangkit.glowfyapp.view.home.fragments.dashboard.DashboardFragment
+import com.bangkit.glowfyapp.view.home.fragments.product.ProductFragment
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private var backPressedTime = 0L
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -28,7 +31,6 @@ class HomeActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         setupView()
     }
 
@@ -48,7 +50,6 @@ class HomeActivity : AppCompatActivity() {
                 }
                 backPressedTime = System.currentTimeMillis()
             }
-
         }
         onBackPressedDispatcher.addCallback(this, callback)
     }
@@ -67,16 +68,19 @@ class HomeActivity : AppCompatActivity() {
     private fun navbarActionSetup() {
         binding.bottomNavView.setOnItemSelectedListener { item ->
             val fragment = when(item.itemId) {
-                R.id.homeNav -> DashboardFragment()
-                R.id.productNav -> ProductFragment()
-                R.id.favoriteNav -> FavoriteFragment()
-                R.id.profileNav -> ProfileFragment()
+                R.id.navigation_Dashboard -> DashboardFragment()
+                R.id.navigation_Product -> ProductFragment()
+                R.id.navigation_Favorite -> FavoriteFragment()
+                R.id.navigation_Profile -> ProfileFragment()
                 else -> DashboardFragment()
             }
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, fragment)
                 .commit()
             true
+        }
+        binding.cameraFab.setOnClickListener {
+            startActivity(Intent(this, CameraActivity::class.java))
         }
     }
 }

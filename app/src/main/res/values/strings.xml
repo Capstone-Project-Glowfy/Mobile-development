@@ -19,20 +19,49 @@
     <string name="cameraDesc">Kamera Deteksi Kulit</string>
 
     <string name="userGreeting">Let\'s take care of your skin</string>
-    <string name="userNameGreeting">Hello User</string>
+    <string name="userNameGreeting">Hello %1$s</string>
     <string name="skinDescPart">Kenali Kulit Anda</string>
     <string name="articleTitle">Improve Your Daily Skincare for Radiant, Glowing Skin!</string>
     <string name="articleImageDesc">Article Image</string>
     <string name="backAlert">Tekan sekali lagi untuk keluar</string>
+
     <string name="example_user_name">"Alex Turner "</string>
     <string name="user_email">"Email: "</string>
     <string name="example_email">xxx@gmail.com</string>
     <string name="example_info">Info:</string>
-    <string name="logout">Logout</string>
     <string name="example_skinCare_name">Azarine</string>
     <string name="product_rating">Product Rating</string>
     <string name="product_review">Product Review\n</string>
     <string name="rates">xxx</string>
     <string name="reviews">xxx\n</string>
     <string name="example_skinCare_description">this product is really useful!</string>
+
+    <string name="placeholder">placeholder</string>
+    <string name="productDescPart">Jelajahi Rekomendasi Produk</string>
+    <string name="productImageDesc">Gambar Dari Produk</string>
+
+    <string name="categoryNormal">Normal</string>
+    <string name="categoryOily">Berminyak</string>
+    <string name="categoryDry">Kering</string>
+    <string name="categoryAcne">Berjerawat</string>
+    <string name="categoryDescPart">Kategori</string>
+    <string name="capture_button">Take A picture Button</string>
+    <string name="switch_camera">ganti kamera</string>
+    <string name="back_home">kembali ke halaman utama</string>
+    <string name="permission_not_granted">Gagal Mengakses Kamera</string>
+    <string name="takeApicTutorial">Bagaimana cara mengambil gambar dengan baik</string>
+    <string name="takeApicTutorialDescription">Silahkan ambil gambar pada keseluruhan bagian wajah</string>
+    <string name="done">Ok</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="preview_image">Gambar Pratinjau</string>
+    <string name="resultTitle">Hasil Deteksi</string>
+    <string name="message_validation">Harap Isi Kolom Yang Kosong!</string>
+    <string name="login_success_message">Login Berhasil</string>
+    <string name="empty_article">Artikel Tidak Tersedia</string>
+    <string name="empty_skins">Data Kulit Tidak Tersedia</string>
+    <string name="empty_product">Data Produk Tidak Tersedia</string>
+    <string name="logout">Keluar</string>
+    <string name="register_success_message">Berhasil Daftar</string>
+    <string name="logout_success">Berhasil Keluar</string>
+>>>>>>> main
 </resources>

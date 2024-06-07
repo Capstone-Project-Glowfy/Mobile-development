@@ -1,11 +1,14 @@
-package com.bangkit.glowfyapp.view.home.adapters
+package com.bangkit.glowfyapp.view.home.fragments.dashboard.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bangkit.glowfyapp.R
+import com.bangkit.glowfyapp.data.models.items.ArticlesItem
 import com.bangkit.glowfyapp.databinding.ItemArticleBinding
+import com.bumptech.glide.Glide
 
-class ViewPagerArticleAdapter(private val items: List<ArticlesItem>) : RecyclerView.Adapter<ViewPagerArticleAdapter.ViewPagerViewHolder>() {
+class ArticleAdapter(private val items: List<ArticlesItem>) : RecyclerView.Adapter<ArticleAdapter.ViewPagerViewHolder>() {
 
     class ViewPagerViewHolder(val binding: ItemArticleBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -16,11 +19,14 @@ class ViewPagerArticleAdapter(private val items: List<ArticlesItem>) : RecyclerV
 
     override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {
         val item = items[position]
-        holder.binding.articleImage.setImageResource(item.imageResId)
-        holder.binding.articleTitle.text = item.text
+        with(holder) {
+            binding.articleTitle.text = item.judul
+            Glide.with(itemView.context)
+                .load(item.foto)
+                .placeholder(R.drawable.img_placeholder)
+                .into(binding.articleImage)
+        }
     }
 
     override fun getItemCount() = items.size
 }
-
-data class ArticlesItem(val imageResId: Int, val text: String)
