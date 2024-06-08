@@ -45,12 +45,19 @@ class ProductDetailActivity : AppCompatActivity() {
             productDetailImageVp.adapter = ImageDetailAdapter(product.images)
             indicatorImageDetail.setViewPager(productDetailImageVp)
             productDetailName.text = product.nama
-            productDetailRating.text = product.rating.toString()
             productDetailPrice.text = getString(R.string.productDetailPrice, product.harga.toString())
             productDetailDesc.text = product.deskripsi
 
             shareButton.setOnClickListener { shareActionHandler(product) }
             typeFormatHandler(product)
+            ratingFormatHandler(product)
+        }
+    }
+
+    private fun ratingFormatHandler(product: ProductItem) {
+        binding.apply {
+            productDetailRating.text = product.rating.toString()
+            productDetailRatingStar.rating = product.rating
         }
     }
 

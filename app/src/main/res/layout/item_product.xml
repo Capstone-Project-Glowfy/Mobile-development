@@ -50,9 +50,11 @@
             app:layout_constraintTop_toBottomOf="@+id/productName">
 
             <ImageView
-                android:layout_width="12dp"
-                android:layout_height="12dp"
-                android:src="@drawable/ic_star"
+                android:id="@+id/productRatingStar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_star_fill"
+                android:layout_marginEnd="4dp"
                 android:layout_gravity="center_vertical"/>
             <TextView
                 android:id="@+id/productRating"
