@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-parcelize")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -100,4 +101,13 @@ dependencies {
 
     //lottie
     implementation ("com.airbnb.android:lottie:6.4.0")
+
+    //gif
+    implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.28")
+
+    // shimmer
+    implementation ("com.facebook.shimmer:shimmer:0.5.0")
+
+    // swipe refresh
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
 }

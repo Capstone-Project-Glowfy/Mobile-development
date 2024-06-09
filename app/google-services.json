@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "461651676748",
+    "project_id": "glowfy-capstone",
+    "storage_bucket": "glowfy-capstone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461651676748:android:7e809484d6ca88bf0ceee9",
+        "android_client_info": {
+          "package_name": "com.bangkit.glowfyapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDI5fvPHs2so3GOVPuWIea6Tdyr-nLL4D8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

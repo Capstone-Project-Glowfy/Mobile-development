@@ -2,6 +2,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FFCE00</color>
+    <color name="orange">#FF9800</color>
+    <color name="red">#D32F2F</color>
+    <color name="green">#8BC34A</color>
+    <color name="linkColor">#0000EE</color>
+    <color name="cardColor1">#D4EEE9</color>
+    <color name="cardColor2">#EAF6F4</color>
+    <color name="cardColor3">#F2FAF8</color>
 
     <color name="md_theme_primary">#4BC5B1</color>
     <color name="md_theme_onPrimary">#FFFFFF</color>
@@ -148,4 +155,6 @@
     <color name="magnolia">#ede3e4</color>
     <color name="tea_green">#daedbd</color>
     <color name="timberwolf">#D1D1D1</color>
+    <color name="grey_shimmer">#F5F5F5</color>
+    <color name="grey_shimmer_background">#E0E0E0</color>
 </resources>

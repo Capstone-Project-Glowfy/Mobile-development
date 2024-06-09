@@ -1,7 +1,8 @@
-package com.bangkit.glowfyapp.view.home.fragments.product
+package com.bangkit.glowfyapp.view.home.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +15,10 @@ import com.bangkit.glowfyapp.data.models.ResultApi
 import com.bangkit.glowfyapp.data.models.items.ProductItem
 import com.bangkit.glowfyapp.databinding.FragmentProductBinding
 import com.bangkit.glowfyapp.utils.ViewModelFactory
+import com.bangkit.glowfyapp.view.adapters.ProductCategoryAdapter
+import com.bangkit.glowfyapp.view.adapters.shimmer.ShimmerProductCategoryAdapter
 import com.bangkit.glowfyapp.view.auth.LoginActivity
-import com.bangkit.glowfyapp.view.detailProduct.ProductDetailActivity
+import com.bangkit.glowfyapp.view.detail.detailProducts.ProductDetailActivity
 import com.bangkit.glowfyapp.view.home.HomeViewModel
 
 class ProductFragment : Fragment() {
@@ -28,6 +31,7 @@ class ProductFragment : Fragment() {
     }
 
     private lateinit var adapter: ProductCategoryAdapter
+    private lateinit var shimmerAdapter: ShimmerProductCategoryAdapter
     private var category = "normal"
 
     override fun onCreateView(
@@ -41,7 +45,14 @@ class ProductFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupData()
+
+    }
+
+    private fun setupData() {
         getSession()
+        binding.swipeRefreshLayout.setOnRefreshListener { getSession() }
     }
 
     private fun getSession() {
@@ -115,12 +126,16 @@ class ProductFragment : Fragment() {
 
     private fun showLoading(onLoading: Boolean){
         if(onLoading){
-            binding.categoryProgressbar.visibility = View.VISIBLE
-            binding.productCategoryRv.visibility = View.GONE
+            showShimmer()
         }else{
-            binding.categoryProgressbar.visibility = View.GONE
-            binding.productCategoryRv.visibility = View.VISIBLE
+            binding.swipeRefreshLayout.isRefreshing = false
         }
+    }
+
+    private fun showShimmer() {
+        shimmerAdapter = ShimmerProductCategoryAdapter()
+        binding.productCategoryRv.adapter = shimmerAdapter
+        binding.productCategoryRv.layoutManager = GridLayoutManager(context, 2)
     }
 
     override fun onDestroyView() {

@@ -1,6 +1,8 @@
 package com.bangkit.glowfyapp.data.models.items
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class SkinsResponse(
 
@@ -8,6 +10,7 @@ data class SkinsResponse(
 	val skins: List<SkinsItem>
 )
 
+@Parcelize
 data class SkinsItem(
 
 	@field:SerializedName("nama")
@@ -21,4 +24,4 @@ data class SkinsItem(
 
 	@field:SerializedName("deskripsi")
 	val deskripsi: String
-)
+):Parcelable

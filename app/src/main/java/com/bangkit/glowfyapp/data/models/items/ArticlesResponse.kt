@@ -1,6 +1,8 @@
 package com.bangkit.glowfyapp.data.models.items
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class ArticlesResponse(
 
@@ -8,6 +10,7 @@ data class ArticlesResponse(
 	val articles: List<ArticlesItem>
 )
 
+@Parcelize
 data class ArticlesItem(
 
 	@field:SerializedName("foto")
@@ -24,4 +27,4 @@ data class ArticlesItem(
 
 	@field:SerializedName("isi")
 	val isi: String
-)
+):Parcelable

@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.bangkit.glowfyapp" />
+                  <option name="mobileSdkAppId" value="1:461651676748:android:7e809484d6ca88bf0ceee9" />
+                  <option name="projectId" value="glowfy-capstone" />
+                  <option name="projectNumber" value="461651676748" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

@@ -1,4 +1,4 @@
-package com.bangkit.glowfyapp.view.detailProduct
+package com.bangkit.glowfyapp.view.detail.detailProducts
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,9 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.glowfyapp.R
-import com.bangkit.glowfyapp.data.models.items.ArticlesItem
-import com.bangkit.glowfyapp.databinding.ItemArticleBinding
-import com.bangkit.glowfyapp.databinding.ItemProductDetailBinding
 import com.bumptech.glide.Glide
 
 class ImageDetailAdapter(private val images: List<String>) : RecyclerView.Adapter<ImageDetailAdapter.ImageViewHolder>() {

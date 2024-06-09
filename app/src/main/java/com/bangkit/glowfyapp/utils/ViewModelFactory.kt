@@ -29,7 +29,7 @@ class ViewModelFactory(private val repository: DataRepository) : ViewModelProvid
         fun getInstance(context: Context): ViewModelFactory {
             if (INSTANCE == null) {
                 synchronized(ViewModelFactory::class.java) {
-                    INSTANCE = ViewModelFactory(Injection.provideRepository(context))
+                    INSTANCE = ViewModelFactory(Utility.provideRepository(context))
                 }
             }
             return INSTANCE as ViewModelFactory

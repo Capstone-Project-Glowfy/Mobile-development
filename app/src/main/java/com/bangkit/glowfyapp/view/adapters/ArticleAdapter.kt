@@ -1,14 +1,21 @@
-package com.bangkit.glowfyapp.view.home.fragments.dashboard.adapters
+package com.bangkit.glowfyapp.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.data.models.items.ArticlesItem
+import com.bangkit.glowfyapp.data.models.items.SkinsItem
 import com.bangkit.glowfyapp.databinding.ItemArticleBinding
 import com.bumptech.glide.Glide
 
 class ArticleAdapter(private val items: List<ArticlesItem>) : RecyclerView.Adapter<ArticleAdapter.ViewPagerViewHolder>() {
+
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     class ViewPagerViewHolder(val binding: ItemArticleBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -25,8 +32,16 @@ class ArticleAdapter(private val items: List<ArticlesItem>) : RecyclerView.Adapt
                 .load(item.foto)
                 .placeholder(R.drawable.img_placeholder)
                 .into(binding.articleImage)
+
+            itemView.setOnClickListener {
+                onItemClickCallback.onItemClicked(items[holder.adapterPosition])
+            }
         }
     }
 
     override fun getItemCount() = items.size
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: ArticlesItem)
+    }
 }

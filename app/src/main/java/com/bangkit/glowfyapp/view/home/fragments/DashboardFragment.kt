@@ -1,4 +1,4 @@
-package com.bangkit.glowfyapp.view.home.fragments.dashboard
+package com.bangkit.glowfyapp.view.home.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,12 +16,17 @@ import com.bangkit.glowfyapp.data.models.items.ProductItem
 import com.bangkit.glowfyapp.data.models.items.SkinsItem
 import com.bangkit.glowfyapp.databinding.FragmentDashboardBinding
 import com.bangkit.glowfyapp.utils.ViewModelFactory
+import com.bangkit.glowfyapp.view.adapters.ArticleAdapter
+import com.bangkit.glowfyapp.view.adapters.ProductAdapter
+import com.bangkit.glowfyapp.view.adapters.SkinAdapter
+import com.bangkit.glowfyapp.view.adapters.shimmer.ShimmerArticleAdapter
+import com.bangkit.glowfyapp.view.adapters.shimmer.ShimmerProductAdapter
+import com.bangkit.glowfyapp.view.adapters.shimmer.ShimmerSkinAdapter
 import com.bangkit.glowfyapp.view.auth.LoginActivity
-import com.bangkit.glowfyapp.view.detailProduct.ProductDetailActivity
+import com.bangkit.glowfyapp.view.detail.detailArticles.ArticlesDetailActivity
+import com.bangkit.glowfyapp.view.detail.detailProducts.ProductDetailActivity
+import com.bangkit.glowfyapp.view.detail.detailSkins.SkinsDetailActivity
 import com.bangkit.glowfyapp.view.home.HomeViewModel
-import com.bangkit.glowfyapp.view.home.fragments.dashboard.adapters.ArticleAdapter
-import com.bangkit.glowfyapp.view.home.fragments.dashboard.adapters.ProductAdapter
-import com.bangkit.glowfyapp.view.home.fragments.dashboard.adapters.SkinAdapter
 
 class DashboardFragment : Fragment() {
 
@@ -36,6 +41,10 @@ class DashboardFragment : Fragment() {
     private lateinit var skinAdapter: SkinAdapter
     private lateinit var articleAdapter: ArticleAdapter
 
+    private lateinit var shimmerProductAdapter: ShimmerProductAdapter
+    private lateinit var shimmerSkinAdapter: ShimmerSkinAdapter
+    private lateinit var shimmerArticleAdapter: ShimmerArticleAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,6 +57,7 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupData()
+        binding.swipeRefreshLayout.setOnRefreshListener { setupData() }
     }
 
     private fun setupData() {
@@ -123,8 +133,19 @@ class DashboardFragment : Fragment() {
             binding.apply {
                 articleViewPager.adapter = articleAdapter
                 circleIndicator.setViewPager(articleViewPager)
+                articleAdapter.setOnItemClickCallback(object : ArticleAdapter.OnItemClickCallback {
+                    override fun onItemClicked(data: ArticlesItem) {
+                        navigateToDetailArticle(data)
+                    }
+                })
             }
         }
+    }
+
+    private fun navigateToDetailArticle(data: ArticlesItem) {
+        val intent = Intent(requireContext(), ArticlesDetailActivity::class.java)
+        intent.putExtra("EXTRA_ARTICLE", data)
+        startActivity(intent)
     }
 
     private fun setSkins(skins: List<SkinsItem>) {
@@ -135,8 +156,19 @@ class DashboardFragment : Fragment() {
             binding.apply {
                 skinRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 skinRv.adapter = skinAdapter
+                skinAdapter.setOnItemClickCallback(object : SkinAdapter.OnItemClickCallback {
+                    override fun onItemClicked(data: SkinsItem) {
+                        navigateToDetailSkin(data)
+                    }
+                })
             }
         }
+    }
+
+    private fun navigateToDetailSkin(data: SkinsItem) {
+        val intent = Intent(requireContext(), SkinsDetailActivity::class.java)
+        intent.putExtra("EXTRA_SKIN", data)
+        startActivity(intent)
     }
 
     private fun setProducts(products: List<ProductItem>) {
@@ -168,14 +200,26 @@ class DashboardFragment : Fragment() {
 
     private fun showLoading(onLoading: Boolean){
         if(onLoading){
-            binding.skinProgressBar.visibility = View.VISIBLE
-            binding.productProgressBar.visibility = View.VISIBLE
-            binding.articleProgressBar.visibility = View.VISIBLE
-        }else{
-            binding.skinProgressBar.visibility = View.GONE
-            binding.productProgressBar.visibility = View.GONE
-            binding.articleProgressBar.visibility = View.GONE
+            showShimmer()
+        } else {
+            binding.swipeRefreshLayout.isRefreshing = false
         }
+    }
+
+    private fun showShimmer() {
+        //product shimmer
+        shimmerProductAdapter = ShimmerProductAdapter()
+        binding.productRv.adapter = shimmerProductAdapter
+        binding.productRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        //skin shimmer
+        shimmerSkinAdapter = ShimmerSkinAdapter()
+        binding.skinRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.skinRv.adapter = shimmerSkinAdapter
+
+        //article shimmer
+        shimmerArticleAdapter = ShimmerArticleAdapter()
+        binding.articleViewPager.adapter = shimmerArticleAdapter
     }
 
     override fun onDestroyView() {

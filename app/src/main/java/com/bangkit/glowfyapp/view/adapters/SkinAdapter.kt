@@ -1,4 +1,4 @@
-package com.bangkit.glowfyapp.view.home.fragments.dashboard.adapters
+package com.bangkit.glowfyapp.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,6 +10,12 @@ import com.bumptech.glide.Glide
 
 class SkinAdapter(private var listSkin: List<SkinsItem>) : RecyclerView.Adapter<SkinAdapter.ViewHolder>() {
 
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemSkinBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
@@ -19,6 +25,9 @@ class SkinAdapter(private var listSkin: List<SkinsItem>) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(listSkin[position])
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(listSkin[holder.adapterPosition])
+        }
     }
 
     class ViewHolder(private val binding: ItemSkinBinding) : RecyclerView.ViewHolder(binding.root) {

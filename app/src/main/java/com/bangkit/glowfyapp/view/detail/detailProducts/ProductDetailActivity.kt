@@ -1,4 +1,4 @@
-package com.bangkit.glowfyapp.view.detailProduct
+package com.bangkit.glowfyapp.view.detail.detailProducts
 
 import android.content.Intent
 import android.os.Bundle

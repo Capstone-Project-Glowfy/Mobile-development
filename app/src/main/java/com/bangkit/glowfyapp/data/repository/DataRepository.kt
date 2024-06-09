@@ -1,5 +1,7 @@
 package com.bangkit.glowfyapp.data.repository
 
+import android.annotation.SuppressLint
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.bangkit.glowfyapp.data.api.ApiConfig
@@ -12,13 +14,15 @@ import com.bangkit.glowfyapp.data.models.auth.RegisterResponse
 import com.bangkit.glowfyapp.data.models.items.ArticlesResponse
 import com.bangkit.glowfyapp.data.models.items.ProductResponse
 import com.bangkit.glowfyapp.data.models.items.SkinsResponse
+import com.bangkit.glowfyapp.utils.Utility
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import retrofit2.HttpException
 
 class DataRepository(
     private val apiService: ApiService,
-    private val pref: UserPreference
+    private val pref: UserPreference,
+    private val context: Context
 ) {
     suspend fun saveSession(user: LoginResult) {
         pref.saveSession(user)
@@ -34,6 +38,10 @@ class DataRepository(
 
     fun registerUser(name: String, email: String, password: String): LiveData<ResultApi<RegisterResponse>> = liveData {
         emit(ResultApi.Loading)
+        if (!Utility.isNetworkAvailable(context)) {
+            emit(ResultApi.Error("No network available"))
+            return@liveData
+        }
         try {
             val response = apiService.userRegister(name, email, password)
             emit(ResultApi.Success(response))
@@ -44,6 +52,10 @@ class DataRepository(
 
     fun loginUser(email: String, password: String): LiveData<ResultApi<LoginResponse>> = liveData {
         emit(ResultApi.Loading)
+        if (!Utility.isNetworkAvailable(context)) {
+            emit(ResultApi.Error("No network available"))
+            return@liveData
+        }
         try {
             val response = apiService.userLogin(email, password)
             emit(ResultApi.Success(response))
@@ -54,6 +66,10 @@ class DataRepository(
 
     fun getArticles(token: String): LiveData<ResultApi<ArticlesResponse>> = liveData {
         emit(ResultApi.Loading)
+        if (!Utility.isNetworkAvailable(context)) {
+            emit(ResultApi.Error("No network available"))
+            return@liveData
+        }
         try {
             val response = ApiConfig().getApiService(token).getArticles()
             emit(ResultApi.Success(response))
@@ -64,6 +80,10 @@ class DataRepository(
 
     fun getSkins(token: String): LiveData<ResultApi<SkinsResponse>> = liveData {
         emit(ResultApi.Loading)
+        if (!Utility.isNetworkAvailable(context)) {
+            emit(ResultApi.Error("No network available"))
+            return@liveData
+        }
         try {
             val response = ApiConfig().getApiService(token).getSkins()
             emit(ResultApi.Success(response))
@@ -74,6 +94,10 @@ class DataRepository(
 
     fun getProducts(token: String): LiveData<ResultApi<ProductResponse>> = liveData {
         emit(ResultApi.Loading)
+        if (!Utility.isNetworkAvailable(context)) {
+            emit(ResultApi.Error("No network available"))
+            return@liveData
+        }
         try {
             val response = ApiConfig().getApiService(token).getProducts()
             emit(ResultApi.Success(response))
@@ -84,6 +108,10 @@ class DataRepository(
 
     fun getProductsByCategory(token: String, category: String): LiveData<ResultApi<ProductResponse>> = liveData {
         emit(ResultApi.Loading)
+        if (!Utility.isNetworkAvailable(context)) {
+            emit(ResultApi.Error("No network available"))
+            return@liveData
+        }
         try {
             val response = ApiConfig().getApiService(token).getProductsByCategory(category)
             emit(ResultApi.Success(response))
@@ -101,14 +129,16 @@ class DataRepository(
     }
 
     companion object {
+        @SuppressLint("StaticFieldLeak")
         @Volatile
         private var instance: DataRepository? = null
         fun getInstance(
             apiService: ApiService,
-            userPreference: UserPreference
+            userPreference: UserPreference,
+            context: Context
         ): DataRepository =
             instance ?: synchronized(this) {
-                instance ?: DataRepository(apiService, userPreference)
+                instance ?: DataRepository(apiService, userPreference, context)
             }.also { instance = it }
     }
 }

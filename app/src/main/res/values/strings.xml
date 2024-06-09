@@ -72,4 +72,10 @@
     <string name="acne">Berjerawat</string>
     <string name="normal">Normal</string>
 
+    <string name="no_network_message">No network available. Please check your internet connection and try again.</string>
+    <string name="detailSkinTitle">Jenis Kulit :</string>
+    <string name="moreInformationTitle">Periksa Informasi Lebih Lanjut :</string>
+    <string name="linkText"><u>%1$s</u></string>
+    <string name="productDescTitle">Description Product</string>
+
 </resources>

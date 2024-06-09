@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -18,22 +20,37 @@
         android:theme="@style/Theme.GlowfyApp"
         tools:targetApi="31">
         <activity
-            android:name=".view.detailProduct.ProductDetailActivity"
+            android:name=".view.detail.detailArticles.ArticlesDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.detail.detailSkins.SkinsDetailActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".view.detail.detailProducts.ProductDetailActivity"
             android:exported="false" />
         <activity
             android:name=".view.profile.ProfilePageActivity"
             android:exported="false" />
-        <activity android:name=".view.camera.CameraActivity"
+        <activity
+            android:name=".view.camera.CameraActivity"
             android:exported="false" />
         <activity
             android:name=".view.auth.LoginActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".view.auth.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".view.home.HomeActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".SplashActivity"
             android:exported="true">

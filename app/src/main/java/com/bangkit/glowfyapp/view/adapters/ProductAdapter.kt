@@ -1,24 +1,22 @@
-package com.bangkit.glowfyapp.view.home.fragments.product
+package com.bangkit.glowfyapp.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.data.models.items.ProductItem
-import com.bangkit.glowfyapp.databinding.ItemProductCategoryBinding
-import com.bangkit.glowfyapp.view.home.fragments.dashboard.adapters.ProductAdapter
+import com.bangkit.glowfyapp.databinding.ItemProductBinding
 import com.bumptech.glide.Glide
 
-class ProductCategoryAdapter(private var listProduct: List<ProductItem>) : RecyclerView.Adapter<ProductCategoryAdapter.ViewHolder>() {
+class ProductAdapter(private var listProduct: List<ProductItem>) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
-    private lateinit var onItemClickCallback: ProductCategoryAdapter.OnItemClickCallback
+    private lateinit var onItemClickCallback: OnItemClickCallback
 
-    fun setOnItemClickCallback(onItemClickCallback: ProductCategoryAdapter.OnItemClickCallback) {
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemProductCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -31,17 +29,17 @@ class ProductCategoryAdapter(private var listProduct: List<ProductItem>) : Recyc
         }
     }
 
-    class ViewHolder(private val binding: ItemProductCategoryBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(product: ProductItem) {
             with(binding) {
                 Glide.with(itemView.context)
                     .load(product.thumbnail)
                     .placeholder(R.drawable.img_placeholder)
                     .centerCrop()
-                    .into(productImageCategory)
+                    .into(productImage)
 
-                productNameCategory.text = product.nama
-                productPriceCategory.text = "Rp ${product.harga}"
+                productName.text = product.nama
+                productRating.text = product.rating.toString()
             }
         }
     }
