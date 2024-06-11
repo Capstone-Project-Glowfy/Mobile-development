@@ -11,7 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.databinding.ActivityHomeBinding
 import com.bangkit.glowfyapp.view.camera.CameraActivity
-import com.bangkit.glowfyapp.view.home.fragments.FavoriteFragment
+import com.bangkit.glowfyapp.view.home.fragments.ClinicFragment
 import com.bangkit.glowfyapp.view.home.fragments.ProfileFragment
 import com.bangkit.glowfyapp.view.home.fragments.DashboardFragment
 import com.bangkit.glowfyapp.view.home.fragments.ProductFragment
@@ -70,7 +70,7 @@ class HomeActivity : AppCompatActivity() {
             val fragment = when(item.itemId) {
                 R.id.navigation_Dashboard -> DashboardFragment()
                 R.id.navigation_Product -> ProductFragment()
-                R.id.navigation_Favorite -> FavoriteFragment()
+                R.id.navigation_Clinic -> ClinicFragment()
                 R.id.navigation_Profile -> ProfileFragment()
                 else -> DashboardFragment()
             }

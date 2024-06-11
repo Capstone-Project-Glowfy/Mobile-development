@@ -77,5 +77,6 @@
     <string name="moreInformationTitle">Periksa Informasi Lebih Lanjut :</string>
     <string name="linkText"><u>%1$s</u></string>
     <string name="productDescTitle">Description Product</string>
+    <string name="startedBtnText">Get Started</string>
 
 </resources>
