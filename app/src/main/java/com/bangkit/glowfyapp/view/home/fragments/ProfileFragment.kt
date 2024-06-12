@@ -12,6 +12,7 @@ import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.databinding.FragmentProfileBinding
 import com.bangkit.glowfyapp.utils.ViewModelFactory
 import com.bangkit.glowfyapp.view.auth.LoginActivity
+import com.bangkit.glowfyapp.view.history.ScanHistoryActivity
 import com.bangkit.glowfyapp.view.home.HomeViewModel
 
 class ProfileFragment : Fragment() {
@@ -41,6 +42,12 @@ class ProfileFragment : Fragment() {
 
     private fun setupAction() {
         binding.logout.setOnClickListener { logout() }
+        binding.historyBtn.setOnClickListener { navigateToHistory() }
+    }
+
+    private fun navigateToHistory() {
+        val intent = Intent(requireContext(), ScanHistoryActivity::class.java)
+        startActivity(intent)
     }
 
     private fun logout() {

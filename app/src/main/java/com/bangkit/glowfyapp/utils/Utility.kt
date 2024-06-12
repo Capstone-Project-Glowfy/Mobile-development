@@ -9,10 +9,10 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import androidx.exifinterface.media.ExifInterface
 import com.bangkit.glowfyapp.data.api.ApiConfig
+import com.bangkit.glowfyapp.data.historydatabase.ScanHistoryDatabase
 import com.bangkit.glowfyapp.data.repository.DataRepository
 import com.bangkit.glowfyapp.data.repository.UserPreference
 import com.bangkit.glowfyapp.data.repository.dataStore
-import com.bumptech.glide.load.resource.bitmap.TransformationUtils.rotateImage
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import java.io.ByteArrayOutputStream
@@ -22,13 +22,17 @@ import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import java.util.TimeZone
 
 object Utility {
     fun provideRepository(context: Context): DataRepository {
         val pref = UserPreference.getInstance(context.dataStore)
         val user = runBlocking { pref.getUser().first() }
         val apiService = ApiConfig().getApiService(user.token)
-        return DataRepository.getInstance(apiService, pref, context)
+        val scanHistoryDao = requireNotNull(ScanHistoryDatabase.getDatabase(context)?.scanHistoryDao()) {
+            "Failed to obtain ScanHistoryDao"
+        }
+        return DataRepository.getInstance(apiService, pref, context, scanHistoryDao)
     }
 
     fun isNetworkAvailable(context: Context): Boolean {
@@ -93,6 +97,18 @@ fun rotateImage(source: Bitmap, angle: Float): Bitmap {
     )
 }
 
+fun String.dateFormat(): String {
+    val inputDateFormat = SimpleDateFormat(INPUT_FORMAT)
+    inputDateFormat.timeZone = TimeZone.getTimeZone(INPUT_TIME_ZONE)
+    val formatDate = inputDateFormat.parse(this) as Date
+    val outputDateFormat = SimpleDateFormat(OUTPUT_FORMAT)
+    outputDateFormat.timeZone = TimeZone.getDefault()
+    return outputDateFormat.format(formatDate)
+}
+
+const val INPUT_FORMAT = "yyyy-MM-dd'T'HH:mm:ss"
+const val INPUT_TIME_ZONE = "UTC"
+const val OUTPUT_FORMAT = "dd-MM-yyyy"
 private const val MAXIMAL_SIZE = 1000000 //1 MB
 private const val FILENAME_FORMAT = "yyyyMMdd_HHmmss"
 private val timeStamp: String = SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(Date())

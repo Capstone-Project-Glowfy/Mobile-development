@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -21,11 +22,17 @@
         android:theme="@style/Theme.GlowfyApp"
         tools:targetApi="31">
         <activity
+            android:name=".view.history.ScanHistoryDetail"
+            android:exported="false" />
+        <activity
+            android:name=".view.history.ScanHistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.welcome.AuthActivity"
             android:exported="false" />
         <activity
             android:name=".view.welcome.WelcomeActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".view.detail.detailArticles.ArticlesDetailActivity"
             android:exported="false" />
@@ -53,11 +60,11 @@
         <activity
             android:name=".SplashActivity"
             android:exported="true">
-             <intent-filter>
-                 <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                 <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <meta-data

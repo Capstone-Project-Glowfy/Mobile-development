@@ -13,6 +13,7 @@
     import androidx.fragment.app.viewModels
     import androidx.navigation.fragment.findNavController
     import com.bangkit.glowfyapp.R
+    import com.bangkit.glowfyapp.data.historydatabase.ScanHistory
     import com.bangkit.glowfyapp.data.models.ResultApi
     import com.bangkit.glowfyapp.data.models.items.ScanResponse
     import com.bangkit.glowfyapp.databinding.FragmentConfirmBinding
@@ -109,6 +110,7 @@
                         is ResultApi.Success -> {
                             showToast(result.data.status)
                             showLoading(false)
+                            saveToDatabase(result.data)
                             navigateToResultFragment(result.data)
                         }
 
@@ -119,6 +121,17 @@
                     }
                 }
             }
+        }
+
+        private fun saveToDatabase(scanResponse: ScanResponse) {
+            val scanHistory = ScanHistory(
+                scanId = scanResponse.data.idScan,
+                scanImage = currentImageUri.toString(),
+                statusPenyakit = scanResponse.data.prediction.statusPenyakit,
+                statusKulit = scanResponse.data.prediction.statusKulit,
+                scanDate = scanResponse.data.scanDate
+            )
+            viewModel.addScanToHistory(scanHistory)
         }
 
         private fun navigateToResultFragment(scanResponse: ScanResponse) {

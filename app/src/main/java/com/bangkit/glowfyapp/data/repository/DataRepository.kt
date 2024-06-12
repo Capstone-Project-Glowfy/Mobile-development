@@ -7,6 +7,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.bangkit.glowfyapp.data.api.ApiConfig
 import com.bangkit.glowfyapp.data.api.ApiService
+import com.bangkit.glowfyapp.data.historydatabase.ScanHistory
+import com.bangkit.glowfyapp.data.historydatabase.ScanHistoryDao
+import com.bangkit.glowfyapp.data.historydatabase.ScanHistoryDatabase
 import com.bangkit.glowfyapp.data.models.ErrorResponse
 import com.bangkit.glowfyapp.data.models.ResultApi
 import com.bangkit.glowfyapp.data.models.auth.LoginResponse
@@ -19,7 +22,9 @@ import com.bangkit.glowfyapp.data.models.items.SkinsResponse
 import com.bangkit.glowfyapp.utils.Utility
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -29,7 +34,8 @@ import java.io.File
 class DataRepository(
     private val apiService: ApiService,
     private val pref: UserPreference,
-    private val context: Context
+    private val context: Context,
+    private val scanHistoryDao: ScanHistoryDao
 ) {
     suspend fun saveSession(user: LoginResult) {
         pref.saveSession(user)
@@ -141,7 +147,18 @@ class DataRepository(
         } catch (e: HttpException) {
             emit(handleHttpException(e))
         }
+    }
 
+    suspend fun addScanToHistory(scanHistory: ScanHistory) {
+        scanHistoryDao.addScanToHistory(scanHistory)
+    }
+
+    suspend fun getScanHistory(): List<ScanHistory> {
+        return scanHistoryDao.getScanHistory()
+    }
+
+    suspend fun deleteScanHistory(id: Int) {
+        scanHistoryDao.clearScanHistory(id)
     }
 
     private fun handleHttpException(e: HttpException): ResultApi.Error {
@@ -166,10 +183,11 @@ class DataRepository(
         fun getInstance(
             apiService: ApiService,
             userPreference: UserPreference,
-            context: Context
+            context: Context,
+            scanHistoryDao: ScanHistoryDao
         ): DataRepository =
             instance ?: synchronized(this) {
-                instance ?: DataRepository(apiService, userPreference, context)
+                instance ?: DataRepository(apiService, userPreference, context, scanHistoryDao)
             }.also { instance = it }
     }
 }

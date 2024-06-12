@@ -4,6 +4,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-parcelize")
     alias(libs.plugins.google.gms.google.services)
+    id("kotlin-kapt")
 }
 
 android {
@@ -111,6 +112,13 @@ dependencies {
     // swipe refresh
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
 
-    //UCrop
-    implementation ("com.github.yalantis:ucrop:2.2.9")
+    // room database
+    val room_version = "2.6.1"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    androidTestImplementation ("androidx.room:room-testing:$room_version")
+    implementation ("androidx.room:room-ktx:$room_version")
+
+    kapt ("androidx.room:room-compiler:$room_version")
 }

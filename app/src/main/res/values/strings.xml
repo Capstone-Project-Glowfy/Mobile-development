@@ -87,5 +87,6 @@
     <string name="introDesc">Unlock the secrets to radiant, healthy skin with Glowfy. Our app offers personalized skincare solutions tailored just for you.</string>
     <string name="joinInfoBtn">Join Now</string>
     <string name="loginDesc">Already Have Account? Login</string>
+    <string name="deleteSuccess">Data Riwayat Berhasil Dihapus</string>
 
 </resources>
