@@ -77,5 +77,8 @@
     <string name="moreInformationTitle">Periksa Informasi Lebih Lanjut :</string>
     <string name="linkText"><u>%1$s</u></string>
     <string name="productDescTitle">Description Product</string>
+    <string name="empty_image_warning">Pilih Gambar Terlebih Dahulu</string>
+    <string name="cameraInstruction">Pastikan wajah kamu terlihat jelas oleh kamera, lalu tekan tombol scan untuk mengambil gambar</string>
+    <string name="infoBtnDesc">Berisi informasi penggunaan kamera</string>
 
 </resources>

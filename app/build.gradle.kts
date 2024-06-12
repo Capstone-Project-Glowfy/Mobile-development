@@ -110,4 +110,7 @@ dependencies {
 
     // swipe refresh
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
+
+    //UCrop
+    implementation ("com.github.yalantis:ucrop:2.2.9")
 }

@@ -1,15 +1,18 @@
 package com.bangkit.glowfyapp.view.camera.fragments
 
 import android.Manifest
-import android.app.AlertDialog
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.ScaleGestureDetector
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
@@ -23,7 +26,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.databinding.FragmentCameraBinding
+import com.bangkit.glowfyapp.utils.reduceFileImage
 import com.bangkit.glowfyapp.view.camera.CameraActivity
+import com.bangkit.glowfyapp.view.customview.CustomDialogAlert
+import com.bangkit.glowfyapp.view.home.HomeActivity
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -37,11 +43,12 @@ class CameraFragment : Fragment() {
 
     private var preview: Preview? = null
     private var imageCapture: ImageCapture? = null
-    private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+    private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
 
     private lateinit var outputDirectory: File
     private lateinit var cameraExecutor: ExecutorService
     private lateinit var cameraLifecycle: Camera
+    private var scaleGestureDetector: ScaleGestureDetector? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,13 +76,22 @@ class CameraFragment : Fragment() {
     private fun setupAction() {
         captureCameraHandler()
         switchCameraHandler()
-        backHandler()
+        binding.backButton.setOnClickListener { requireActivity().finish() }
+        binding.infoBtn.setOnClickListener { cameraIntroDialog() }
+        onBackPressedHandler()
     }
 
-    private fun backHandler() {
-        binding.backButton.setOnClickListener {
-            requireActivity().finish()
+    private fun onBackPressedHandler() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            navigateToHome()
         }
+    }
+
+    private fun navigateToHome() {
+        val intent = Intent(requireContext(), HomeActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        requireActivity().finish()
     }
 
     private fun showDialogHandler() {
@@ -118,10 +134,10 @@ class CameraFragment : Fragment() {
     private fun switchCameraHandler() {
         binding.switchCamera.setOnClickListener {
             cameraSelector =
-                if (cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA) {
-                    CameraSelector.DEFAULT_FRONT_CAMERA
-                } else {
+                if (cameraSelector == CameraSelector.DEFAULT_FRONT_CAMERA) {
                     CameraSelector.DEFAULT_BACK_CAMERA
+                } else {
+                    CameraSelector.DEFAULT_FRONT_CAMERA
                 }
             startCamera()
         }
@@ -135,11 +151,12 @@ class CameraFragment : Fragment() {
     }
 
     private fun captureCameraHandler() {
-        binding.captureImage.setOnClickListener {
+        binding.captureScan.setOnClickListener {
             takePhoto()
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
 
@@ -161,6 +178,11 @@ class CameraFragment : Fragment() {
                     preview,
                     imageCapture
                 )
+                scaleGestureDetector = ScaleGestureDetector(requireContext(), ScaleListener())
+                binding.viewFinder.setOnTouchListener { _, event ->
+                    scaleGestureDetector?.onTouchEvent(event)
+                    true
+                }
 
             } catch (exc: Exception) {
                 Toast.makeText(
@@ -171,6 +193,15 @@ class CameraFragment : Fragment() {
                 Log.e("Test", "startCamera: ${exc.message}")
             }
         }, ContextCompat.getMainExecutor(requireContext()))
+    }
+
+    private inner class ScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
+        override fun onScale(detector: ScaleGestureDetector): Boolean {
+            val scale = cameraLifecycle.cameraInfo.zoomState.value?.zoomRatio ?: 1f
+            val scaleFactor = detector.scaleFactor
+            cameraLifecycle.cameraControl.setZoomRatio(scale * scaleFactor)
+            return true
+        }
     }
 
     private fun takePhoto() {
@@ -185,37 +216,26 @@ class CameraFragment : Fragment() {
             ContextCompat.getMainExecutor(requireContext()),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val savedUri = photoFile.toUri().toString()
-                    val action = CameraFragmentDirections.actionCameraFragmentToConfirmFragment(savedUri)
-                    findNavController().navigate(action)
+                    val rotatedFile = photoFile.reduceFileImage()
+                    val savedUri = rotatedFile.toUri()
+                    navigateToConfirm(savedUri)
                 }
 
                 override fun onError(exc: ImageCaptureException) {
-                    Toast.makeText(
-                        requireContext(),
-                        "Gagal mengambil gambar.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(requireContext(), "Gagal mengambil gambar.", Toast.LENGTH_SHORT).show()
                     Log.e("Test", "onError: ${exc.message}")
                 }
             }
         )
     }
 
+    private fun navigateToConfirm(resultUri: Uri) {
+        val action = CameraFragmentDirections.actionCameraFragmentToConfirmFragment(resultUri.toString())
+        findNavController().navigate(action)
+    }
+
     private fun cameraIntroDialog() {
-        var dialog: AlertDialog? = null
-        val builder = AlertDialog.Builder(requireContext())
-        val view = layoutInflater.inflate(R.layout.camera_dialog, null)
-
-        val btnClose: Button = view.findViewById(R.id.doneButton)
-
-        btnClose.setOnClickListener {
-            dialog?.dismiss()
-        }
-
-        builder.setView(view)
-        dialog = builder.create()
-        dialog.show()
+        CustomDialogAlert(requireContext()).show()
     }
     override fun onDestroy() {
         super.onDestroy()

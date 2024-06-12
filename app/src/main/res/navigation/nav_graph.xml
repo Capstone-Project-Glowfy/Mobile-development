@@ -38,5 +38,11 @@
         <argument
             android:name="imageUri"
             app:argType="string" />
+        <argument
+            android:name="prediction"
+            app:argType="string" />
+        <argument
+            android:name="skinStatus"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.glowfyapp.data.repository.DataRepository
 import com.bangkit.glowfyapp.view.auth.AuthViewModel
+import com.bangkit.glowfyapp.view.camera.ScanViewModel
 import com.bangkit.glowfyapp.view.home.HomeViewModel
 
 class ViewModelFactory(private val repository: DataRepository) : ViewModelProvider.NewInstanceFactory() {
@@ -17,6 +18,9 @@ class ViewModelFactory(private val repository: DataRepository) : ViewModelProvid
             }
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ScanViewModel::class.java) -> {
+                ScanViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

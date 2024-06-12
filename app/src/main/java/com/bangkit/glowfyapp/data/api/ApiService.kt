@@ -4,12 +4,15 @@ import com.bangkit.glowfyapp.data.models.auth.LoginResponse
 import com.bangkit.glowfyapp.data.models.auth.RegisterResponse
 import com.bangkit.glowfyapp.data.models.items.ArticlesResponse
 import com.bangkit.glowfyapp.data.models.items.ProductResponse
+import com.bangkit.glowfyapp.data.models.items.ScanResponse
 import com.bangkit.glowfyapp.data.models.items.SkinsResponse
-import retrofit2.Call
+import okhttp3.MultipartBody
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Query
 
 interface ApiService {
@@ -43,4 +46,9 @@ interface ApiService {
         @Query("tipe") tipe: String
     ): ProductResponse
 
+    @Multipart
+    @POST("predict")
+    suspend fun faceDetection(
+        @Part file: MultipartBody.Part
+    ): ScanResponse
 }

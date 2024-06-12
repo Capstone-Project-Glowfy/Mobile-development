@@ -65,13 +65,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/view2">
 
                 <TextView
-                    android:id="@+id/resultName"
+                    android:id="@+id/typeSkin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    tools:text="Status" />
+                    tools:text="Normal" />
 
                 <View
                     android:layout_width="1dp"
@@ -80,12 +80,13 @@
                     android:background="@color/black" />
 
                 <TextView
-                    android:id="@+id/resultScore"
+                    android:id="@+id/statusSkin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="18sp"
-                    tools:text="65 %" />
+                    android:textStyle="bold"
+                    tools:text="berjerawat" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
