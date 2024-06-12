@@ -7,6 +7,8 @@
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -18,6 +20,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GlowfyApp"
         tools:targetApi="31">
+        <activity
+            android:name=".view.welcome.AuthActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.welcome.WelcomeActivity"
+            android:exported="true"/>
         <activity
             android:name=".view.detail.detailArticles.ArticlesDetailActivity"
             android:exported="false" />

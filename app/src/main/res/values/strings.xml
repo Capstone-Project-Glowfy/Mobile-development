@@ -77,8 +77,15 @@
     <string name="moreInformationTitle">Periksa Informasi Lebih Lanjut :</string>
     <string name="linkText"><u>%1$s</u></string>
     <string name="productDescTitle">Description Product</string>
+
     <string name="empty_image_warning">Pilih Gambar Terlebih Dahulu</string>
     <string name="cameraInstruction">Pastikan wajah kamu terlihat jelas oleh kamera, lalu tekan tombol scan untuk mengambil gambar</string>
     <string name="infoBtnDesc">Berisi informasi penggunaan kamera</string>
+
+    <string name="startedBtnText">Get Started</string>
+    <string name="introGreeting">Let\'s get started</string>
+    <string name="introDesc">Unlock the secrets to radiant, healthy skin with Glowfy. Our app offers personalized skincare solutions tailored just for you.</string>
+    <string name="joinInfoBtn">Join Now</string>
+    <string name="loginDesc">Already Have Account? Login</string>
 
 </resources>

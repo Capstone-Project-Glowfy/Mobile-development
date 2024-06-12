@@ -2,7 +2,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven ("https://jitpack.io")
+        maven (url = "https://jitpack.io")
     }
     dependencies {
         classpath(libs.navigation.safe.args.gradle.plugin)

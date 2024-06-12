@@ -12,7 +12,7 @@
     <item android:id="@+id/placeHolder"
         android:title=""/>
 
-    <item android:id="@+id/navigation_Favorite"
+    <item android:id="@+id/navigation_Clinic"
         android:icon="@drawable/ic_favorite"
         android:title="@string/favorite" />
 
