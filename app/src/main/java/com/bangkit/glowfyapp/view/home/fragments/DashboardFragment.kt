@@ -81,19 +81,19 @@ class DashboardFragment : Fragment() {
     }
 
     private fun getAllData(token: String) {
-//        viewModel.getArticles(token).observe(viewLifecycleOwner) { result ->
-//            when (result) {
-//                is ResultApi.Loading -> showLoading(true)
-//                is ResultApi.Success -> {
-//                    showLoading(false)
-//                    setArticles(result.data.articles)
-//                }
-//                is ResultApi.Error -> {
-//                    showLoading(false)
-//                    showToast(result.error)
-//                }
-//            }
-//        }
+        viewModel.getArticles(token).observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is ResultApi.Loading -> showLoading(true)
+                is ResultApi.Success -> {
+                    showLoading(false)
+                    setArticles(result.data.articles)
+                }
+                is ResultApi.Error -> {
+                    showLoading(false)
+                    showToast(result.error)
+                }
+            }
+        }
 
         viewModel.getSkins(token).observe(viewLifecycleOwner) { result ->
             when (result) {

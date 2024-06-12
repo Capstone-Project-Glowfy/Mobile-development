@@ -26,13 +26,7 @@
             android:exported="false" />
         <activity
             android:name=".view.welcome.WelcomeActivity"
-            android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".view.detail.detailArticles.ArticlesDetailActivity"
             android:exported="false" />

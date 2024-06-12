@@ -19,7 +19,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "BASE_URL", "\"https://test-glowfy-n3xvm6iu5q-et.a.run.app/\"")
+        buildConfigField("String", "BASE_URL", "\"https://glowfy-app-n3xvm6iu5q-et.a.run.app/\"")
     }
 
     buildTypes {
