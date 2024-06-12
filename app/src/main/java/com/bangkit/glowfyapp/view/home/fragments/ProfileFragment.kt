@@ -1,7 +1,9 @@
 package com.bangkit.glowfyapp.view.home.fragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,11 +38,20 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupData()
         setupAction()
+    }
+
+    private fun setupData() {
+        getSession()
     }
 
     private fun setupAction() {
         binding.logout.setOnClickListener { logout() }
+
+        binding.language.setOnClickListener {
+            startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+        }
     }
 
     private fun logout() {
@@ -50,11 +61,31 @@ class ProfileFragment : Fragment() {
     }
 
     private fun showToast() {
-        Toast.makeText(requireContext(), getString(R.string.logout_success), Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), getString(R.string.logout_success), Toast.LENGTH_SHORT)
+            .show()
     }
 
     private fun navigateToLogin() {
         startActivity(Intent(requireContext(), LoginActivity::class.java))
         requireActivity().finish()
     }
+
+    private fun getSession() {
+        viewModel.getSession().observe(viewLifecycleOwner) { user ->
+            if (!user.isLogin) {
+                startActivity(Intent(context, LoginActivity::class.java))
+                requireActivity().finish()
+            } else {
+                setUsername(user.name)
+            }
+        }
+    }
+
+
+    @SuppressLint("StringFormatInvalid")
+    private fun setUsername(name: String) {
+        binding.actualInfo1.text = getString(R.string.example_info, name)
+    }
+
+
 }

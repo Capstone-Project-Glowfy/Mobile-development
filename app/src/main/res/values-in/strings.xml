@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Glowfy</string>
+
+    <string name="username">nama pengguna</string>
+    <string name="password">kata sandi\n</string>
+    <string name="login">Masuk</string>
+    <string name="title">Buka Potensi Kulit Anda dan Temukan Cahaya Anda</string>
+    <string name="dont_have_account">Belum punya akun?\n</string>
+    <string name="to_register">Daftar</string>
+    <string name="to_login">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="have_account">Sudah punya akun?\n</string>
+    <string name="email">email</string>
+
+    <string name="home">Beranda</string>
+    <string name="product">Produk</string>
+    <string name="favorite">Favorit</string>
+    <string name="profile">Profil</string>
+    <string name="cameraDesc">Kamera Deteksi Kulit</string>
+
+    <string name="userGreeting">Mari merawat kulit Anda</string>
+    <string name="userNameGreeting">Halo %1$s</string>
+    <string name="skinDescPart">Kenali Kulit Anda</string>
+    <string name="articleTitle">Perbaiki Perawatan Kulit Harian Anda untuk Kulit Bercahaya dan Sehat!</string>
+    <string name="articleImageDesc">Gambar Artikel</string>
+    <string name="backAlert">Tekan sekali lagi untuk keluar</string>
+
+    <string name="example_user_name">"Alex Turner "</string>
+    <string name="user_email">"Email: "</string>
+    <string name="example_email">xxx@gmail.com</string>
+    <string name="example_info">Info:</string>
+    <string name="example_skinCare_name">Azarine</string>
+    <string name="product_rating">Penilaian Produk</string>
+    <string name="product_review">Ulasan Produk\n</string>
+    <string name="rates">xxx</string>
+    <string name="reviews">xxx\n</string>
+    <string name="example_skinCare_description">Produk ini sangat berguna!</string>
+
+    <string name="placeholder">placeholder</string>
+    <string name="productDescPart">Jelajahi Rekomendasi Produk</string>
+    <string name="productImageDesc">Gambar Produk</string>
+
+    <string name="categoryNormal">Normal</string>
+    <string name="categoryOily">Berminyak</string>
+    <string name="categoryDry">Kering</string>
+    <string name="categoryAcne">Berjerawat</string>
+    <string name="categoryDescPart">Kategori</string>
+    <string name="capture_button">Tombol Ambil Gambar</string>
+    <string name="switch_camera">Ganti Kamera</string>
+    <string name="back_home">Kembali ke Halaman Utama</string>
+    <string name="permission_not_granted">Gagal Mengakses Kamera</string>
+    <string name="takeApicTutorial">Cara Mengambil Gambar yang Baik</string>
+    <string name="takeApicTutorialDescription">Silakan ambil gambar seluruh wajah</string>
+    <string name="done">Oke</string>
+    <string name="hello_blank_fragment">Halo fragmen kosong</string>
+    <string name="preview_image">Gambar Pratinjau</string>
+    <string name="resultTitle">Hasil Deteksi</string>
+    <string name="message_validation">Harap Isi Kolom yang Kosong!</string>
+    <string name="login_success_message">Masuk Berhasil</string>
+    <string name="empty_article">Artikel Tidak Tersedia</string>
+    <string name="empty_skins">Data Kulit Tidak Tersedia</string>
+    <string name="empty_product">Data Produk Tidak Tersedia</string>
+    <string name="logout">Keluar</string>
+    <string name="register_success_message">Pendaftaran Berhasil</string>
+    <string name="logout_success">Keluar Berhasil</string>
+    <string name="descPlaceholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend, odio id fermentum venenatis, ligula elit dictum libero, ac placerat neque mi sit amet augue. Fusce eget nunc vitae lectus fermentum posuere. Integer non orci eu tortor vehicula tincidunt. Nullam tincidunt velit et dui faucibus, id posuere eros iaculis. Mauris sed eros ut justo tincidunt tincidunt. Cras ac lacinia purus. Vestibulum tincidunt, augue vel vehicula interdum, purus dolor eleifend enim, eget fermentum urna sapien non leo. Aenean posuere semper odio, id malesuada sapien scelerisque non. Donec at arcu at felis tristique bibendum.\n\nPhasellus facilisis est at sapien consequat, nec elementum libero pretium. Nam sit amet nulla at dui aliquam aliquet. Donec ac velit at velit gravida interdum. Sed posuere purus vitae lectus gravida, ut dapibus magna auctor. Proin at velit sit amet sapien consequat suscipit. Fusce auctor dapibus ligula, sit amet accumsan nulla tincidunt at. Nullam at sapien in elit malesuada consectetur. Maecenas eget nulla quis orci hendrerit tincidunt. Aenean venenatis lacus non eros pharetra, ut dapibus felis fermentum. In nec magna nec nunc venenatis accumsan. Ut fermentum metus in ligula tempor, et convallis velit tincidunt. Nam consectetur sem in odio fringilla, vitae scelerisque nisl dictum. Donec vehicula nisi nec suscipit tempus.</string>
+    <string name="starDesc">Penilaian Bintang</string>
+
+    <string name="productDetailPrice">Rp %1$s</string>
+    <string name="dry">Kering</string>
+    <string name="oily">Berminyak</string>
+    <string name="acne">Berjerawat</string>
+    <string name="normal">Normal</string>
+
+    <string name="no_network_message">Jaringan tidak tersedia. Silakan periksa koneksi internet Anda dan coba lagi.</string>
+    <string name="detailSkinTitle">Jenis Kulit:</string>
+    <string name="moreInformationTitle">Periksa Informasi Lebih Lanjut:</string>
+    <string name="linkText"><u>%1$s</u></string>
+    <string name="productDescTitle">Deskripsi Produk</string>
+
+    <string name="empty_image_warning">Pilih Gambar Terlebih Dahulu</string>
+    <string name="cameraInstruction">Pastikan wajah kamu terlihat jelas oleh kamera, lalu tekan tombol scan untuk mengambil gambar</string>
+    <string name="infoBtnDesc">Berisi informasi penggunaan kamera</string>
+
+    <string name="startedBtnText">Mulai</string>
+    <string name="introGreeting">Mari kita mulai</string>
+    <string name="introDesc">Buka rahasia kulit bercahaya dan sehat dengan Glowfy. Aplikasi kami menawarkan solusi perawatan kulit yang dipersonalisasi khusus untuk Anda.</string>
+    <string name="joinInfoBtn">Bergabung Sekarang</string>
+    <string name="loginDesc">Sudah Punya Akun? Masuk</string>
+    <string name="user_name">Nama</string>
+    <string name="user_name_profile">Username</string>
+
+</resources>
