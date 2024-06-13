@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.bangkit.glowfyapp.data.historydatabase.ScanHistory
 import com.bangkit.glowfyapp.data.models.ResultApi
 import com.bangkit.glowfyapp.data.models.auth.LoginResult
-import com.bangkit.glowfyapp.data.models.items.ScanResponse
+import com.bangkit.glowfyapp.data.models.response.ScanResponse
 import com.bangkit.glowfyapp.data.repository.DataRepository
 import kotlinx.coroutines.launch
 import java.io.File

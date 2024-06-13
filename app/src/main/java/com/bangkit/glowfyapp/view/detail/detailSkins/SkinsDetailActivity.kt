@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bangkit.glowfyapp.R
-import com.bangkit.glowfyapp.data.models.items.SkinsItem
+import com.bangkit.glowfyapp.data.models.response.SkinsItem
 import com.bangkit.glowfyapp.databinding.ActivitySkinsDetailBinding
 import com.bumptech.glide.Glide
 

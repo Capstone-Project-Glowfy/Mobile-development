@@ -65,6 +65,7 @@
     <string name="logout_success">Berhasil Keluar</string>
     <string name="descPlaceholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend, odio id fermentum venenatis, ligula elit dictum libero, ac placerat neque mi sit amet augue. Fusce eget nunc vitae lectus fermentum posuere. Integer non orci eu tortor vehicula tincidunt. Nullam tincidunt velit et dui faucibus, id posuere eros iaculis. Mauris sed eros ut justo tincidunt tincidunt. Cras ac lacinia purus. Vestibulum tincidunt,</string>
     <string name="starDesc">star Rating</string>
+    <string name="locationPlaceholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend, odio id fermentum venenatis, ligula elit dictum libero, ac placerat neque mi sit amet augue. Fusce eget nunc vitae lectus fermentum</string>
 
     <string name="productDetailPrice">Rp %1$s</string>
     <string name="dry">Kering</string>
@@ -89,5 +90,6 @@
     <string name="loginDesc">Already Have Account? Login</string>
     <string name="deleteSuccess">Data Riwayat Berhasil Dihapus</string>
     <string name="skinTypeDesc">Kulit %1$s</string>
-
+    <string name="clinicDescPart">Periksa fasilitas kesehatan di sekitar anda</string>
+    <string name="userLocation">Lokasi Anda</string>
 </resources>

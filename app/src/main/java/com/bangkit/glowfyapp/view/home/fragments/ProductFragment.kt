@@ -2,7 +2,6 @@ package com.bangkit.glowfyapp.view.home.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.data.models.ResultApi
-import com.bangkit.glowfyapp.data.models.items.ProductItem
+import com.bangkit.glowfyapp.data.models.response.ProductItem
 import com.bangkit.glowfyapp.databinding.FragmentProductBinding
 import com.bangkit.glowfyapp.utils.ViewModelFactory
 import com.bangkit.glowfyapp.view.adapters.ProductCategoryAdapter

@@ -1,4 +1,4 @@
-package com.bangkit.glowfyapp.data.models.items
+package com.bangkit.glowfyapp.data.models.response
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

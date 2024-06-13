@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bangkit.glowfyapp.R
-import com.bangkit.glowfyapp.data.models.items.ProductItem
+import com.bangkit.glowfyapp.data.models.response.ProductItem
 import com.bangkit.glowfyapp.databinding.ActivityProductDetailBinding
 import com.bumptech.glide.Glide
 

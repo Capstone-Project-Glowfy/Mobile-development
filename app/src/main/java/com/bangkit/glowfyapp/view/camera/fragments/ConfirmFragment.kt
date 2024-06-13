@@ -15,7 +15,7 @@
     import com.bangkit.glowfyapp.R
     import com.bangkit.glowfyapp.data.historydatabase.ScanHistory
     import com.bangkit.glowfyapp.data.models.ResultApi
-    import com.bangkit.glowfyapp.data.models.items.ScanResponse
+    import com.bangkit.glowfyapp.data.models.response.ScanResponse
     import com.bangkit.glowfyapp.databinding.FragmentConfirmBinding
     import com.bangkit.glowfyapp.utils.ViewModelFactory
     import com.bangkit.glowfyapp.utils.reduceFileImage

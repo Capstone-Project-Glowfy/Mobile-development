@@ -11,9 +11,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.data.models.ResultApi
-import com.bangkit.glowfyapp.data.models.items.ArticlesItem
-import com.bangkit.glowfyapp.data.models.items.ProductItem
-import com.bangkit.glowfyapp.data.models.items.SkinsItem
+import com.bangkit.glowfyapp.data.models.response.ArticlesItem
+import com.bangkit.glowfyapp.data.models.response.ProductItem
+import com.bangkit.glowfyapp.data.models.response.SkinsItem
 import com.bangkit.glowfyapp.databinding.FragmentDashboardBinding
 import com.bangkit.glowfyapp.utils.ViewModelFactory
 import com.bangkit.glowfyapp.view.adapters.ArticleAdapter

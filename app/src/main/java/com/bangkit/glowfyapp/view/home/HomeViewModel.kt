@@ -1,15 +1,14 @@
 package com.bangkit.glowfyapp.view.home
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.bangkit.glowfyapp.data.models.ResultApi
 import com.bangkit.glowfyapp.data.models.auth.LoginResult
-import com.bangkit.glowfyapp.data.models.items.ArticlesResponse
-import com.bangkit.glowfyapp.data.models.items.ProductResponse
-import com.bangkit.glowfyapp.data.models.items.SkinsResponse
+import com.bangkit.glowfyapp.data.models.response.ArticlesResponse
+import com.bangkit.glowfyapp.data.models.response.ProductResponse
+import com.bangkit.glowfyapp.data.models.response.SkinsResponse
 import com.bangkit.glowfyapp.data.repository.DataRepository
 import kotlinx.coroutines.launch
 

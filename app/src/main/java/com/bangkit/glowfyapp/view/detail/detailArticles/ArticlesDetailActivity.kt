@@ -6,8 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bangkit.glowfyapp.R
-import com.bangkit.glowfyapp.data.models.items.ArticlesItem
-import com.bangkit.glowfyapp.data.models.items.ProductItem
+import com.bangkit.glowfyapp.data.models.response.ArticlesItem
 import com.bangkit.glowfyapp.databinding.ActivityArticlesDetailBinding
 
 class ArticlesDetailActivity : AppCompatActivity() {

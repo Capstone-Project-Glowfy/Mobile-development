@@ -12,35 +12,26 @@
         android:layout_height="match_parent"
         tools:context=".view.home.fragments.ProductFragment">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/greetingCv"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/greetingLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp">
+                android:layout_margin="16dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/productDescPart"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/dm_sans"
-                    android:text="@string/productDescPart"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/categoryDesc"
@@ -53,7 +44,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/greetingCv" />
+            app:layout_constraintTop_toBottomOf="@+id/greetingLayout" />
 
         <HorizontalScrollView
             android:id="@+id/categorySv"

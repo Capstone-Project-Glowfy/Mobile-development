@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -5,6 +7,7 @@ plugins {
     id("kotlin-parcelize")
     alias(libs.plugins.google.gms.google.services)
     id("kotlin-kapt")
+    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
 }
 
 android {
@@ -20,6 +23,9 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+        val p = Properties()
+        p.load(rootProject.file("local.properties").inputStream())
+        buildConfigField("String", "MAPS_API_KEY", p.getProperty("MAPS_API_KEY"))
         buildConfigField("String", "BASE_URL", "\"https://glowfy-app-n3xvm6iu5q-et.a.run.app/\"")
     }
 
@@ -61,6 +67,11 @@ dependencies {
     // navigation
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+
+    //maps and locator
+    implementation(libs.play.services.maps)
+    implementation ("com.google.android.gms:play-services-location:21.3.0")
+    implementation ("com.google.android.libraries.places:places:3.5.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

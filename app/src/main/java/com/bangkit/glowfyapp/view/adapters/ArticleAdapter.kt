@@ -4,8 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.glowfyapp.R
-import com.bangkit.glowfyapp.data.models.items.ArticlesItem
-import com.bangkit.glowfyapp.data.models.items.SkinsItem
+import com.bangkit.glowfyapp.data.models.response.ArticlesItem
 import com.bangkit.glowfyapp.databinding.ItemArticleBinding
 import com.bumptech.glide.Glide
 

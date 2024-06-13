@@ -2,10 +2,10 @@ package com.bangkit.glowfyapp.data.api
 
 import com.bangkit.glowfyapp.data.models.auth.LoginResponse
 import com.bangkit.glowfyapp.data.models.auth.RegisterResponse
-import com.bangkit.glowfyapp.data.models.items.ArticlesResponse
-import com.bangkit.glowfyapp.data.models.items.ProductResponse
-import com.bangkit.glowfyapp.data.models.items.ScanResponse
-import com.bangkit.glowfyapp.data.models.items.SkinsResponse
+import com.bangkit.glowfyapp.data.models.response.ArticlesResponse
+import com.bangkit.glowfyapp.data.models.response.ProductResponse
+import com.bangkit.glowfyapp.data.models.response.ScanResponse
+import com.bangkit.glowfyapp.data.models.response.SkinsResponse
 import okhttp3.MultipartBody
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
