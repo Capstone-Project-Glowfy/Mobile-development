@@ -195,6 +195,7 @@
                             </com.google.android.material.card.MaterialCardView>
 
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/historyCv"
                                 android:layout_width="150dp"
                                 android:layout_height="150dp"
                                 android:layout_marginTop="20dp"
@@ -209,12 +210,14 @@
 
                                 <RelativeLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
+                                    android:layout_height="match_parent"
+                                    android:clickable="false">
 
                                     <ImageView
                                         android:layout_width="32dp"
                                         android:layout_height="32dp"
                                         android:layout_margin="10dp"
+                                        android:clickable="false"
                                         android:src="@drawable/ic_history_scan"
                                         android:layout_alignParentTop="true"
                                         android:layout_alignParentEnd="true"/>
@@ -225,6 +228,7 @@
                                         android:layout_margin="10dp"
                                         android:fontFamily="@font/dm_sans_bold"
                                         android:textSize="18sp"
+                                        android:clickable="false"
                                         android:layout_alignParentBottom="true"
                                         android:layout_alignParentStart="true"
                                         android:text="History Skin Analysis"/>

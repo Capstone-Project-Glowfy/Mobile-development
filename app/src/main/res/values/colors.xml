@@ -5,11 +5,12 @@
     <color name="orange">#FF9800</color>
     <color name="red">#D32F2F</color>
     <color name="green">#8BC34A</color>
-    <color name="linkColor">#0000EE</color>
+    <color name="linkColor">#3DBAA6</color>
     <color name="cardColor1">#D4EEE9</color>
     <color name="cardColor2">#EAF6F4</color>
     <color name="cardColor3">#F2FAF8</color>
     <color name="darkGreen">#168C79</color>
+    <color name="textSkinTypeColor">#096C5C</color>
 
     <color name="md_theme_primary">#4BC5B1</color>
     <color name="md_theme_onPrimary">#FFFFFF</color>

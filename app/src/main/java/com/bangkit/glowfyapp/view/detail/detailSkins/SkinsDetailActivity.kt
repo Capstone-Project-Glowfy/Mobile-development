@@ -9,7 +9,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bangkit.glowfyapp.R
-import com.bangkit.glowfyapp.data.models.items.ArticlesItem
 import com.bangkit.glowfyapp.data.models.items.SkinsItem
 import com.bangkit.glowfyapp.databinding.ActivitySkinsDetailBinding
 import com.bumptech.glide.Glide
@@ -48,7 +47,7 @@ class SkinsDetailActivity : AppCompatActivity() {
                 .load(skin.foto)
                 .into(skinDetailImage)
             skinDetailDesc.text = skin.deskripsi
-            binding.skinDetailName.text = skin.nama
+            binding.skinDetailName.text = resources.getString(R.string.skinTypeDesc, skin.nama)
             nameSkinDetailFormat(skin)
             binding.skinDetailLink.text = getString(R.string.linkText, skin.artikel)
             binding.skinDetailLink.setOnClickListener { openSkinLink(skin.artikel) }

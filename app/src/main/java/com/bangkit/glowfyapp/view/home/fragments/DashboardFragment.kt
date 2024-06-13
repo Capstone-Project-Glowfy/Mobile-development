@@ -26,6 +26,7 @@ import com.bangkit.glowfyapp.view.auth.LoginActivity
 import com.bangkit.glowfyapp.view.detail.detailArticles.ArticlesDetailActivity
 import com.bangkit.glowfyapp.view.detail.detailProducts.ProductDetailActivity
 import com.bangkit.glowfyapp.view.detail.detailSkins.SkinsDetailActivity
+import com.bangkit.glowfyapp.view.history.ScanHistoryActivity
 import com.bangkit.glowfyapp.view.home.HomeViewModel
 
 class DashboardFragment : Fragment() {
@@ -58,6 +59,7 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupData()
         binding.swipeRefreshLayout.setOnRefreshListener { setupData() }
+        binding.historyCv.setOnClickListener { navigateToHistory() }
     }
 
     private fun setupData() {
@@ -191,6 +193,11 @@ class DashboardFragment : Fragment() {
     private fun navigateToDetailProduct(data: ProductItem) {
         val intent = Intent(requireContext(), ProductDetailActivity::class.java)
         intent.putExtra("EXTRA_PRODUCT", data)
+        startActivity(intent)
+    }
+
+    private fun navigateToHistory() {
+        val intent = Intent(requireContext(), ScanHistoryActivity::class.java)
         startActivity(intent)
     }
 
