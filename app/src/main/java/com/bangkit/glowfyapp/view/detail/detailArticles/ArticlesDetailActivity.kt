@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.data.models.response.ArticlesItem
 import com.bangkit.glowfyapp.databinding.ActivityArticlesDetailBinding
+import com.bumptech.glide.Glide
 
 class ArticlesDetailActivity : AppCompatActivity() {
 
@@ -22,6 +23,8 @@ class ArticlesDetailActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        setupData()
+        binding.backButton.setOnClickListener { onBackPressed() }
     }
 
     private fun setupData() {
@@ -32,6 +35,15 @@ class ArticlesDetailActivity : AppCompatActivity() {
     }
 
     private fun bindArticleDetails(article: ArticlesItem) {
-        TODO("Not yet implemented")
+        with(binding) {
+            Glide.with(this@ArticlesDetailActivity)
+                .load(article.foto)
+                .into(articleImage)
+
+            articleTitle.text = article.judul
+            articleAuthor.text = article.author
+            articleRelease.text = article.tahun.toString()
+            articleIsi.text = article.isi
+        }
     }
 }
