@@ -12,12 +12,22 @@ import com.bangkit.glowfyapp.data.models.ClinicData
 class ClinicAdapter(private val places: List<ClinicData>) :
     RecyclerView.Adapter<ClinicAdapter.PlaceViewHolder>() {
 
+    private var clickListener: ClinicItemClickListener? = null
+
+    fun setOnItemClickListener(listener: ClinicItemClickListener) {
+        clickListener = listener
+    }
+
     inner class PlaceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(place: ClinicData) {
+        fun bind(clinic: ClinicData) {
             itemView.apply {
-                findViewById<TextView>(R.id.txtName).text = place.name
-                findViewById<TextView>(R.id.txtAddress).text = place.address
-                findViewById<ImageView>(R.id.imgIcon).setImageBitmap(place.icon)
+                findViewById<TextView>(R.id.txtName).text = clinic.name
+                findViewById<TextView>(R.id.txtAddress).text = clinic.address
+                findViewById<ImageView>(R.id.imgIcon).setImageBitmap(clinic.icon)
+
+                setOnClickListener {
+                    clickListener?.onClinicItemClick(clinic)
+                }
             }
         }
     }
@@ -33,5 +43,9 @@ class ClinicAdapter(private val places: List<ClinicData>) :
 
     override fun getItemCount(): Int {
         return places.size
+    }
+
+    interface ClinicItemClickListener {
+        fun onClinicItemClick(clinicData: ClinicData)
     }
 }

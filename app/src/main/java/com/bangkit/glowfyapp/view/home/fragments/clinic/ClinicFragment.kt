@@ -37,7 +37,7 @@ import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest
 import com.google.android.libraries.places.api.net.PlacesClient
 
-class ClinicFragment : Fragment(), OnMapReadyCallback {
+class ClinicFragment : Fragment(), OnMapReadyCallback, ClinicAdapter.ClinicItemClickListener {
 
     private var _binding: FragmentClinicBinding? = null
     private val binding get() = _binding!!
@@ -166,7 +166,8 @@ class ClinicFragment : Fragment(), OnMapReadyCallback {
                             val bitmap = drawable?.toBitmap()
                             val icon = bitmap?.let { it1 -> BitmapDescriptorFactory.fromBitmap(it1) }
 
-                            places.add(ClinicData(place.name, place.address, it, bitmap))
+
+                            places.add(ClinicData(place.name, place.address, it, bitmap, MarkerOptions()))
                             mMap.addMarker(
                                 MarkerOptions()
                                     .position(it)
@@ -186,7 +187,13 @@ class ClinicFragment : Fragment(), OnMapReadyCallback {
     private fun showPlacesInRecyclerView(places: List<ClinicData>) {
         val clinicRv = binding.clinicRv
         clinicRv.layoutManager = LinearLayoutManager(requireContext())
-        clinicRv.adapter = ClinicAdapter(places)
+        val clinicAdapter = ClinicAdapter(places)
+        clinicAdapter.setOnItemClickListener(this)
+        clinicRv.adapter = clinicAdapter
+    }
+
+    override fun onClinicItemClick(clinicData: ClinicData) {
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(clinicData.location, 17f))
     }
 
     private fun showLoading(onLoading: Boolean){
@@ -196,7 +203,6 @@ class ClinicFragment : Fragment(), OnMapReadyCallback {
             binding.progressBar.visibility = View.GONE
         }
     }
-
 
     @Deprecated("Deprecated in Java")
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
