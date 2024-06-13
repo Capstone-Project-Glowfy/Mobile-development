@@ -13,8 +13,8 @@
         android:title=""/>
 
     <item android:id="@+id/navigation_Clinic"
-        android:icon="@drawable/ic_favorite"
-        android:title="@string/favorite" />
+        android:icon="@drawable/ic_clinic"
+        android:title="@string/clinic" />
 
     <item android:id="@+id/navigation_Profile"
         android:icon="@drawable/ic_user"
