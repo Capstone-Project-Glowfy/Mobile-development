@@ -1,12 +1,15 @@
 package com.bangkit.glowfyapp.utils
 
+import android.app.Activity
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
+import androidx.core.app.ActivityCompat
 import androidx.exifinterface.media.ExifInterface
 import com.bangkit.glowfyapp.data.api.ApiConfig
 import com.bangkit.glowfyapp.data.historydatabase.ScanHistoryDatabase
@@ -104,6 +107,30 @@ fun String.dateFormat(): String {
     val outputDateFormat = SimpleDateFormat(OUTPUT_FORMAT)
     outputDateFormat.timeZone = TimeZone.getDefault()
     return outputDateFormat.format(formatDate)
+}
+
+
+object PermissionLocationUtils {
+
+    private const val REQUEST_LOCATION_PERMISSION = 1
+
+    fun checkLocationPermission(context: Context): Boolean {
+        return ActivityCompat.checkSelfPermission(
+            context,
+            android.Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+            context,
+            android.Manifest.permission.ACCESS_COARSE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    fun requestLocationPermission(activity: Activity) {
+        ActivityCompat.requestPermissions(
+            activity,
+            arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION),
+            REQUEST_LOCATION_PERMISSION
+        )
+    }
 }
 
 const val INPUT_FORMAT = "yyyy-MM-dd'T'HH:mm:ss"

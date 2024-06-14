@@ -3,6 +3,7 @@ package com.bangkit.glowfyapp.view.home.fragments.clinic
 import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
@@ -23,6 +24,7 @@ import com.bangkit.glowfyapp.BuildConfig.MAPS_API_KEY
 import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.data.models.ClinicData
 import com.bangkit.glowfyapp.databinding.FragmentClinicBinding
+import com.bangkit.glowfyapp.utils.PermissionLocationUtils
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -37,7 +39,7 @@ import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest
 import com.google.android.libraries.places.api.net.PlacesClient
 
-class ClinicFragment : Fragment(), OnMapReadyCallback, ClinicAdapter.ClinicItemClickListener {
+class ClinicFragment : Fragment(), OnMapReadyCallback, ClinicAdapter.ClinicItemClickListener, LocationChangeReceiver.LocationChangeListener {
 
     private var _binding: FragmentClinicBinding? = null
     private val binding get() = _binding!!
@@ -45,6 +47,8 @@ class ClinicFragment : Fragment(), OnMapReadyCallback, ClinicAdapter.ClinicItemC
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var placesClient: PlacesClient
+
+    private lateinit var locationChangeReceiver: LocationChangeReceiver
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,59 +70,68 @@ class ClinicFragment : Fragment(), OnMapReadyCallback, ClinicAdapter.ClinicItemC
         mapFragment?.getMapAsync(this)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+        locationChangeReceiver = LocationChangeReceiver(this)
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            if (::mMap.isInitialized) {
+                mMap.clear()
+                checkLocationAndLoad()
+            } else {
+                binding.swipeRefreshLayout.isRefreshing = false
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val filter = IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION)
+        requireContext().registerReceiver(locationChangeReceiver, filter)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        requireContext().unregisterReceiver(locationChangeReceiver)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                requireActivity(),
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                1
-            )
+        if (!PermissionLocationUtils.checkLocationPermission(requireContext())) {
+            PermissionLocationUtils.requestLocationPermission(requireActivity())
+            return
+        }
+        checkLocationAndLoad()
+    }
+
+    private fun checkLocationAndLoad() {
+        if (!PermissionLocationUtils.checkLocationPermission(requireContext())) {
+            PermissionLocationUtils.requestLocationPermission(requireActivity())
             return
         }
         if (!isLocationEnabled()) {
             showLocationAlert()
+            binding.swipeRefreshLayout.isRefreshing = false
         } else {
             mMap.isMyLocationEnabled = true
+            loadCurrentLocation()
+        }
+    }
 
-            fusedLocationClient.lastLocation
-                .addOnSuccessListener { location: Location? ->
-                    location?.let {
-                        val currentLatLng = LatLng(it.latitude, it.longitude)
-                        Log.d("testlokasi", "Current location: $currentLatLng")
-                        mMap.addMarker(MarkerOptions().position(currentLatLng).title("Current Location"))
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15f))
-                        findNearbyClinics(currentLatLng)
-                    }
+    private fun loadCurrentLocation() {
+        if (!PermissionLocationUtils.checkLocationPermission(requireContext())) {
+            PermissionLocationUtils.requestLocationPermission(requireActivity())
+            return
+        }
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location: Location? ->
+                location?.let {
+                    val currentLatLng = LatLng(it.latitude, it.longitude)
+                    Log.d("testlokasi", "Current location: $currentLatLng")
+                    mMap.addMarker(MarkerOptions().position(currentLatLng).title("Current Location"))
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15f))
+                    findNearbyClinics(currentLatLng)
                 }
-        }
-        binding.swipeRefreshLayout.setOnRefreshListener {
-            if (::mMap.isInitialized) {
-                mMap.clear()
-                fusedLocationClient.lastLocation
-                    .addOnSuccessListener { location: Location? ->
-                        location?.let {
-                            val currentLatLng = LatLng(it.latitude, it.longitude)
-                            Log.d("testlokasi", "Current location: $currentLatLng")
-                            mMap.addMarker(MarkerOptions().position(currentLatLng).title("Current Location"))
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15f))
-                            findNearbyClinics(currentLatLng)
-                        }
-                    }
-            } else {
-                binding.swipeRefreshLayout.isRefreshing = false
             }
-        }
     }
 
     private fun isLocationEnabled(): Boolean {
@@ -153,7 +166,6 @@ class ClinicFragment : Fragment(), OnMapReadyCallback, ClinicAdapter.ClinicItemC
         val placeResponse = placesClient.findCurrentPlace(request)
         placeResponse.addOnCompleteListener { task ->
             showLoading(false)
-            binding.swipeRefreshLayout.isRefreshing = false
             if (task.isSuccessful) {
                 val response = task.result
                 val places = mutableListOf<ClinicData>()
@@ -201,6 +213,7 @@ class ClinicFragment : Fragment(), OnMapReadyCallback, ClinicAdapter.ClinicItemC
             binding.progressBar.visibility = View.VISIBLE
         } else {
             binding.progressBar.visibility = View.GONE
+            binding.swipeRefreshLayout.isRefreshing = false
         }
     }
 
@@ -211,6 +224,13 @@ class ClinicFragment : Fragment(), OnMapReadyCallback, ClinicAdapter.ClinicItemC
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 onMapReady(mMap)
             }
+        }
+    }
+
+    override fun onLocationEnabled() {
+        if (::mMap.isInitialized) {
+            mMap.clear()
+            loadCurrentLocation()
         }
     }
 
