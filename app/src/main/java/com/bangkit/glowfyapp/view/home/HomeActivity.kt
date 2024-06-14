@@ -9,12 +9,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bangkit.glowfyapp.R
+import com.bangkit.glowfyapp.data.models.response.ProfileResponse
 import com.bangkit.glowfyapp.databinding.ActivityHomeBinding
 import com.bangkit.glowfyapp.view.camera.CameraActivity
 import com.bangkit.glowfyapp.view.home.fragments.clinic.ClinicFragment
 import com.bangkit.glowfyapp.view.home.fragments.DashboardFragment
 import com.bangkit.glowfyapp.view.home.fragments.ProductFragment
-import com.bangkit.glowfyapp.view.home.fragments.ProfileFragment
+import com.bangkit.glowfyapp.view.home.fragments.profile.ProfileFragment
 
 class HomeActivity : AppCompatActivity() {
 

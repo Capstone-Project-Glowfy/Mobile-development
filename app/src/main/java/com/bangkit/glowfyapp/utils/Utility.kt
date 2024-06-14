@@ -35,7 +35,10 @@ object Utility {
         val scanHistoryDao = requireNotNull(ScanHistoryDatabase.getDatabase(context)?.scanHistoryDao()) {
             "Failed to obtain ScanHistoryDao"
         }
-        return DataRepository.getInstance(apiService, pref, context, scanHistoryDao)
+        val profileDao = requireNotNull(ScanHistoryDatabase.getDatabase(context)?.profileDao()) {
+            "Failed to obtain ProfileDao"
+        }
+        return DataRepository.getInstance(apiService, pref, context, scanHistoryDao, profileDao)
     }
 
     fun isNetworkAvailable(context: Context): Boolean {

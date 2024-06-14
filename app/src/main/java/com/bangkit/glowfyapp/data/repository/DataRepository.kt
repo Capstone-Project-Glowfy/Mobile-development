@@ -7,6 +7,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.bangkit.glowfyapp.data.api.ApiConfig
 import com.bangkit.glowfyapp.data.api.ApiService
+import com.bangkit.glowfyapp.data.historydatabase.ProfileDao
+import com.bangkit.glowfyapp.data.historydatabase.ProfileEntity
 import com.bangkit.glowfyapp.data.historydatabase.ScanHistory
 import com.bangkit.glowfyapp.data.historydatabase.ScanHistoryDao
 import com.bangkit.glowfyapp.data.models.ErrorResponse
@@ -16,6 +18,7 @@ import com.bangkit.glowfyapp.data.models.auth.LoginResult
 import com.bangkit.glowfyapp.data.models.auth.RegisterResponse
 import com.bangkit.glowfyapp.data.models.response.ArticlesResponse
 import com.bangkit.glowfyapp.data.models.response.ProductResponse
+import com.bangkit.glowfyapp.data.models.response.ProfileResponse
 import com.bangkit.glowfyapp.data.models.response.ScanResponse
 import com.bangkit.glowfyapp.data.models.response.SkinsResponse
 import com.bangkit.glowfyapp.utils.Utility
@@ -32,7 +35,8 @@ class DataRepository(
     private val apiService: ApiService,
     private val pref: UserPreference,
     private val context: Context,
-    private val scanHistoryDao: ScanHistoryDao
+    private val scanHistoryDao: ScanHistoryDao,
+    private val profileDao: ProfileDao
 ) {
     suspend fun saveSession(user: LoginResult) {
         pref.saveSession(user)
@@ -130,6 +134,8 @@ class DataRepository(
         }
     }
 
+    // ML scanner
+
     fun faceDetection(token: String, imageFile: File): LiveData<ResultApi<ScanResponse>> = liveData {
         emit(ResultApi.Loading)
         val requestImageFile = imageFile.asRequestBody("image/jpg".toMediaType())
@@ -146,6 +152,25 @@ class DataRepository(
         }
     }
 
+    // profile update
+    fun profileUpdate(token: String, id: String, img: File): LiveData<ResultApi<ProfileResponse>> = liveData {
+        emit(ResultApi.Loading)
+        val requestImageFile = img.asRequestBody("image/jpg".toMediaType())
+        val multipartBody = MultipartBody.Part.createFormData(
+            "img",
+            img.name,
+            requestImageFile
+        )
+        try {
+            val response = ApiConfig().getApiService(token).profileUpdate(id, multipartBody)
+            emit(ResultApi.Success(response))
+        } catch (e: HttpException) {
+            emit(handleHttpException(e))
+        }
+    }
+
+    // history database
+
     suspend fun addScanToHistory(scanHistory: ScanHistory) {
         scanHistoryDao.addScanToHistory(scanHistory)
     }
@@ -157,6 +182,19 @@ class DataRepository(
     suspend fun deleteScanHistory(id: Int) {
         scanHistoryDao.clearScanHistory(id)
     }
+
+    // profile database
+
+    suspend fun saveProfile(profile: ProfileEntity) {
+        profileDao.deleteProfile()
+        profileDao.addToProfile(profile)
+    }
+
+    suspend fun getProfile(): ProfileEntity? {
+        return profileDao.getProfile()
+    }
+
+    // error handling
 
     private fun handleHttpException(e: HttpException): ResultApi.Error {
         val jsonInString = e.response()?.errorBody()?.string()
@@ -181,10 +219,11 @@ class DataRepository(
             apiService: ApiService,
             userPreference: UserPreference,
             context: Context,
-            scanHistoryDao: ScanHistoryDao
+            scanHistoryDao: ScanHistoryDao,
+            profileDao: ProfileDao
         ): DataRepository =
             instance ?: synchronized(this) {
-                instance ?: DataRepository(apiService, userPreference, context, scanHistoryDao)
+                instance ?: DataRepository(apiService, userPreference, context, scanHistoryDao, profileDao)
             }.also { instance = it }
     }
 }

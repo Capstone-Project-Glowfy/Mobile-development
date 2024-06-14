@@ -15,4 +15,18 @@ interface ScanHistoryDao {
 
     @Query("DELETE FROM scan_history WHERE scan_history.id = :id")
     suspend fun clearScanHistory(id: Int): Int
+
+}
+
+@Dao
+interface ProfileDao {
+
+    @Insert
+    suspend fun addToProfile(profile: ProfileEntity)
+
+    @Query("SELECT * FROM profile LIMIT 1")
+    suspend fun getProfile(): ProfileEntity?
+
+    @Query("DELETE FROM profile")
+    suspend fun deleteProfile()
 }

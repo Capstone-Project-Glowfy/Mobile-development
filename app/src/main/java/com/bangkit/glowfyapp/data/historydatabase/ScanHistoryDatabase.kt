@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 
 @Database(
-    entities = [ScanHistory::class],
+    entities = [ScanHistory::class, ProfileEntity::class],
     version = 1
 )
 abstract class ScanHistoryDatabase: RoomDatabase() {
@@ -25,4 +25,5 @@ abstract class ScanHistoryDatabase: RoomDatabase() {
         }
     }
     abstract fun scanHistoryDao(): ScanHistoryDao
+    abstract fun profileDao(): ProfileDao
 }

@@ -25,3 +25,13 @@ data class ScanHistory (
     val scanDate: String
 
 )
+
+@Entity(tableName = "profile")
+data class ProfileEntity (
+
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+
+    val profileImage: String
+
+)
