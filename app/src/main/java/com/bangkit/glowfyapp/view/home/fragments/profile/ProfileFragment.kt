@@ -41,20 +41,34 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.swipeRefreshLayout.setOnRefreshListener {
-            setupProfile()
-        }
+        binding.swipeRefreshLayout.setOnRefreshListener { getSession() }
+        getSession()
+    }
 
-        setupAction()
-        setupProfile()
+    private fun getSession() {
+        viewModel.getSession().observe(viewLifecycleOwner) { user ->
+            if (!user.isLogin) {
+                startActivity(Intent(context, AuthActivity::class.java))
+                requireActivity().finish()
+            } else {
+                setupAction()
+                setupProfile(user.name, user.email)
+            }
+        }
     }
 
     override fun onResume() {
         super.onResume()
-        setupProfile()
+        getSession()
     }
 
-    private fun setupProfile() {
+    private fun setupProfile(name: String, email: String) {
+
+        binding.apply {
+            userNameTv.text = name
+            userEmailTv.text = email
+        }
+
         viewModel.dbProfile.observe(viewLifecycleOwner) { profile ->
             Log.d("ProfileFragment", "setupProfile: $profile")
             profile?.let {
@@ -71,9 +85,9 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setupAction() {
-        binding.logout.setOnClickListener { logout() }
-        binding.historyBtn.setOnClickListener { navigateToHistory() }
-        binding.profileDetailBtn.setOnClickListener { navigateToDetailProfile() }
+        binding.cvLogout.setOnClickListener { logout() }
+        binding.cvHistory.setOnClickListener { navigateToHistory() }
+        binding.cvProfile.setOnClickListener { navigateToDetailProfile() }
 
     }
 

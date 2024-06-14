@@ -2,6 +2,7 @@ package com.bangkit.glowfyapp.view.home.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,7 @@ import com.bangkit.glowfyapp.view.detail.detailSkins.SkinsDetailActivity
 import com.bangkit.glowfyapp.view.history.ScanHistoryActivity
 import com.bangkit.glowfyapp.view.home.HomeViewModel
 import com.bangkit.glowfyapp.view.welcome.AuthActivity
+import com.bumptech.glide.Glide
 
 class DashboardFragment : Fragment() {
 
@@ -65,6 +67,12 @@ class DashboardFragment : Fragment() {
 
     private fun setupData() {
         getSession()
+        setupProfile()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupProfile()
     }
 
     private fun getSession() {
@@ -81,6 +89,22 @@ class DashboardFragment : Fragment() {
 
     private fun setDashboardName(name: String) {
         binding.userName.text = getString(R.string.userNameGreeting, name)
+    }
+
+    private fun setupProfile() {
+        viewModel.dbProfile.observe(viewLifecycleOwner) { profile ->
+            Log.d("ProfileFragment", "setupProfile: $profile")
+            profile?.let {
+                Glide.with(requireContext())
+                    .load(it.profileImage)
+                    .placeholder(R.drawable.ic_profile_placeholder)
+                    .into(binding.profileImage)
+            } ?: run {
+                Log.d("ProfileFragment", "No profile found")
+            }
+        }
+        viewModel.getProfile()
+        binding.swipeRefreshLayout.isRefreshing = false
     }
 
     private fun getAllData(token: String) {
