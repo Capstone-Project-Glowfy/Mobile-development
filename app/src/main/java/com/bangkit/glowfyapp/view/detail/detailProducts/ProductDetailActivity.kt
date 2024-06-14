@@ -1,6 +1,7 @@
 package com.bangkit.glowfyapp.view.detail.detailProducts
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -51,7 +52,14 @@ class ProductDetailActivity : AppCompatActivity() {
             shareButton.setOnClickListener { shareActionHandler(product) }
             typeFormatHandler(product)
             ratingFormatHandler(product)
+            btnLinkProduct.setOnClickListener { openOnlineShop(product) }
         }
+    }
+
+    private fun openOnlineShop(product: ProductItem) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(product.link)
+        startActivity(intent)
     }
 
     private fun ratingFormatHandler(product: ProductItem) {
