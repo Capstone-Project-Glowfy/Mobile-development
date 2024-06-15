@@ -2,10 +2,13 @@ package com.bangkit.glowfyapp.view.history
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.data.historydatabase.ScanHistory
+import com.bangkit.glowfyapp.data.models.response.SkinsItem
 import com.bangkit.glowfyapp.databinding.ItemScanHistoryBinding
 import com.bangkit.glowfyapp.utils.dateFormat
 import com.bumptech.glide.Glide
@@ -51,9 +54,28 @@ class ScanHistoryAdapter(
                     .load(scanHistoryItem.scanImage)
                     .into(scanImageView)
 
-                statusKulitTv.text = scanHistoryItem.statusKulit
                 statusPenyakitTv.text = scanHistoryItem.statusPenyakit
                 scanDateTv.text = scanHistoryItem.scanDate.dateFormat()
+                statusKulitTv.text = scanHistoryItem.statusKulit
+                setCardColor(scanHistoryItem)
+            }
+        }
+
+        private fun setCardColor(scanHistoryItem: ScanHistory) {
+            when (scanHistoryItem.statusKulit) {
+                "Normal" -> {
+                    binding.cardSkinType.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.green))
+                }
+                "Jerawat" -> {
+                    binding.cardSkinType.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.red))
+                }
+                "Berminyak" -> {
+                    binding.cardSkinType.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.orange))
+                }
+                "Kering" -> {
+                    binding.cardSkinType.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.yellow))
+                }
+                else -> binding.cardSkinType.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.white))
             }
         }
     }

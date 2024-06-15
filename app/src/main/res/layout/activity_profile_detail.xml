@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_color_home"
     tools:context=".view.home.fragments.profile.ProfileDetailActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -12,11 +13,12 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="32dp"
-        android:src="@drawable/ic_profile_placeholder"
         android:background="@drawable/bg_circle_btn"
+        android:src="@drawable/ic_profile_placeholder"
+        app:layout_constraintBottom_toTopOf="@+id/saveBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/changeImageBtn"
@@ -32,15 +34,36 @@
 
     <Button
         android:id="@+id/saveBtn"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:drawableLeft="@drawable/ic_edit_profile"
+        android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:drawableLeft="@drawable/ic_edit_profile_alt"
         android:text="simpan perubahan"
-        app:layout_constraintEnd_toEndOf="@+id/profileImage"
-        app:layout_constraintHorizontal_bias="0.565"
-        app:layout_constraintStart_toStartOf="@+id/profileImage"
-        app:layout_constraintTop_toBottomOf="@+id/changeImageBtn" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/progressOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

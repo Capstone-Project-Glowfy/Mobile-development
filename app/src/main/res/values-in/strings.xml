@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Glowfy</string>
 
@@ -6,9 +7,9 @@
     <string name="login">Login</string>
     <string name="title">Unlock Your Skin’s Potential and Discover Your Glow</string>
     <string name="dont_have_account">Don\'t have an account?\n</string>
-    <string name="to_register">Register</string>
-    <string name="to_login"><u>Login</u></string>
-    <string name="register">Register</string>
+    <string name="to_register">Daftar</string>
+    <string name="to_login"><u>Masuk</u></string>
+    <string name="register">Daftar</string>
     <string name="have_account">Already have an account?\n</string>
     <string name="email">email</string>
 
@@ -16,19 +17,19 @@
     <string name="product">Product</string>
     <string name="clinic">Clinic</string>
     <string name="profile">Profile</string>
-    <string name="cameraDesc">Skin Detection Camera</string>
+    <string name="cameraDesc">Kamera Deteksi Kulit</string>
 
     <string name="userGreeting">Let\'s take care of your skin</string>
     <string name="userNameGreeting">Hello %1$s</string>
-    <string name="skinDescPart">Know Your Skin</string>
+    <string name="skinDescPart">Kenali Kulit Anda</string>
     <string name="articleTitle">Improve Your Daily Skincare for Radiant, Glowing Skin!</string>
     <string name="articleImageDesc">Article Image</string>
-    <string name="backAlert">Press back again to exit</string>
+    <string name="backAlert">Tekan sekali lagi untuk keluar</string>
 
     <string name="example_user_name">"Alex Turner "</string>
     <string name="user_email">"Email: "</string>
     <string name="example_email">xxx@gmail.com</string>
-    <string name="example_info">Info :</string>
+    <string name="example_info">Info:</string>
     <string name="product_rating">Product Rating</string>
     <string name="product_review">Product Review\n</string>
     <string name="rates">xxx</string>
@@ -36,65 +37,65 @@
     <string name="example_skinCare_description">this product is really useful!</string>
 
     <string name="placeholder">placeholder</string>
-    <string name="productDescPart">Explore Product Recommendations</string>
-    <string name="productImageDesc">Product Image</string>
+    <string name="productDescPart">Jelajahi Rekomendasi Produk</string>
+    <string name="productImageDesc">Gambar Dari Produk</string>
 
     <string name="categoryNormal">Normal</string>
-    <string name="categoryOily">Oily</string>
-    <string name="categoryDry">Dry</string>
-    <string name="categoryAcne">Acne</string>
-    <string name="categoryDescPart">Category</string>
+    <string name="categoryOily">Berminyak</string>
+    <string name="categoryDry">Kering</string>
+    <string name="categoryAcne">Berjerawat</string>
+    <string name="categoryDescPart">Kategori</string>
     <string name="capture_button">Take A picture Button</string>
-    <string name="switch_camera">Switch Camera</string>
-    <string name="back_home">back to homepage</string>
-    <string name="permission_not_granted">failed to access camera</string>
+    <string name="switch_camera">ganti kamera</string>
+    <string name="back_home">kembali ke halaman utama</string>
+    <string name="permission_not_granted">Gagal Mengakses Kamera</string>
     <string name="takeApicTutorial">Bagaimana cara mengambil gambar dengan baik</string>
-    <string name="takeApicTutorialDescription">Please take pictures of the entire face</string>
+    <string name="takeApicTutorialDescription">Silahkan ambil gambar pada keseluruhan bagian wajah</string>
     <string name="done">Okay</string>
-    <string name="preview_image">Preview Image</string>
-    <string name="resultTitle">Detection Result</string>
-    <string name="message_validation">Fill all the fields!</string>
-    <string name="login_success_message">Login Success</string>
-    <string name="empty_article">Article not found</string>
-    <string name="empty_skins">Skin data not found</string>
-    <string name="empty_product">Product data not found</string>
-    <string name="logout">logout</string>
-    <string name="register_success_message">Register Success</string>
-    <string name="logout_success">Logout Success</string>
+    <string name="preview_image">Gambar Pratinjau</string>
+    <string name="resultTitle">Hasil Deteksi</string>
+    <string name="message_validation">Harap Isi Kolom Yang Kosong!</string>
+    <string name="login_success_message">Login Berhasil</string>
+    <string name="empty_article">Artikel Tidak Tersedia</string>
+    <string name="empty_skins">Data Kulit Tidak Tersedia</string>
+    <string name="empty_product">Data Produk Tidak Tersedia</string>
+    <string name="logout">Keluar</string>
+    <string name="register_success_message">Berhasil Daftar</string>
+    <string name="logout_success">Berhasil Keluar</string>
     <string name="descPlaceholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend, odio id fermentum venenatis, ligula elit dictum libero, ac placerat neque mi sit amet augue. Fusce eget nunc vitae lectus fermentum posuere. Integer non orci eu tortor vehicula tincidunt. Nullam tincidunt velit et dui faucibus, id posuere eros iaculis. Mauris sed eros ut justo tincidunt tincidunt. Cras ac lacinia purus. Vestibulum tincidunt,</string>
     <string name="starDesc">star Rating</string>
     <string name="locationPlaceholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend, odio id fermentum venenatis, ligula elit dictum libero, ac placerat neque mi sit amet augue. Fusce eget nunc vitae lectus fermentum</string>
 
     <string name="productDetailPrice">Rp %1$s</string>
-    <string name="dry">Dry</string>
-    <string name="oily">Oily</string>
-    <string name="acne">Acne</string>
+    <string name="dry">Kering</string>
+    <string name="oily">Berminyak</string>
+    <string name="acne">Berjerawat</string>
     <string name="normal">Normal</string>
 
     <string name="no_network_message">No network available. Please check your internet connection and try again.</string>
-    <string name="detailSkinTitle">Skin Type :</string>
-    <string name="moreInformationTitle">More Information :</string>
+    <string name="detailSkinTitle">Jenis Kulit :</string>
+    <string name="moreInformationTitle">Informasi Lebih Lanjut :</string>
     <string name="linkText"><u>%1$s</u></string>
     <string name="productDescTitle">Description Product</string>
 
-    <string name="empty_image_warning">Select an image first</string>
-    <string name="cameraInstruction">Make sure your face is clearly visible to the camera, then press the scan button to take a picture</string>
-    <string name="infoBtnDesc">Contains camera usage information</string>
+    <string name="empty_image_warning">Pilih Gambar Terlebih Dahulu</string>
+    <string name="cameraInstruction">Pastikan wajah kamu terlihat jelas oleh kamera, lalu tekan tombol scan untuk mengambil gambar</string>
+    <string name="infoBtnDesc">Berisi informasi penggunaan kamera</string>
 
-    <string name="startedBtnText">Join Now</string>
+    <string name="startedBtnText">Bergabung Sekarang</string>
     <string name="introGreeting">Let\'s get started</string>
     <string name="introDesc">Unlock the secrets to radiant, healthy skin with Glowfy. Our app offers personalized skincare solutions tailored just for you.</string>
     <string name="joinInfoBtn">Join Now</string>
     <string name="loginDesc">Already Have Account?</string>
-    <string name="deleteSuccess">History deleted successfully</string>
-    <string name="skinTypeDesc">Skin %1$s</string>
-    <string name="clinicDescPart">Check the health facilities around you</string>
-    <string name="userLocation">Your Location</string>
+    <string name="deleteSuccess">Data Riwayat Berhasil Dihapus</string>
+    <string name="skinTypeDesc">Kulit %1$s</string>
+    <string name="clinicDescPart">Periksa fasilitas kesehatan di sekitar anda</string>
+    <string name="userLocation">Lokasi Anda</string>
     <string name="longPlaceHolder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Nullam ac erat ante. Nullam ultricies ligula sit amet nulla consequat, vel venenatis elit dapibus. Suspendisse potenti. Praesent tincidunt, risus at feugiat congue, lacus lorem laoreet libero, a placerat lorem nulla nec nisi. Sed varius posuere diam, a dictum urna interdum at. Integer gravida, sem et auctor fermentum, ex justo egestas erat, nec varius sapien enim ac odio.\n\nSed interdum euismod dolor, vel vehicula orci luctus nec. Curabitur tempor, mauris nec venenatis laoreet, nisl ligula convallis nulla, eget hendrerit massa urna at odio. In eget nisi nec nulla pretium malesuada. Fusce eget est leo. Donec sed velit sed mauris dapibus efficitur at nec nisi. Nam vestibulum lacus ut nisi tincidunt, a feugiat mi malesuada. Ut cursus velit a sem bibendum, et hendrerit magna ullamcorper.\n\nFusce varius justo a lorem posuere, sit amet accumsan lorem porttitor. Aenean nec felis leo. Aliquam erat volutpat. Integer maximus scelerisque tortor, non condimentum lectus pretium et. Maecenas sagittis, est nec molestie sollicitudin, eros velit vehicula leo, id posuere nunc lacus eu lorem. Nam et risus sed velit faucibus placerat. Pellentesque ac neque eu libero lacinia dapibus non ut leo. Nam dictum urna eget eros volutpat, sed vestibulum eros iaculis. Quisque eget consequat enim. Donec blandit lacus id leo convallis, a luctus lectus malesuada. Morbi nec lorem sed turpis tincidunt vehicula. Sed in fermentum lorem. Aenean sodales sapien at mauris congue, id fermentum ex auctor. Curabitur imperdiet risus quis sem convallis, nec molestie libero placerat. Aenean nec metus auctor, volutpat nisl at, lacinia ligula.</string>
-    <string name="linkBuyBtn">Get it now</string>
-    <string name="profile_setting">My Profile</string>
-    <string name="logout_setting">Logout Account</string>
-    <string name="history_setting">Scan History</string>
+    <string name="linkBuyBtn">Dapatkan Sekarang</string>
+    <string name="profile_setting">Profil Saya</string>
+    <string name="logout_setting">Keluar Akun</string>
+    <string name="history_setting">Riwayat Scan</string>
 
     <!-- Array for animation resources -->
     <integer-array name="slide_animations">

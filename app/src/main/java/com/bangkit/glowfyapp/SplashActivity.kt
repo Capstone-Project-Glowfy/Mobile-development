@@ -24,31 +24,19 @@ class SplashActivity : AppCompatActivity() {
 
         userPreference = UserPreference.getInstance(applicationContext.dataStore)
 
-        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-        val isFirstRun = sharedPreferences.getBoolean("isFirstRun", true)
-
-        if (isFirstRun) {
-            startActivity(Intent(this, WelcomeActivity::class.java))
-            finish()
-
-            val editor = sharedPreferences.edit()
-            editor.putBoolean("isFirstRun", false)
-            editor.apply()
-        } else {
-            MainScope().launch {
-                userPreference.getUser().asLiveData().observe(this@SplashActivity) { user ->
-                    if (user.isLogin) {
-                        navigateToMain()
-                    } else {
-                        navigateToLogin()
-                    }
+        MainScope().launch {
+            userPreference.getUser().asLiveData().observe(this@SplashActivity) { user ->
+                if (user.isLogin) {
+                    navigateToMain()
+                } else {
+                    navigateToWelcome()
                 }
             }
         }
     }
 
-    private fun navigateToLogin() {
-        startActivity(Intent(this, AuthActivity::class.java))
+    private fun navigateToWelcome() {
+        startActivity(Intent(this, WelcomeActivity::class.java))
         finish()
     }
 

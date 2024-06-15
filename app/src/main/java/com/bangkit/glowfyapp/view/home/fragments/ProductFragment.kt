@@ -19,6 +19,7 @@ import com.bangkit.glowfyapp.view.adapters.shimmer.ShimmerProductCategoryAdapter
 import com.bangkit.glowfyapp.view.auth.LoginActivity
 import com.bangkit.glowfyapp.view.detail.detailProducts.ProductDetailActivity
 import com.bangkit.glowfyapp.view.home.HomeViewModel
+import com.bangkit.glowfyapp.view.welcome.WelcomeActivity
 
 class ProductFragment : Fragment() {
 
@@ -57,7 +58,7 @@ class ProductFragment : Fragment() {
     private fun getSession() {
         viewModel.getSession().observe(viewLifecycleOwner) { user ->
             if (!user.isLogin) {
-                startActivity(Intent(context, LoginActivity::class.java))
+                startActivity(Intent(context, WelcomeActivity::class.java))
                 requireActivity().finish()
             } else {
                 setCategory(user.token)

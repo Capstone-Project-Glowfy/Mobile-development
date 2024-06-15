@@ -42,7 +42,7 @@
             android:exported="false" />
         <activity
             android:name=".view.history.ScanHistoryActivity"
-            android:exported="false" />
+            android:exported="true"/>
         <activity
             android:name=".view.welcome.AuthActivity"
             android:exported="false" />

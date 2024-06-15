@@ -10,11 +10,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bangkit.glowfyapp.R
-import com.bangkit.glowfyapp.data.models.ResultApi
-import com.bangkit.glowfyapp.data.models.response.ProfileResponse
 import com.bangkit.glowfyapp.databinding.FragmentProfileBinding
 import com.bangkit.glowfyapp.utils.ViewModelFactory
-import com.bangkit.glowfyapp.view.auth.LoginActivity
 import com.bangkit.glowfyapp.view.history.ScanHistoryActivity
 import com.bangkit.glowfyapp.view.home.HomeViewModel
 import com.bangkit.glowfyapp.view.welcome.AuthActivity

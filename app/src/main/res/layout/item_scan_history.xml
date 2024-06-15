@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="16dp"
+    app:cardBackgroundColor="@color/cardColor3"
     android:layout_gravity="center"
     android:layout_margin="10dp"
     android:layout_height="150dp">
@@ -42,6 +43,7 @@
                 tools:text="Tidak Berjerawat"/>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardSkinType"
                 android:layout_width="72dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="8dp"
@@ -62,7 +64,8 @@
                 android:id="@+id/scanDateTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
                 android:textSize="12sp"
                 tools:text="20 - 04 - 2022"/>
 
@@ -75,6 +78,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/scanImageView">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/black"/>
 
             <ImageView
                 android:id="@+id/deleteBtn"

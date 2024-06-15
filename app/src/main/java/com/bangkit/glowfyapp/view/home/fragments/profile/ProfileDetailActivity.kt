@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -22,6 +23,7 @@ import com.bangkit.glowfyapp.utils.ViewModelFactory
 import com.bangkit.glowfyapp.utils.reduceFileImage
 import com.bangkit.glowfyapp.utils.uriToFile
 import com.bangkit.glowfyapp.view.home.HomeViewModel
+import com.bumptech.glide.Glide
 import com.yalantis.ucrop.UCrop
 import java.io.File
 
@@ -44,14 +46,28 @@ class ProfileDetailActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         getSession()
     }
 
     private fun getSession() {
         viewModel.getSession().observe(this) { user ->
             editProfile(user.token, user.userId)
+            setPreviewImage()
         }
+    }
+
+    private fun setPreviewImage() {
+        viewModel.dbProfile.observe(this) { profile ->
+            profile?.let {
+                Glide.with(this)
+                    .load(it.profileImage)
+                    .placeholder(R.drawable.ic_profile_placeholder)
+                    .into(binding.profileImage)
+            } ?: run {
+                Log.d("ProfileFragment", "No profile found")
+            }
+        }
+        viewModel.getProfile()
     }
 
     private fun editProfile(token: String, id: String) {
@@ -69,10 +85,11 @@ class ProfileDetailActivity : AppCompatActivity() {
             if (result != null) {
                 when (result) {
                     is ResultApi.Loading -> {
-                        Log.d("ProfileFragment", "Loading")
+                        showLoading(true)
                     }
 
                     is ResultApi.Success -> {
+                        showLoading(false)
                         showToast(result.data.message)
                         saveToDatabaseAndSetProfile(result.data)
                         finish()
@@ -80,6 +97,7 @@ class ProfileDetailActivity : AppCompatActivity() {
 
                     is ResultApi.Error -> {
                         showToast(result.error)
+                        showLoading(false)
                     }
                 }
             }
@@ -150,5 +168,13 @@ class ProfileDetailActivity : AppCompatActivity() {
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressOverlay.visibility = View.VISIBLE
+        } else {
+            binding.progressOverlay.visibility = View.GONE
+        }
     }
 }
