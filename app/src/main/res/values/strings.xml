@@ -52,7 +52,7 @@
     <string name="takeApicTutorialDescription">Please take pictures of the entire face</string>
     <string name="done">Okay</string>
     <string name="preview_image">Preview Image</string>
-    <string name="resultTitle">Detection Result</string>
+    <string name="resultTitle">Your Skin Result</string>
     <string name="message_validation">Fill all the fields!</string>
     <string name="login_success_message">Login Success</string>
     <string name="empty_article">Article not found</string>
@@ -95,6 +95,9 @@
     <string name="profile_setting">My Profile</string>
     <string name="logout_setting">Logout Account</string>
     <string name="history_setting">Scan History</string>
+    <string name="resultSkinTypeText">Kulit %1$s</string>
+    <string name="resultSkinText">%1$s</string>
+    <string name="scanDateResultTv">Scan Date :</string>
 
     <!-- Array for animation resources -->
     <integer-array name="slide_animations">

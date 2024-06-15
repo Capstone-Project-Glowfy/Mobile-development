@@ -77,5 +77,17 @@
         <item name="cornerSizeBottomRight">0dp</item>
     </style>
 
+    <style name="ResultCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearance">@style/ShapeAppearance.ResultCardView</item>
+    </style>
+
+    <style name="ShapeAppearance.ResultCardView" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">50dp</item>
+        <item name="cornerSizeTopRight">50dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
     <style name="Theme.GlowfyApp" parent="AppTheme" />
 </resources>

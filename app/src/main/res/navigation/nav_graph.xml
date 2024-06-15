@@ -39,10 +39,13 @@
             android:name="imageUri"
             app:argType="string" />
         <argument
-            android:name="prediction"
+            android:name="skinType"
             app:argType="string" />
         <argument
             android:name="skinStatus"
+            app:argType="string" />
+        <argument
+            android:name="scanDate"
             app:argType="string" />
     </fragment>
 </navigation>

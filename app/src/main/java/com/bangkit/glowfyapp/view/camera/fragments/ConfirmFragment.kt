@@ -137,8 +137,9 @@
         private fun navigateToResultFragment(scanResponse: ScanResponse) {
             val action = ConfirmFragmentDirections.actionConfirmFragmentToResultFragment(
                 imageUri = currentImageUri.toString(),
-                prediction = scanResponse.data.prediction.statusPenyakit,
-                skinStatus = scanResponse.data.prediction.statusKulit
+                skinStatus = scanResponse.data.prediction.statusPenyakit,
+                skinType = scanResponse.data.prediction.statusKulit,
+                scanDate = scanResponse.data.scanDate
             )
             findNavController().navigate(action)
         }

@@ -9,6 +9,8 @@ import com.bangkit.glowfyapp.data.historydatabase.ScanHistory
 import com.bangkit.glowfyapp.data.models.ResultApi
 import com.bangkit.glowfyapp.data.models.auth.LoginResult
 import com.bangkit.glowfyapp.data.models.response.ScanResponse
+import com.bangkit.glowfyapp.data.models.response.SkinsItem
+import com.bangkit.glowfyapp.data.models.response.SkinsResponse
 import com.bangkit.glowfyapp.data.repository.DataRepository
 import kotlinx.coroutines.launch
 import java.io.File
@@ -51,5 +53,9 @@ class ScanViewModel(private val repository: DataRepository): ViewModel() {
             repository.deleteScanHistory(id)
             getScanHistory()
         }
+    }
+
+    fun getSkins(token: String): LiveData<ResultApi<SkinsResponse>>{
+        return repository.getSkins(token)
     }
 }
