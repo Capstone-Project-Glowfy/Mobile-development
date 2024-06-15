@@ -36,42 +36,51 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".view.home.fragments.profile.ProfileDetailActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".view.history.ScanHistoryDetail"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".view.history.ScanHistoryActivity"
+            android:screenOrientation="portrait"
             android:exported="true"/>
         <activity
-            android:name=".view.welcome.AuthActivity"
-            android:exported="false" />
-        <activity
             android:name=".view.welcome.WelcomeActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".view.detail.detailArticles.ArticlesDetailActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".view.detail.detailSkins.SkinsDetailActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".view.detail.detailProducts.ProductDetailActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".view.camera.CameraActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".view.auth.LoginActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".view.auth.RegisterActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".view.home.HomeActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".SplashActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

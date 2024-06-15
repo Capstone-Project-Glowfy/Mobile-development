@@ -38,6 +38,10 @@ import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest
 import com.google.android.libraries.places.api.net.PlacesClient
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ClinicFragment : Fragment(), OnMapReadyCallback, ClinicAdapter.ClinicItemClickListener, LocationChangeReceiver.LocationChangeListener {
 
@@ -155,43 +159,50 @@ class ClinicFragment : Fragment(), OnMapReadyCallback, ClinicAdapter.ClinicItemC
 
     private fun findNearbyClinics(location: LatLng) {
         showLoading(true)
-        val placeFields = listOf(Place.Field.NAME, Place.Field.LAT_LNG, Place.Field.TYPES, Place.Field.ADDRESS)
-        val request = FindCurrentPlaceRequest.newInstance(placeFields)
+        CoroutineScope(Dispatchers.IO).launch {
+            val placeFields = listOf(Place.Field.NAME, Place.Field.LAT_LNG, Place.Field.TYPES, Place.Field.ADDRESS)
+            val request = FindCurrentPlaceRequest.newInstance(placeFields)
 
-        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
-            return
-        }
+            if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+                withContext(Dispatchers.Main) {
+                    showLoading(false)
+                }
+                return@launch
+            }
 
-        val placeResponse = placesClient.findCurrentPlace(request)
-        placeResponse.addOnCompleteListener { task ->
-            showLoading(false)
-            if (task.isSuccessful) {
-                val response = task.result
-                val places = mutableListOf<ClinicData>()
-                for (placeLikelihood in response?.placeLikelihoods ?: emptyList()) {
-                    val place = placeLikelihood.place
-                    if (place.types?.contains(Place.Type.HEALTH) == true || place.types?.contains(
-                            Place.Type.BEAUTY_SALON) == true) {
-                        place.latLng?.let {
-                            val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.ic_clinic_marker)
-                            val bitmap = drawable?.toBitmap()
-                            val icon = bitmap?.let { it1 -> BitmapDescriptorFactory.fromBitmap(it1) }
+            val placeResponse = placesClient.findCurrentPlace(request)
+            placeResponse.addOnCompleteListener { task ->
+                CoroutineScope(Dispatchers.Main).launch {
+                    showLoading(false)
+                    if (task.isSuccessful) {
+                        val response = task.result
+                        val places = mutableListOf<ClinicData>()
+                        for (placeLikelihood in response?.placeLikelihoods ?: emptyList()) {
+                            val place = placeLikelihood.place
+                            if (place.types?.contains(Place.Type.HEALTH) == true || place.types?.contains(
+                                    Place.Type.BEAUTY_SALON) == true) {
+                                place.latLng?.let {
+                                    val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.ic_clinic_marker)
+                                    val bitmap = drawable?.toBitmap()
+                                    val icon = bitmap?.let { it1 -> BitmapDescriptorFactory.fromBitmap(it1) }
 
 
-                            places.add(ClinicData(place.name, place.address, it, bitmap, MarkerOptions()))
-                            mMap.addMarker(
-                                MarkerOptions()
-                                    .position(it)
-                                    .title(place.name)
-                                    .icon(icon)
-                            )
+                                    places.add(ClinicData(place.name, place.address, it, bitmap, MarkerOptions()))
+                                    mMap.addMarker(
+                                        MarkerOptions()
+                                            .position(it)
+                                            .title(place.name)
+                                            .icon(icon)
+                                    )
+                                }
+                            }
                         }
+                        showPlacesInRecyclerView(places)
+                    } else {
+                        Toast.makeText(requireContext(), "Failed to find nearby clinics", Toast.LENGTH_SHORT).show()
                     }
                 }
-                showPlacesInRecyclerView(places)
-            } else {
-                Toast.makeText(requireContext(), "Failed to find nearby clinics", Toast.LENGTH_SHORT).show()
             }
         }
     }

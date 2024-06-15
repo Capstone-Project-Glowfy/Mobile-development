@@ -63,16 +63,16 @@ class ScanHistoryAdapter(
 
         private fun setCardColor(scanHistoryItem: ScanHistory) {
             when (scanHistoryItem.statusKulit) {
-                "Normal" -> {
+                "normal" -> {
                     binding.cardSkinType.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.green))
                 }
-                "Jerawat" -> {
+                "acne" -> {
                     binding.cardSkinType.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.red))
                 }
-                "Berminyak" -> {
+                "oily" -> {
                     binding.cardSkinType.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.orange))
                 }
-                "Kering" -> {
+                "dry" -> {
                     binding.cardSkinType.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.yellow))
                 }
                 else -> binding.cardSkinType.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.white))

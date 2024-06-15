@@ -23,13 +23,11 @@ import com.bangkit.glowfyapp.view.adapters.SkinAdapter
 import com.bangkit.glowfyapp.view.adapters.shimmer.ShimmerArticleAdapter
 import com.bangkit.glowfyapp.view.adapters.shimmer.ShimmerProductAdapter
 import com.bangkit.glowfyapp.view.adapters.shimmer.ShimmerSkinAdapter
-import com.bangkit.glowfyapp.view.auth.LoginActivity
 import com.bangkit.glowfyapp.view.detail.detailArticles.ArticlesDetailActivity
 import com.bangkit.glowfyapp.view.detail.detailProducts.ProductDetailActivity
 import com.bangkit.glowfyapp.view.detail.detailSkins.SkinsDetailActivity
 import com.bangkit.glowfyapp.view.history.ScanHistoryActivity
 import com.bangkit.glowfyapp.view.home.HomeViewModel
-import com.bangkit.glowfyapp.view.welcome.AuthActivity
 import com.bangkit.glowfyapp.view.welcome.WelcomeActivity
 import com.bumptech.glide.Glide
 

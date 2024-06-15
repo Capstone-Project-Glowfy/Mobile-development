@@ -1,6 +1,5 @@
 package com.bangkit.glowfyapp
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -9,7 +8,6 @@ import androidx.lifecycle.asLiveData
 import com.bangkit.glowfyapp.data.repository.UserPreference
 import com.bangkit.glowfyapp.data.repository.dataStore
 import com.bangkit.glowfyapp.view.home.HomeActivity
-import com.bangkit.glowfyapp.view.welcome.AuthActivity
 import com.bangkit.glowfyapp.view.welcome.WelcomeActivity
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch

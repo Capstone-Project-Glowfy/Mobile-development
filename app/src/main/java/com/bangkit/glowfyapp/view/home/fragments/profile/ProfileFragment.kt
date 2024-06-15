@@ -14,7 +14,7 @@ import com.bangkit.glowfyapp.databinding.FragmentProfileBinding
 import com.bangkit.glowfyapp.utils.ViewModelFactory
 import com.bangkit.glowfyapp.view.history.ScanHistoryActivity
 import com.bangkit.glowfyapp.view.home.HomeViewModel
-import com.bangkit.glowfyapp.view.welcome.AuthActivity
+import com.bangkit.glowfyapp.view.welcome.WelcomeActivity
 import com.bumptech.glide.Glide
 
 class ProfileFragment : Fragment() {
@@ -45,7 +45,7 @@ class ProfileFragment : Fragment() {
     private fun getSession() {
         viewModel.getSession().observe(viewLifecycleOwner) { user ->
             if (!user.isLogin) {
-                startActivity(Intent(context, AuthActivity::class.java))
+                startActivity(Intent(requireContext(), WelcomeActivity::class.java))
                 requireActivity().finish()
             } else {
                 setupAction()
@@ -100,7 +100,7 @@ class ProfileFragment : Fragment() {
 
     private fun logout() {
         viewModel.logout()
-        navigateToLogin()
+        navigateToWelcome()
         showToast(getString(R.string.logout_success))
     }
 
@@ -108,8 +108,7 @@ class ProfileFragment : Fragment() {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
-    private fun navigateToLogin() {
-        startActivity(Intent(requireContext(), AuthActivity::class.java))
-        requireActivity().finish()
+    private fun navigateToWelcome() {
+        startActivity(Intent(requireContext(), WelcomeActivity::class.java))
     }
 }
