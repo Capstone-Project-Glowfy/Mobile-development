@@ -1,6 +1,7 @@
 package com.bangkit.glowfyapp.view.home.fragments.clinic
 
 import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
@@ -14,7 +15,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -25,6 +27,7 @@ import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.data.models.ClinicData
 import com.bangkit.glowfyapp.databinding.FragmentClinicBinding
 import com.bangkit.glowfyapp.utils.PermissionLocationUtils
+import com.bangkit.glowfyapp.view.customview.CustomAlertDialog
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -118,6 +121,7 @@ class ClinicFragment : Fragment(), OnMapReadyCallback, ClinicAdapter.ClinicItemC
         } else {
             mMap.isMyLocationEnabled = true
             loadCurrentLocation()
+            binding.swipeRefreshLayout.isRefreshing = false
         }
     }
 
@@ -144,15 +148,10 @@ class ClinicFragment : Fragment(), OnMapReadyCallback, ClinicAdapter.ClinicItemC
     }
 
     private fun showLocationAlert() {
-        val alertDialog = AlertDialog.Builder(requireContext())
-        alertDialog.setTitle("Enable Location")
-        alertDialog.setMessage("Your locations setting is set to 'Off'. Please enable location to use this app")
-        alertDialog.setPositiveButton("Location Settings") { _, _ ->
+        val alertDialog = CustomAlertDialog(requireContext(), R.raw.animation_location_need, R.string.locationNeed, R.string.turnLocation)
+        alertDialog.setOnDismissListener {
             val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
             startActivity(intent)
-        }
-        alertDialog.setNegativeButton("Cancel") { dialog, _ ->
-            dialog.cancel()
         }
         alertDialog.show()
     }
@@ -242,6 +241,7 @@ class ClinicFragment : Fragment(), OnMapReadyCallback, ClinicAdapter.ClinicItemC
         if (::mMap.isInitialized) {
             mMap.clear()
             loadCurrentLocation()
+            binding.swipeRefreshLayout.isRefreshing = false
         }
     }
 

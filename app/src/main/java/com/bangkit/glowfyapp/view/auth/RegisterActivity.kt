@@ -12,7 +12,7 @@ import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.data.models.ResultApi
 import com.bangkit.glowfyapp.databinding.ActivityRegisterBinding
 import com.bangkit.glowfyapp.utils.ViewModelFactory
-import com.bangkit.glowfyapp.view.customview.CustomRegisterDialog
+import com.bangkit.glowfyapp.view.customview.CustomAlertDialog
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -81,18 +81,16 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun errorRegisterHandler() {
-        CustomRegisterDialog(this, R.raw.animation_error, R.string.register_error_message, R.string.done).show()
+        CustomAlertDialog(this, R.raw.animation_error, R.string.register_error_message, R.string.done).show()
     }
 
     private fun successRegisterHandler() {
-        val dialog = CustomRegisterDialog(this, R.raw.animation_yeay_success, R.string.successRegisterMessage, R.string.continueLogin)
+        val dialog = CustomAlertDialog(this, R.raw.animation_yeay_success, R.string.successRegisterMessage, R.string.continueLogin)
         dialog.setOnDismissListener {
             moveActivity()
         }
         dialog.show()
     }
-
-
 
     private fun showLoading(isLoading: Boolean) {
         binding.loadingFrame.root.visibility = if (isLoading) View.VISIBLE else View.GONE

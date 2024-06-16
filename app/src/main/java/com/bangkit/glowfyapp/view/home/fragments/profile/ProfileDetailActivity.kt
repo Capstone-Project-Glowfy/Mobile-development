@@ -47,6 +47,7 @@ class ProfileDetailActivity : AppCompatActivity() {
             insets
         }
         getSession()
+        binding.backButton.setOnClickListener { onBackPressed() }
     }
 
     private fun getSession() {
@@ -172,9 +173,9 @@ class ProfileDetailActivity : AppCompatActivity() {
 
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
-            binding.progressOverlay.visibility = View.VISIBLE
+            binding.loadingFrame.root.visibility = View.VISIBLE
         } else {
-            binding.progressOverlay.visibility = View.GONE
+            binding.loadingFrame.root.visibility = View.GONE
         }
     }
 }

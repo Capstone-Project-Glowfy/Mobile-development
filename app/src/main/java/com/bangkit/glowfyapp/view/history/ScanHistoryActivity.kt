@@ -33,6 +33,7 @@ class ScanHistoryActivity : AppCompatActivity() {
             insets
         }
         setDataView()
+        binding.backButton.setOnClickListener { onBackPressed() }
     }
 
     private fun setDataView() {
