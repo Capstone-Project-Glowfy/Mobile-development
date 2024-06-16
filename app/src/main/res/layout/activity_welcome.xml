@@ -34,56 +34,75 @@
         android:id="@+id/indicatorImageDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
         app:ci_drawable="@drawable/bg_indicator"
-        app:ci_height="10dp"
-        app:ci_width="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/registerBtn"
+        android:layout_marginBottom="80dp"
+        app:ci_height="5dp"
+        app:ci_width="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/authCv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/registerBtn"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/authCv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginHorizontal="24dp"
-        android:text="@string/startedBtnText"
-        app:layout_constraintBottom_toTopOf="@+id/loginDesc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/loginDesc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
+        android:layout_marginHorizontal="36dp"
         android:layout_marginBottom="64dp"
+        app:cardCornerRadius="10dp"
+        app:strokeWidth="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/loginDesc"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/dm_sans"
-            android:text="@string/loginDesc"
-            android:textAlignment="center"
-            android:textColor="@color/md_theme_primary"
-            android:textSize="16sp"/>
+            android:background="#334BC5B1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/toLoginText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/dm_sans"
-            android:layout_marginStart="4dp"
-            android:text="@string/to_login"
-            android:textAlignment="center"
-            android:textColor="@color/md_theme_primary"
-            android:textSize="16sp"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/registerCvBtn"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                app:cardCornerRadius="10dp"
+                android:elevation="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/toLoginText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/register"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkGreen" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/toLoginText"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/login"
+                android:textAlignment="center"
+                android:textColor="@color/darkGreen"
+                android:textSize="16sp"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/registerCvBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

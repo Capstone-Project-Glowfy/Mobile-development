@@ -3,7 +3,6 @@ package com.bangkit.glowfyapp.view.auth
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +12,7 @@ import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.data.models.ResultApi
 import com.bangkit.glowfyapp.databinding.ActivityRegisterBinding
 import com.bangkit.glowfyapp.utils.ViewModelFactory
+import com.bangkit.glowfyapp.view.customview.CustomRegisterDialog
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -36,8 +36,8 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun setupAction() {
         with(binding) {
-            registerButton.setOnClickListener { registerHandler() }
-            toLoginButton.setOnClickListener { navigateToLogin() }
+            registerBtn.setOnClickListener { registerHandler() }
+            toLoginText.setOnClickListener { navigateToLogin() }
         }
     }
 
@@ -47,18 +47,18 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registerHandler() {
-        val name  = binding.username.text.toString()
-        val email = binding.email.text.toString()
-        val password = binding.password.text.toString()
+        val name  = binding.usernameEt.text.toString()
+        val email = binding.emailEt.text.toString()
+        val password = binding.passEt.text.toString()
         when {
             name.isEmpty() -> {
-                binding.usernameLayout.error = getString(R.string.message_validation)
+                binding.usernameEtLayout.error = getString(R.string.message_validation)
             }
             email.isEmpty() -> {
-                binding.emailLayout.error = getString(R.string.message_validation)
+                binding.usernameEtLayout.error = getString(R.string.message_validation)
             }
             password.isEmpty() -> {
-                binding.passwordLayout.error = getString(R.string.message_validation)
+                binding.usernameEtLayout.error = getString(R.string.message_validation)
             }
             else -> {
                 viewModel.registerUser(name, email, password).observe(this@RegisterActivity) { response ->
@@ -68,12 +68,11 @@ class RegisterActivity : AppCompatActivity() {
                         }
                         is ResultApi.Success -> {
                             showLoading(false)
-                            showToast(getString(R.string.register_success_message))
-                            moveActivity()
+                            successRegisterHandler()
                         }
                         is ResultApi.Error -> {
                             showLoading(false)
-                            showToast(response.error)
+                            errorRegisterHandler()
                         }
                     }
                 }
@@ -81,12 +80,24 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    private fun errorRegisterHandler() {
+        CustomRegisterDialog(this, R.raw.animation_error, R.string.register_error_message, R.string.done).show()
+    }
+
+    private fun successRegisterHandler() {
+        val dialog = CustomRegisterDialog(this, R.raw.animation_yeay_success, R.string.successRegisterMessage, R.string.continueLogin)
+        dialog.setOnDismissListener {
+            moveActivity()
+        }
+        dialog.show()
+    }
+
+
+
     private fun showLoading(isLoading: Boolean) {
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding.loadingFrame.root.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
+
     private fun moveActivity(){
         val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

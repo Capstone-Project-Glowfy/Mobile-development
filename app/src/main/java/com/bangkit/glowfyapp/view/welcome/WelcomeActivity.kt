@@ -2,15 +2,8 @@ package com.bangkit.glowfyapp.view.welcome
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
-import android.text.style.ForegroundColorSpan
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bangkit.glowfyapp.R
@@ -39,7 +32,7 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     private fun setupData() {
-        binding.registerBtn.setOnClickListener {
+        binding.registerCvBtn.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
         binding.toLoginText.setOnClickListener {

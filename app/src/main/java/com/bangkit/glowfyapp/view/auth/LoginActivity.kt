@@ -39,24 +39,26 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupAction() {
         with(binding) {
-            loginButton.setOnClickListener { loginHandler() }
-            toRegisterButton.setOnClickListener { navigateToRegister() }
+            loginBtn.setOnClickListener { loginHandler() }
+            toRegisterText.setOnClickListener { navigateToRegister() }
         }
     }
 
     private fun navigateToRegister() {
-        startActivity(Intent(this, RegisterActivity::class.java))
+        val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun loginHandler() {
         val email = binding.emailEt.text.toString()
-        val password = binding.passwordEt.text.toString()
+        val password = binding.passEt.text.toString()
         when {
             email.isEmpty() -> {
-                binding.usernameLayout.error = getString(R.string.message_validation)
+                binding.emailEtLayout.error = getString(R.string.message_validation)
             }
             password.isEmpty() -> {
-                binding.passwordLayout.error = getString(R.string.message_validation)
+                binding.passEtLayout.error = getString(R.string.message_validation)
             }
             else -> {
                 viewModel.loginUser(email, password).observe(this@LoginActivity) { response ->
@@ -84,7 +86,7 @@ class LoginActivity : AppCompatActivity() {
         showToast(getString(R.string.login_success_message))
     }
     private fun showLoading(isLoading: Boolean) {
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding.loadingFrame.root.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()

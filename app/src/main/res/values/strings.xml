@@ -1,16 +1,16 @@
 <resources>
     <string name="app_name">Glowfy</string>
 
-    <string name="username">username</string>
-    <string name="password">password</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="title">Unlock Your Skin’s Potential and Discover Your Glow</string>
     <string name="dont_have_account">Don\'t have an account?\n</string>
-    <string name="to_register">Register</string>
+    <string name="to_register"><u>Register</u></string>
     <string name="to_login"><u>Login</u></string>
     <string name="register">Register</string>
-    <string name="have_account">Already have an account?\n</string>
-    <string name="email">email</string>
+    <string name="have_account">Already have an account?</string>
+    <string name="email">Email</string>
 
     <string name="home">Home</string>
     <string name="product">Product</string>
@@ -98,6 +98,15 @@
     <string name="resultSkinTypeText">Kulit %1$s</string>
     <string name="resultSkinText">%1$s</string>
     <string name="scanDateResultTv">Scan Date :</string>
+    <string name="email_icon_description">icon email input layout</string>
+    <string name="registerDesc">Not a member?</string>
+    <string name="successRegisterMessage">Yeay!,Kamu berhasil bergabung\nsilahkan lanjut masuk</string>
+    <string name="continueLogin">Lanjutkan</string>
+    <string name="register_error_message">Upss, there\'s a trouble when register, please try again</string>
+    <string name="loginGreetHead">Welcome Back!</string>
+    <string name="loginGreetDesc">Log in to discover a journey for glowing skin.</string>
+    <string name="registerGreetDesc">Join us to start your personalized skincare journey today.</string>
+    <string name="registerGreetHead">Hello, Ready to Glow?</string>
 
     <!-- Array for animation resources -->
     <integer-array name="slide_animations">
