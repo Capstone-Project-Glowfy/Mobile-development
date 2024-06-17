@@ -3,27 +3,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_color_welcome_alt"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.camera.fragments.ConfirmFragment">
+
+    <TextView
+        android:id="@+id/retakeTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="32dp"
+        android:textAlignment="center"
+        android:text="@string/retakeTitle"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_extrabold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imagePreview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="32dp"
+        android:background="@drawable/image_border"
         android:contentDescription="@string/preview_image"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_placeholder"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/img_placeholder"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/retakeTitle" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="150dp" />
+        app:layout_constraintGuide_percent="0.79616964" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"

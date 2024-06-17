@@ -119,6 +119,7 @@
     <string name="notifTitle">Daily Reminder</string>
     <string name="notifContent">It\'s time to glow! Check your skincare routine and tips for today.</string>
     <string name="splashText">GLOWFY</string>
+    <string name="retakeTitle">Pastikan wajah anda terlihat dengan jelas pada bagian pratinjau</string>
 
     <!-- Array for animation resources -->
     <integer-array name="slide_animations">
