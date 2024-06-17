@@ -150,9 +150,9 @@
 
         private fun showLoading(isLoading: Boolean) {
             if (isLoading) {
-                binding.loadingFrame.root.visibility = View.VISIBLE
+                binding.loadingFrame.visibility = View.VISIBLE
             } else {
-                binding.loadingFrame.root.visibility = View.GONE
+                binding.loadingFrame.visibility = View.GONE
             }
         }
 

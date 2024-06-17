@@ -59,8 +59,8 @@ class SplashActivity : AppCompatActivity() {
         // timer setup
         val calendar = Calendar.getInstance().apply {
             timeInMillis = System.currentTimeMillis()
-            set(Calendar.HOUR_OF_DAY, 8)
-            set(Calendar.MINUTE, 25)
+            set(Calendar.HOUR_OF_DAY, 7)
+            set(Calendar.MINUTE, 0)
             set(Calendar.SECOND, 0)
         }
 

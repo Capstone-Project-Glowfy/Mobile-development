@@ -118,10 +118,11 @@
     <string name="retakeText">Ambil Ulang</string>
     <string name="notifTitle">Daily Reminder</string>
     <string name="notifContent">It\'s time to glow! Check your skincare routine and tips for today.</string>
+    <string name="splashText">GLOWFY</string>
 
     <!-- Array for animation resources -->
     <integer-array name="slide_animations">
-        <item>@raw/animation_face</item>
+        <item>@raw/skincare_anim</item>
         <item>@raw/product_recommendation</item>
         <item>@raw/face</item>
         <item>@raw/animation_locator</item>
@@ -139,7 +140,7 @@
 
     <!-- Array for descriptions -->
     <string-array name="slide_descriptions">
-        <item>Discover the ultimate solution for all your skincare needs.</item>
+        <item>Unlock Your Skin\’s Potential and Discover Your Glow</item>
         <item>Receive personalized product suggestions to achieve your skincare goals.</item>
         <item>Get accurate insights and tailored skincare recommendations just for you.</item>
         <item>Find expert skincare professionals conveniently located in your area.</item>
