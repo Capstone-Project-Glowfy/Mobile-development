@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.data.api.ApiConfig
 import com.bangkit.glowfyapp.data.api.ApiService
 import com.bangkit.glowfyapp.data.historydatabase.ProfileDao
@@ -30,6 +31,8 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.HttpException
 import java.io.File
+import java.io.IOException
+import java.net.SocketTimeoutException
 
 class DataRepository(
     private val apiService: ApiService,
@@ -53,7 +56,7 @@ class DataRepository(
     fun registerUser(name: String, email: String, password: String): LiveData<ResultApi<RegisterResponse>> = liveData {
         emit(ResultApi.Loading)
         if (!Utility.isNetworkAvailable(context)) {
-            emit(ResultApi.Error("No network available"))
+            emit(ResultApi.Error(context.getString(R.string.error_no_network)))
             return@liveData
         }
         try {
@@ -61,13 +64,17 @@ class DataRepository(
             emit(ResultApi.Success(response))
         } catch (e: HttpException) {
             emit(handleHttpException(e))
+        } catch (e: SocketTimeoutException) {
+            emit(ResultApi.Error(context.getString(R.string.error_timeout)))
+        } catch (e: IOException) {
+            emit(ResultApi.Error(context.getString(R.string.error_network)))
         }
     }
 
     fun loginUser(email: String, password: String): LiveData<ResultApi<LoginResponse>> = liveData {
         emit(ResultApi.Loading)
         if (!Utility.isNetworkAvailable(context)) {
-            emit(ResultApi.Error("No network available"))
+            emit(ResultApi.Error(context.getString(R.string.error_no_network)))
             return@liveData
         }
         try {
@@ -75,13 +82,17 @@ class DataRepository(
             emit(ResultApi.Success(response))
         } catch (e: HttpException) {
             emit(handleHttpException(e))
+        } catch (e: SocketTimeoutException) {
+            emit(ResultApi.Error(context.getString(R.string.error_timeout)))
+        } catch (e: IOException) {
+            emit(ResultApi.Error(context.getString(R.string.error_network)))
         }
     }
 
     fun getArticles(token: String): LiveData<ResultApi<ArticlesResponse>> = liveData {
         emit(ResultApi.Loading)
         if (!Utility.isNetworkAvailable(context)) {
-            emit(ResultApi.Error("No network available"))
+            emit(ResultApi.Error(context.getString(R.string.error_no_network)))
             return@liveData
         }
         try {
@@ -89,13 +100,17 @@ class DataRepository(
             emit(ResultApi.Success(response))
         } catch (e: HttpException) {
             emit(handleHttpException(e))
+        } catch (e: SocketTimeoutException) {
+            emit(ResultApi.Error(context.getString(R.string.error_timeout)))
+        } catch (e: IOException) {
+            emit(ResultApi.Error(context.getString(R.string.error_network)))
         }
     }
 
     fun getSkins(token: String): LiveData<ResultApi<SkinsResponse>> = liveData {
         emit(ResultApi.Loading)
         if (!Utility.isNetworkAvailable(context)) {
-            emit(ResultApi.Error("No network available"))
+            emit(ResultApi.Error(context.getString(R.string.error_no_network)))
             return@liveData
         }
         try {
@@ -103,13 +118,17 @@ class DataRepository(
             emit(ResultApi.Success(response))
         } catch (e: HttpException) {
             emit(handleHttpException(e))
+        } catch (e: SocketTimeoutException) {
+            emit(ResultApi.Error(context.getString(R.string.error_timeout)))
+        } catch (e: IOException) {
+            emit(ResultApi.Error(context.getString(R.string.error_network)))
         }
     }
 
     fun getProducts(token: String): LiveData<ResultApi<ProductResponse>> = liveData {
         emit(ResultApi.Loading)
         if (!Utility.isNetworkAvailable(context)) {
-            emit(ResultApi.Error("No network available"))
+            emit(ResultApi.Error(context.getString(R.string.error_no_network)))
             return@liveData
         }
         try {
@@ -117,13 +136,17 @@ class DataRepository(
             emit(ResultApi.Success(response))
         } catch (e: HttpException) {
             emit(handleHttpException(e))
+        } catch (e: SocketTimeoutException) {
+            emit(ResultApi.Error(context.getString(R.string.error_timeout)))
+        } catch (e: IOException) {
+            emit(ResultApi.Error(context.getString(R.string.error_network)))
         }
     }
 
     fun getProductsByCategory(token: String, category: String): LiveData<ResultApi<ProductResponse>> = liveData {
         emit(ResultApi.Loading)
         if (!Utility.isNetworkAvailable(context)) {
-            emit(ResultApi.Error("No network available"))
+            emit(ResultApi.Error(context.getString(R.string.error_no_network)))
             return@liveData
         }
         try {
@@ -131,6 +154,10 @@ class DataRepository(
             emit(ResultApi.Success(response))
         } catch (e: HttpException) {
             emit(handleHttpException(e))
+        } catch (e: SocketTimeoutException) {
+            emit(ResultApi.Error(context.getString(R.string.error_timeout)))
+        } catch (e: IOException) {
+            emit(ResultApi.Error(context.getString(R.string.error_network)))
         }
     }
 
@@ -149,6 +176,10 @@ class DataRepository(
             emit(ResultApi.Success(response))
         } catch (e: HttpException) {
             emit(handleHttpException(e))
+        } catch (e: SocketTimeoutException) {
+            emit(ResultApi.Error(context.getString(R.string.error_timeout)))
+        } catch (e: IOException) {
+            emit(ResultApi.Error(context.getString(R.string.error_network)))
         }
     }
 
@@ -166,6 +197,10 @@ class DataRepository(
             emit(ResultApi.Success(response))
         } catch (e: HttpException) {
             emit(handleHttpException(e))
+        } catch (e: SocketTimeoutException) {
+            emit(ResultApi.Error(context.getString(R.string.error_timeout)))
+        } catch (e: IOException) {
+            emit(ResultApi.Error(context.getString(R.string.error_network)))
         }
     }
 
@@ -207,7 +242,7 @@ class DataRepository(
         } catch (ex: Exception) {
             null
         }
-        val errorText= "An error occurred"
+        val errorText = context.getString(R.string.error_general)
         return ResultApi.Error(errorMessage ?: errorText)
     }
 

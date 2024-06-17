@@ -107,6 +107,11 @@
     <string name="splashText">GLOWFY</string>
     <string name="retakeTitle">Pastikan wajah anda terlihat dengan jelas pada bagian pratinjau</string>
 
+    <string name="error_no_network">Jaringan tidak tersedia</string>
+    <string name="error_timeout">Permintaan melebihi batas waktu. Silakan coba lagi nanti.</string>
+    <string name="error_network">Terjadi kesalahan jaringan. Silakan periksa koneksi Anda dan coba lagi.</string>
+    <string name="error_general">Terjadi kesalahan</string>
+
     <!-- Array for animation resources -->
     <integer-array name="slide_animations">
         <item>@raw/skincare_anim</item>

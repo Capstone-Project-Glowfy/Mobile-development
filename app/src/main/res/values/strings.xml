@@ -108,6 +108,11 @@
     <string name="splashText">GLOWFY</string>
     <string name="retakeTitle">Make sure your face is clearly visible in the preview section</string>
 
+    <string name="error_no_network">No network available</string>
+    <string name="error_timeout">Request timed out. Please try again later.</string>
+    <string name="error_network">Network error occurred. Please check your connection and try again.</string>
+    <string name="error_general">An error occurred</string>
+
     <!-- Array for animation resources -->
     <integer-array name="slide_animations">
         <item>@raw/skincare_anim</item>
