@@ -114,6 +114,10 @@
     <string name="locationNeed">Upss, looks like you haven\'t turn on the location</string>
     <string name="turnLocation">Location Setting</string>
     <string name="cancelTurnLocation"><u>CANCEL</u></string>
+    <string name="scanText">Pindai</string>
+    <string name="retakeText">Ambil Ulang</string>
+    <string name="notifTitle">Daily Reminder</string>
+    <string name="notifContent">It\'s time to glow! Check your skincare routine and tips for today.</string>
 
     <!-- Array for animation resources -->
     <integer-array name="slide_animations">

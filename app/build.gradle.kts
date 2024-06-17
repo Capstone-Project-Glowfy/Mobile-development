@@ -114,9 +114,6 @@ dependencies {
     //lottie
     implementation ("com.airbnb.android:lottie:6.4.0")
 
-    //gif
-    implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.28")
-
     // shimmer
     implementation ("com.facebook.shimmer:shimmer:0.5.0")
 
@@ -135,4 +132,7 @@ dependencies {
 
     // UCrop
     implementation ("com.github.yalantis:ucrop:2.2.9")
+
+    // work manager (alarm)
+    implementation ("androidx.work:work-runtime-ktx:2.9.0")
 }

@@ -1,7 +1,12 @@
 package com.bangkit.glowfyapp.utils
 
 import android.app.Activity
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -9,8 +14,13 @@ import android.graphics.Matrix
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
+import android.os.Build
+import android.util.Log
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
 import androidx.exifinterface.media.ExifInterface
+import com.bangkit.glowfyapp.R
+import com.bangkit.glowfyapp.SplashActivity
 import com.bangkit.glowfyapp.data.api.ApiConfig
 import com.bangkit.glowfyapp.data.historydatabase.ScanHistoryDatabase
 import com.bangkit.glowfyapp.data.repository.DataRepository
@@ -136,9 +146,50 @@ object PermissionLocationUtils {
     }
 }
 
+class NotificationReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+        Log.d("NotificationReceiver", "Daily notification triggered")
+        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationID = 1
+
+        // intent apps on notification click
+        val notificationIntent = Intent(context, SplashActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        val pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+        // notification channel
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                "daily_notify_channel",
+                "Daily Notifications",
+                NotificationManager.IMPORTANCE_DEFAULT
+            ).apply {
+                description = "Daily Notification Channel"
+            }
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        // notification create
+        val notification = NotificationCompat.Builder(context, "daily_notify_channel")
+            .setSmallIcon(R.drawable.glowfy_icon)
+            .setContentTitle(context.getString(R.string.notifTitle))
+            .setContentText(context.getString(R.string.notifContent))
+            .setStyle(NotificationCompat.BigTextStyle()
+                .bigText(context.getString(R.string.notifContent)))
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+            .build()
+
+        notificationManager.notify(notificationID, notification)
+    }
+}
+
 const val INPUT_FORMAT = "yyyy-MM-dd'T'HH:mm:ss"
 const val INPUT_TIME_ZONE = "UTC"
 const val OUTPUT_FORMAT = "dd-MM-yyyy"
 private const val MAXIMAL_SIZE = 1000000 //1 MB
 private const val FILENAME_FORMAT = "yyyyMMdd_HHmmss"
 private val timeStamp: String = SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(Date())
+

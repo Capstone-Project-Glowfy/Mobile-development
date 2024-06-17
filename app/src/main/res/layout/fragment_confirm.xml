@@ -37,7 +37,7 @@
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Ambil Ulang"
+        android:text="@string/retakeText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
         android:id="@+id/scanButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Pindai"
+        android:text="@string/scanText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
@@ -58,6 +58,5 @@
         layout="@layout/layout_loading"
         android:visibility="gone"
         tools:visibility="visible"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
