@@ -166,7 +166,7 @@ class NotificationReceiver : BroadcastReceiver() {
         val notificationIntent = Intent(context, SplashActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        val pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 
         // notification channel
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -195,6 +195,7 @@ class NotificationReceiver : BroadcastReceiver() {
         notificationManager.notify(notificationID, notification)
     }
 }
+
 
 const val INPUT_FORMAT = "yyyy-MM-dd'T'HH:mm:ss"
 const val INPUT_TIME_ZONE = "UTC"
