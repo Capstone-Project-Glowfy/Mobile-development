@@ -14,6 +14,7 @@ import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.data.models.ResultApi
 import com.bangkit.glowfyapp.data.models.response.SkinsItem
 import com.bangkit.glowfyapp.databinding.FragmentResultBinding
+import com.bangkit.glowfyapp.utils.Utility
 import com.bangkit.glowfyapp.utils.ViewModelFactory
 import com.bangkit.glowfyapp.utils.dateFormat
 import com.bangkit.glowfyapp.view.camera.ScanViewModel
@@ -94,12 +95,13 @@ class ResultFragment : Fragment() {
 
     private fun displayResult(imageUri: String, type: String, skinStatus: String, date: String) {
         val mappedType = mapTypeToSkinName(type)
+        val localizedSkin = Utility.getLocalizedSkinName(requireContext(), mappedType)
         Glide.with(this)
             .load(imageUri)
             .into(binding.resultImage)
 
         binding.skinTextResult.text = skinStatus
-        binding.skinTextType.text = resources.getString(R.string.skinTypeDesc, mappedType)
+        binding.skinTextType.text = resources.getString(R.string.skinTypeDesc, localizedSkin)
         binding.skinDateResult.text = date.dateFormat()
     }
 

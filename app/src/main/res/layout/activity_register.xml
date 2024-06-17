@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,15 +9,14 @@
     android:background="@drawable/bg_color_welcome_alt"
     tools:context=".view.auth.RegisterActivity">
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="32dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_alignParentTop="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="32dp"
             android:orientation="vertical">
 
             <com.airbnb.lottie.LottieAnimationView
@@ -113,43 +113,44 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/register"/>
+
+            <LinearLayout
+                android:id="@+id/loginDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/dm_sans"
+                    android:text="@string/have_account"
+                    android:textAlignment="center"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/toLoginText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/dm_sans"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/to_login"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkGreen"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/loginDesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:layout_alignParentBottom="true">
+        <include
+            android:id="@+id/loadingFrame"
+            layout="@layout/layout_loading"
+            android:visibility="gone"
+            tools:visibility="visible"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/dm_sans"
-                android:text="@string/have_account"
-                android:textAlignment="center"
-                android:textSize="16sp"/>
+    </FrameLayout>
 
-            <TextView
-                android:id="@+id/toLoginText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/dm_sans"
-                android:layout_marginStart="4dp"
-                android:text="@string/to_login"
-                android:textAlignment="center"
-                android:textColor="@color/darkGreen"
-                android:textSize="16sp"/>
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-    <include
-        android:id="@+id/loadingFrame"
-        layout="@layout/layout_loading"
-        android:visibility="gone"
-        tools:visibility="visible"/>
-
-</FrameLayout>
+</ScrollView>
