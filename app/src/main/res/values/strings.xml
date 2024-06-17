@@ -48,9 +48,9 @@
     <string name="switch_camera">Switch Camera</string>
     <string name="back_home">back to homepage</string>
     <string name="permission_not_granted">failed to access camera</string>
-    <string name="takeApicTutorial">Bagaimana cara mengambil gambar dengan baik</string>
+    <string name="takeApicTutorial">Pastikan saat mengambil gambar wajah anda terlihat dengan jelas</string>
     <string name="takeApicTutorialDescription">Please take pictures of the entire face</string>
-    <string name="done">Okay</string>
+    <string name="done">Baik</string>
     <string name="preview_image">Preview Image</string>
     <string name="resultTitle">Your Skin Result</string>
     <string name="message_validation">Fill all the fields!</string>

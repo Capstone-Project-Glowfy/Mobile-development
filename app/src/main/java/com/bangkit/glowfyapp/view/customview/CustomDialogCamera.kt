@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.databinding.DialogCameraBinding
 
-class CustomDialogAlert(context: Context): AlertDialog(context) {
+class CustomDialogCamera(context: Context): AlertDialog(context) {
     init {
         setCancelable(false)
     }
@@ -19,8 +19,6 @@ class CustomDialogAlert(context: Context): AlertDialog(context) {
         setContentView(binding.root)
 
         binding.tvTitle.text = context.getString(R.string.takeApicTutorial)
-        binding.tvDescription.text = context.getString(R.string.takeApicTutorialDescription)
-        binding.rightExampleImage.setImageResource(R.drawable.img_placeholder)
         binding.doneButton.setOnClickListener {
             dismiss()
         }

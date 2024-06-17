@@ -28,7 +28,7 @@ import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.databinding.FragmentCameraBinding
 import com.bangkit.glowfyapp.utils.reduceFileImage
 import com.bangkit.glowfyapp.view.camera.CameraActivity
-import com.bangkit.glowfyapp.view.customview.CustomDialogAlert
+import com.bangkit.glowfyapp.view.customview.CustomDialogCamera
 import com.bangkit.glowfyapp.view.home.HomeActivity
 import java.io.File
 import java.text.SimpleDateFormat
@@ -238,7 +238,7 @@ class CameraFragment : Fragment() {
     }
 
     private fun cameraIntroDialog() {
-        CustomDialogAlert(requireContext()).show()
+        CustomDialogCamera(requireContext()).show()
     }
 
     private fun onLoading(isLoading: Boolean) {
