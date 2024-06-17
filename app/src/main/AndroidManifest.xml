@@ -10,11 +10,10 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
 
     <application
@@ -28,63 +27,80 @@
         android:theme="@style/Theme.GlowfyApp"
         tools:targetApi="31">
 
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
 
         <activity
+            android:name=".view.home.tips.TipsActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
+        <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".view.home.fragments.profile.ProfileDetailActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:exported="false" />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".view.history.ScanHistoryDetail"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:exported="false" />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".view.history.ScanHistoryActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:exported="true"/>
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".view.welcome.WelcomeActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:exported="true" />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".view.detail.detailArticles.ArticlesDetailActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:exported="false" />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".view.detail.detailSkins.SkinsDetailActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:exported="true" />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".view.detail.detailProducts.ProductDetailActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:exported="false" />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".view.camera.CameraActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:exported="false" />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".view.auth.LoginActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:exported="false" />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".view.auth.RegisterActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:exported="false" />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".view.home.HomeActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:exported="true" />
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".SplashActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:exported="true">
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -96,16 +112,16 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <receiver android:name=".view.home.fragments.clinic.LocationChangeReceiver"
+        <receiver
+            android:name=".view.home.fragments.clinic.LocationChangeReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.location.PROVIDERS_CHANGED" />
             </intent-filter>
         </receiver>
-
         <receiver
             android:name=".utils.NotificationReceiver"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>

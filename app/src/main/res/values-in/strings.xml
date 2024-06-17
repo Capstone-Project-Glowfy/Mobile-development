@@ -18,7 +18,7 @@
     <string name="profile">Profil</string>
     <string name="cameraDesc">Kamera Deteksi Kulit</string>
 
-    <string name="userGreeting">Mari Rawat Kulit Bersama!</string>
+    <string name="userGreeting">Mari Rawat Wajah Bersama!</string>
     <string name="userNameGreeting">Halo %1$s</string>
     <string name="skinDescPart">Kenali Kulit Anda</string>
     <string name="articleTitle">Mari tingkatkan kesehatan kulit anda menuju kulit yang lebih cerah!</string>
@@ -140,5 +140,31 @@
     <string name="skin_acne">Jerawat</string>
 
     <string name="language_setting">Ganti Bahasa</string>
+    <string name="skincare_tips">Tips Perawatan Kulit</string>
+    <string name="skin_analysis">Deteksi Kulit Wajah</string>
+    <string name="history_skin_analysis">Riwayat Deteksi Kulit</string>
+    <string name="image_desc">simbol tips kulit</string>
+    <string name="tipsTitle"><![CDATA[Tips & Trick]]></string>
+
+    <integer-array name="tipsIcon">
+        <item>@drawable/ic_normal</item>
+        <item>@drawable/ic_oily</item>
+        <item>@drawable/ic_dry</item>
+        <item>@drawable/ic_acne</item>
+    </integer-array>
+
+    <string-array name="skinTypeTips">
+        <item>Kulit Wajah Normal</item>
+        <item>Kulit Wajah Berminyak</item>
+        <item>Kulit Wajah Kering</item>
+        <item>Kulit Wajah Berjerawat</item>
+    </string-array>
+
+    <string-array name="tipsDesc">
+        <item>Perawatan kulit normal umumnya memerlukan kelembapan dan pembersihan teratur untuk menjaga keseimbangan kulit.</item>
+        <item>Kulit berminyak memerlukan pembersihan ekstra untuk mengontrol produksi minyak.</item>
+        <item>Kulit kering membutuhkan pelembap intensif dan perawatan yang tidak mengiritasi kulit.</item>
+        <item>Kulit berjerawat memerlukan perawatan khusus untuk mengurangi peradangan dan mencegah kemunculan jerawat baru.</item>
+    </string-array>
 
 </resources>

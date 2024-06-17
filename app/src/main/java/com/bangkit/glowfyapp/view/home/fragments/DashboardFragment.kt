@@ -23,11 +23,13 @@ import com.bangkit.glowfyapp.view.adapters.SkinAdapter
 import com.bangkit.glowfyapp.view.adapters.shimmer.ShimmerArticleAdapter
 import com.bangkit.glowfyapp.view.adapters.shimmer.ShimmerProductAdapter
 import com.bangkit.glowfyapp.view.adapters.shimmer.ShimmerSkinAdapter
+import com.bangkit.glowfyapp.view.camera.CameraActivity
 import com.bangkit.glowfyapp.view.detail.detailArticles.ArticlesDetailActivity
 import com.bangkit.glowfyapp.view.detail.detailProducts.ProductDetailActivity
 import com.bangkit.glowfyapp.view.detail.detailSkins.SkinsDetailActivity
 import com.bangkit.glowfyapp.view.history.ScanHistoryActivity
 import com.bangkit.glowfyapp.view.home.HomeViewModel
+import com.bangkit.glowfyapp.view.home.tips.TipsActivity
 import com.bangkit.glowfyapp.view.welcome.WelcomeActivity
 import com.bumptech.glide.Glide
 
@@ -61,7 +63,26 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupData()
         binding.swipeRefreshLayout.setOnRefreshListener { setupData() }
+        setupAction()
+    }
+
+    private fun setupAction() {
         binding.historyCv.setOnClickListener { navigateToHistory() }
+        binding.scanCv.setOnClickListener { navigateToScan() }
+        binding.tipsCv.setOnClickListener { navigateToTips() }
+    }
+
+    private fun navigateToTips() {
+        startActivity(Intent(requireContext(), TipsActivity::class.java))
+    }
+
+    private fun navigateToScan() {
+        startActivity(Intent(requireContext(), CameraActivity::class.java))
+    }
+
+    private fun navigateToHistory() {
+        val intent = Intent(requireContext(), ScanHistoryActivity::class.java)
+        startActivity(intent)
     }
 
     private fun setupData() {
@@ -217,11 +238,6 @@ class DashboardFragment : Fragment() {
     private fun navigateToDetailProduct(data: ProductItem) {
         val intent = Intent(requireContext(), ProductDetailActivity::class.java)
         intent.putExtra("EXTRA_PRODUCT", data)
-        startActivity(intent)
-    }
-
-    private fun navigateToHistory() {
-        val intent = Intent(requireContext(), ScanHistoryActivity::class.java)
         startActivity(intent)
     }
 

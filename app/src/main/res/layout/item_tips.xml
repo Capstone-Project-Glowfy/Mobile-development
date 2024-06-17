@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tipsCv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginTop="10dp"
+    android:backgroundTint="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/iconCv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/cardColor2"
+            android:paddingBottom="20dp"
+            app:cardCornerRadius="90dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iconTips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/image_desc" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/skinTipsType"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:paddingVertical="20dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/placeholder"
+            android:gravity="center_vertical"
+            android:textColor="@color/darkGreen"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="@+id/iconCv"
+            app:layout_constraintEnd_toStartOf="@+id/dropDown"
+            app:layout_constraintStart_toEndOf="@+id/iconCv"
+            app:layout_constraintTop_toTopOf="@+id/iconCv"/>
+
+        <TextView
+            android:id="@+id/tipsDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ellipsize="end"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/dm_sans_medium"
+            android:text="@string/descPlaceholder"
+            android:textColor="@color/darkGreen"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/dropDown"
+            app:layout_constraintStart_toStartOf="@+id/iconCv"
+            app:layout_constraintTop_toBottomOf="@+id/skinTipsType" />
+
+        <ImageView
+            android:id="@+id/dropDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/skinTipsType"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/skinTipsType"
+            app:srcCompat="@drawable/ic_down" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

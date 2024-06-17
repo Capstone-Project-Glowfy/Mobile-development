@@ -141,5 +141,31 @@
     <string name="skin_acne">Acne</string>
 
     <string name="language_setting">Change Language</string>
+    <string name="skincare_tips">Skincare Tips</string>
+    <string name="skin_analysis">Face Skin Analysis</string>
+    <string name="history_skin_analysis">History Skin Analysis</string>
+    <string name="image_desc">iconTipsSkin</string>
+    <string name="tipsTitle"><![CDATA[Tips & Trick]]></string>
+
+    <integer-array name="tipsIcon">
+        <item>@drawable/ic_normal</item>
+        <item>@drawable/ic_oily</item>
+        <item>@drawable/ic_dry</item>
+        <item>@drawable/ic_acne</item>
+    </integer-array>
+
+    <string-array name="skinTypeTips">
+        <item>Normal Skin Tips</item>
+        <item>Oily Skin Tips</item>
+        <item>Dry Skin Tips</item>
+        <item>Acne Skin Tips</item>
+    </string-array>
+
+    <string-array name="tipsDesc">
+        <item>Normal skin typically requires regular moisturizing and cleansing to maintain its balance.</item>
+        <item>Oily skin requires extra cleansing to control oil production.</item>
+        <item>Dry skin needs intensive moisturizing and non-irritating skincare.</item>
+        <item>Acne-prone skin requires specialized treatment to reduce inflammation and prevent new breakouts.</item>
+    </string-array>
 
 </resources>
