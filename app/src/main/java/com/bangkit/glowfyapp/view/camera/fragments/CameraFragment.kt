@@ -152,6 +152,7 @@ class CameraFragment : Fragment() {
 
     private fun captureCameraHandler() {
         binding.captureScan.setOnClickListener {
+            onLoading(true)
             takePhoto()
         }
     }
@@ -218,10 +219,12 @@ class CameraFragment : Fragment() {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val rotatedFile = photoFile.reduceFileImage()
                     val savedUri = rotatedFile.toUri()
+                    onLoading(false)
                     navigateToConfirm(savedUri)
                 }
 
                 override fun onError(exc: ImageCaptureException) {
+                    onLoading(false)
                     Toast.makeText(requireContext(), "Gagal mengambil gambar.", Toast.LENGTH_SHORT).show()
                     Log.e("Test", "onError: ${exc.message}")
                 }
@@ -236,6 +239,16 @@ class CameraFragment : Fragment() {
 
     private fun cameraIntroDialog() {
         CustomDialogAlert(requireContext()).show()
+    }
+
+    private fun onLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loadingFrame.visibility = View.VISIBLE
+            binding.viewFinder.visibility = View.GONE
+        } else {
+            binding.loadingFrame.visibility = View.GONE
+            binding.viewFinder.visibility = View.VISIBLE
+        }
     }
     override fun onDestroy() {
         super.onDestroy()
