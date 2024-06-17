@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.data.models.response.SkinsItem
 import com.bangkit.glowfyapp.databinding.ItemSkinBinding
+import com.bangkit.glowfyapp.utils.Utility
 import com.bumptech.glide.Glide
 
 class SkinAdapter(private var listSkin: List<SkinsItem>) : RecyclerView.Adapter<SkinAdapter.ViewHolder>() {
@@ -33,13 +34,14 @@ class SkinAdapter(private var listSkin: List<SkinsItem>) : RecyclerView.Adapter<
     class ViewHolder(private val binding: ItemSkinBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(skin: SkinsItem) {
             with(binding) {
+                val localizedSkinName = Utility.getLocalizedSkinName(itemView.context, skin.nama)
+                skinTitle.text = localizedSkinName
+
                 Glide.with(itemView.context)
                     .load(skin.foto)
                     .placeholder(R.drawable.img_placeholder)
                     .centerCrop()
                     .into(skinImage)
-
-                skinTitle.text = skin.nama
             }
         }
     }

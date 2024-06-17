@@ -14,6 +14,7 @@ import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.data.models.ResultApi
 import com.bangkit.glowfyapp.data.models.response.SkinsItem
 import com.bangkit.glowfyapp.databinding.ActivityScanHistoryDetailBinding
+import com.bangkit.glowfyapp.utils.Utility
 import com.bangkit.glowfyapp.utils.ViewModelFactory
 import com.bangkit.glowfyapp.utils.dateFormat
 import com.bangkit.glowfyapp.view.camera.ScanViewModel
@@ -75,11 +76,12 @@ class ScanHistoryDetail : AppCompatActivity() {
         viewModel.scanHistory.observe(this) { scanHistory ->
             val scanHistoryItem = scanHistory.find { it.id == Id }
             val skinName = mapTypeToSkinName(scanHistoryItem?.statusKulit ?: "")
+            val localizedSkinName = Utility.getLocalizedSkinName(this, skinName)
             with(binding) {
                 Glide.with(this@ScanHistoryDetail)
                     .load(scanHistoryItem?.scanImage)
                     .into(resultImage)
-                skinTextType.text = resources.getString(R.string.resultSkinTypeText, skinName)
+                skinTextType.text = resources.getString(R.string.resultSkinTypeText, localizedSkinName)
                 skinTextResult.text = scanHistoryItem?.statusPenyakit
                 skinDateResult.text = scanHistoryItem?.scanDate?.dateFormat()
                 dataViewFormat(skinName)

@@ -72,25 +72,25 @@ class ProductDetailActivity : AppCompatActivity() {
     private fun typeFormatHandler(product: ProductItem) {
         when (product.tipe) {
             "normal" -> {
-                binding.textTypeDetail.setText(R.string.normal)
+                binding.textTypeDetail.setText(R.string.skin_normal)
                 Glide.with(this)
                     .load(R.drawable.ic_normal)
                     .into(binding.imageTypeDetail)
             }
             "acne" -> {
-                binding.textTypeDetail.setText(R.string.acne)
+                binding.textTypeDetail.setText(R.string.skin_acne)
                 Glide.with(this)
                     .load(R.drawable.ic_acne)
                     .into(binding.imageTypeDetail)
             }
             "oily" -> {
-                binding.textTypeDetail.setText(R.string.oily)
+                binding.textTypeDetail.setText(R.string.skin_oily)
                 Glide.with(this)
                     .load(R.drawable.ic_oily)
                     .into(binding.imageTypeDetail)
             }
             "dry" -> {
-                binding.textTypeDetail.setText(R.string.dry)
+                binding.textTypeDetail.setText(R.string.skin_dry)
                 Glide.with(this)
                     .load(R.drawable.ic_dry)
                     .into(binding.imageTypeDetail)

@@ -57,6 +57,16 @@ object Utility {
         val networkCapabilities = connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
         return networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
+
+    fun getLocalizedSkinName(context: Context, nama: String): String {
+        return when (nama) {
+            "Normal" -> context.getString(R.string.skin_normal)
+            "Kering" -> context.getString(R.string.skin_dry)
+            "Berminyak" -> context.getString(R.string.skin_oily)
+            "Jerawat" -> context.getString(R.string.skin_acne)
+            else -> nama
+        }
+    }
 }
 
 fun uriToFile(imageUri: Uri, context: Context): File {

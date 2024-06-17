@@ -10,6 +10,7 @@ import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.data.historydatabase.ScanHistory
 import com.bangkit.glowfyapp.data.models.response.SkinsItem
 import com.bangkit.glowfyapp.databinding.ItemScanHistoryBinding
+import com.bangkit.glowfyapp.utils.Utility
 import com.bangkit.glowfyapp.utils.dateFormat
 import com.bumptech.glide.Glide
 
@@ -54,9 +55,9 @@ class ScanHistoryAdapter(
                     .load(scanHistoryItem.scanImage)
                     .into(scanImageView)
 
+
                 statusPenyakitTv.text = scanHistoryItem.statusPenyakit
                 scanDateTv.text = scanHistoryItem.scanDate.dateFormat()
-                statusKulitTv.text = scanHistoryItem.statusKulit
                 setCardColor(scanHistoryItem)
             }
         }
@@ -65,15 +66,19 @@ class ScanHistoryAdapter(
             when (scanHistoryItem.statusKulit) {
                 "normal" -> {
                     binding.cardSkinType.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.green))
+                    binding.statusKulitTv.text = itemView.context.getString(R.string.skin_normal)
                 }
                 "acne" -> {
                     binding.cardSkinType.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.red))
+                    binding.statusKulitTv.text = itemView.context.getString(R.string.skin_acne)
                 }
                 "oily" -> {
                     binding.cardSkinType.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.orange))
+                    binding.statusKulitTv.text = itemView.context.getString(R.string.skin_oily)
                 }
                 "dry" -> {
                     binding.cardSkinType.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.yellow))
+                    binding.statusKulitTv.text = itemView.context.getString(R.string.skin_dry)
                 }
                 else -> binding.cardSkinType.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.white))
             }

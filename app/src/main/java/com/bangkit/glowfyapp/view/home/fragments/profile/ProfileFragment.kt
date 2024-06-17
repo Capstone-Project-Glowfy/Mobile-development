@@ -2,6 +2,7 @@ package com.bangkit.glowfyapp.view.home.fragments.profile
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -85,7 +86,12 @@ class ProfileFragment : Fragment() {
         binding.cvLogout.setOnClickListener { logout() }
         binding.cvHistory.setOnClickListener { navigateToHistory() }
         binding.cvProfile.setOnClickListener { navigateToDetailProfile() }
+        binding.cvLanguage.setOnClickListener { changeLanguageHandler() }
 
+    }
+
+    private fun changeLanguageHandler() {
+        startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
     }
 
     private fun navigateToDetailProfile() {
