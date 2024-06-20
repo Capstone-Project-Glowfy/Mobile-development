@@ -151,6 +151,8 @@
     <string name="image_desc">simbol tips kulit</string>
     <string name="tipsTitle"><![CDATA[Tips & Trick]]></string>
     <string name="swipeForLocation">Tarik layar kebawah untuk memuat ulang peta</string>
+    <string name="errorPass">Password Harus Memiliki Minimal 6 Karakter</string>
+    <string name="errorEmail">Masukkan Email Yang Benar</string>
 
     <integer-array name="tipsIcon">
         <item>@drawable/ic_normal</item>

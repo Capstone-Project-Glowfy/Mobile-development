@@ -57,11 +57,11 @@
                 app:startIconDrawable="@drawable/ic_email"
                 app:startIconContentDescription="@string/email_icon_description">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.bangkit.glowfyapp.view.customview.EmailEditText
                     android:id="@+id/emailEt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Email"
+                    android:layout_height="60dp"
+                    android:hint="@string/email"
                     android:paddingStart="50dp"
                     android:textColorHint="@color/darkGreen"
                     android:inputType="textEmailAddress" />
@@ -77,10 +77,10 @@
                 app:endIconMode="password_toggle"
                 app:startIconDrawable="@drawable/ic_password">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.bangkit.glowfyapp.view.customview.PasswordEditText
                     android:id="@+id/passEt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:hint="Password"
                     android:paddingStart="50dp"
                     android:textColorHint="@color/darkGreen"

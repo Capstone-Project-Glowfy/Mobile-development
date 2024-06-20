@@ -112,6 +112,8 @@
     <string name="error_timeout">Request timed out. Please try again later.</string>
     <string name="error_network">Network error occurred. Please check your connection and try again.</string>
     <string name="error_general">An error occurred</string>
+    <string name="errorPass">Password Must Have a Minimum of 6 Characters</string>
+    <string name="errorEmail">Enter A Valid Email</string>
 
     <!-- Array for animation resources -->
     <integer-array name="slide_animations">
