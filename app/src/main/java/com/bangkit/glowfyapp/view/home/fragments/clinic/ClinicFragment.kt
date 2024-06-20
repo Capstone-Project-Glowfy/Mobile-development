@@ -14,6 +14,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -24,7 +26,7 @@ import com.bangkit.glowfyapp.R
 import com.bangkit.glowfyapp.data.models.ClinicData
 import com.bangkit.glowfyapp.databinding.FragmentClinicBinding
 import com.bangkit.glowfyapp.utils.PermissionLocationUtils
-import com.bangkit.glowfyapp.view.customview.CustomAlertDialog
+import com.bangkit.glowfyapp.view.customview.CustomLocationAlert
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -54,6 +56,9 @@ class ClinicFragment : Fragment(), OnMapReadyCallback, ClinicAdapter.ClinicItemC
 
     private lateinit var locationChangeReceiver: LocationChangeReceiver
 
+    private lateinit var locationSettingsLauncher: ActivityResultLauncher<Intent>
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -62,6 +67,14 @@ class ClinicFragment : Fragment(), OnMapReadyCallback, ClinicAdapter.ClinicItemC
         _binding = FragmentClinicBinding.inflate(inflater, container, false)
         val root: View = binding.root
         return root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        locationSettingsLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            Toast.makeText(requireContext(), R.string.swipeForLocation, Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -145,13 +158,25 @@ class ClinicFragment : Fragment(), OnMapReadyCallback, ClinicAdapter.ClinicItemC
     }
 
     private fun showLocationAlert() {
-        val alertDialog = CustomAlertDialog(requireContext(), R.raw.animation_location_need, R.string.locationNeed, R.string.turnLocation)
-        alertDialog.setOnDismissListener {
+        val alertDialog = CustomLocationAlert(
+            requireContext(),
+            R.raw.animation_location_need,
+            R.string.locationNeed,
+            R.string.turnLocation,
+            R.string.cancelTurnLocation
+        )
+
+        alertDialog.setPositiveClickListener {
             val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
-            startActivity(intent)
+            locationSettingsLauncher.launch(intent)
+        }
+
+        alertDialog.setNegativeClickListener {
+            alertDialog.dismiss()
         }
         alertDialog.show()
     }
+
 
     private fun findNearbyClinics(location: LatLng) {
         showLoading(true)

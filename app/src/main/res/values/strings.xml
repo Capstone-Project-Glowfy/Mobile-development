@@ -100,7 +100,7 @@
     <string name="editProfileTitle">PROFILE SETTING</string>
     <string name="locationNeed">Upss, looks like you haven\'t turn on the location</string>
     <string name="turnLocation">Location Setting</string>
-    <string name="cancelTurnLocation"><u>CANCEL</u></string>
+    <string name="cancelTurnLocation">Cancel</string>
     <string name="scanText">Pindai</string>
     <string name="retakeText">Retake</string>
     <string name="notifTitle">Daily Reminder</string>
@@ -151,6 +151,7 @@
     <string name="history_skin_analysis">History Skin Analysis</string>
     <string name="image_desc">iconTipsSkin</string>
     <string name="tipsTitle"><![CDATA[Tips & Trick]]></string>
+    <string name="swipeForLocation">Swipe down to reload the map</string>
 
     <integer-array name="tipsIcon">
         <item>@drawable/ic_normal</item>

@@ -55,10 +55,10 @@ class RegisterActivity : AppCompatActivity() {
                 binding.usernameEtLayout.error = getString(R.string.message_validation)
             }
             email.isEmpty() -> {
-                binding.usernameEtLayout.error = getString(R.string.message_validation)
+                binding.emailEtLayout.error = getString(R.string.message_validation)
             }
             password.isEmpty() -> {
-                binding.usernameEtLayout.error = getString(R.string.message_validation)
+                binding.passEtLayout.error = getString(R.string.message_validation)
             }
             else -> {
                 viewModel.registerUser(name, email, password).observe(this@RegisterActivity) { response ->

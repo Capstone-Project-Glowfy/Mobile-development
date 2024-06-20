@@ -26,7 +26,7 @@ android {
         val p = Properties()
         p.load(rootProject.file("local.properties").inputStream())
         buildConfigField("String", "MAPS_API_KEY", p.getProperty("MAPS_API_KEY"))
-        buildConfigField("String", "BASE_URL", "\"https://glowfy-app-n3xvm6iu5q-et.a.run.app/\"")
+        buildConfigField("String", "BASE_URL", "\"https://glowfy-4z42po56ya-et.a.run.app/\"")
     }
 
     buildTypes {

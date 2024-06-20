@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Glowfy</string>
 
-    <string name="username">Nama <Panggilan></Panggilan></string>
+    <string name="username">Nama</string>
     <string name="password">Kata Sandi</string>
     <string name="login">Masuk</string>
     <string name="title">Unlock Your Skin’s Potential and Discover Your Glow</string>
@@ -99,7 +99,7 @@
     <string name="editProfileTitle">Pengaturan Profil</string>
     <string name="locationNeed">Upss, sepertinya Anda belum mengaktifkan lokasi anda</string>
     <string name="turnLocation">Pengaturan Lokasi</string>
-    <string name="cancelTurnLocation"><u>Batal</u></string>
+    <string name="cancelTurnLocation">Batal</string>
     <string name="scanText">Pindai</string>
     <string name="retakeText">Ambil Ulang</string>
     <string name="notifTitle">Pengingat Harian</string>
@@ -150,6 +150,7 @@
     <string name="history_skin_analysis">Riwayat Deteksi Kulit</string>
     <string name="image_desc">simbol tips kulit</string>
     <string name="tipsTitle"><![CDATA[Tips & Trick]]></string>
+    <string name="swipeForLocation">Tarik layar kebawah untuk memuat ulang peta</string>
 
     <integer-array name="tipsIcon">
         <item>@drawable/ic_normal</item>
