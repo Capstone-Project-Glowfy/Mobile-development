@@ -70,7 +70,7 @@ To get started with the Glowfy project, follow these steps:
     - Open the local.properties file in the project root directory.
     - Add your Google Maps API key :
     ```properties
-    MAPS_API_KEY=your_google_maps_api_key
+    MAPS_API_KEY="your_google_maps_api_key"
     ```
 3. **Build and Run the Project**
     - Open the project in Android Studio.
